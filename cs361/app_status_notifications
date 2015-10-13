@@ -1,0 +1,45 @@
+1.       Checking availability status via app (Jonah)
+
+Tasks:
+
+                            Server – 2.5 units
+
+                            App – 2 units
+
+                            User Interface App – 2 units
+
+Unit total: 6.5 units
+
+2.       Laundry is done notification (Jonah + Savannah)
+
+“Background notification when laundry is done”
+
+Tasks:
+
+                            Server – 2.5 units
+
+                            C2DM integration – spike
+
+                            App – 2 units
+
+                            Account – 1 unit
+
+                            Login – 2 units
+
+Unit total: 7.5 units +Spike
+
+
+1. Checking availability status via app:
+
+The user can open the mobile app and view a graphical representation of which machines are open or in use.
+The user can see a chart of the various machines with a color coded indicator for the status of each one.
+Machines labled with green will be available. Machines labeled with red will be in use.
+
+
+2. Laundry is done notification:
+
+After starting his or her laundry, the user will tell the server which machine he or she is using.
+The user's mobile device will then notify him or her when the laundry is done.
+This notification will be given regardless of whether or not the app is active on the mobile device.
+
+

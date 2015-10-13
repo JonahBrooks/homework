@@ -1,0 +1,3 @@
+dominion.c
+-	'sea_hag' card effect is not implemented correctly.
+	Does not properly assign the top card of deck to a curse (0).

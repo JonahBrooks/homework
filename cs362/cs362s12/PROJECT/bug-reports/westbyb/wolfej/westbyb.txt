@@ -1,0 +1,1 @@
+The coins are going to be decreased by the cost of the card, whether there is enough money to do so. Also, there is no test as to whether there is enough numBuys to decrement or not. This is going to cause a problem and cause negative numbers in both the numBuys and the coins. No matter what, a card is bought.

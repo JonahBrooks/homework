@@ -1,0 +1,1 @@
+There is a problem that if a card is not purchased, then the numBuys does not decrement. The numBuys should decrement if there is 1 available.

@@ -1,0 +1,68 @@
+Savannah Van Beek
+CS 362 - Final Report
+
+My final project consists primarily on testBuyCard.c and testAdventurer.c. I feel like I worked really hard and was able to create fairly thorough test code for both functions. Granted they only work with the assumption that the code compiles and runs. For my final report I will do a breakdown of my thought process and final results for each tester, and then a breakdown of the results I got from testing my groups code. 
+
+testAdventurer.c:
+I primarily used random testing in testAdventurer.c and it seem to work out fairly well. I started out by randomly initalizing the game state and all the variables needed by adventurer. I believe I was able to catch most of the states that the code could get itself in like making sure the deck and discard counts are in the correct range, counting up the total number of treasure available, and handling the cases which occur, depending on the amount of treasures available. 
+
+In order to find all the treasures available I had two for loops to run through the pre.deckCount and the pre.discardCount (aka all the cards not in the players hand) to tally up all the treasures that can potentially be added to the players hand. I added this functionallity after realizing that my handCount checker conditional would fail in the case when there were not enough treasure cards to find. So, when I did "if((pre.handCount[player] - 2) != post->handCount[player])" it would take my handCount down to -2 everytime. I then added "t >=2 && 'rest of the conditional'". This then caught the cases when there were less than two treasures in the entire deck available to that particular player. 
+
+The only other thing I really check for with testAdventurer was to make sure that cards were not magically being added or subtracted to the deck or discard pile. This was done by "post->deckCount < 0 && post->deckCount[player] > (pre.deckCount[player] + pre.discardCount[player])". This checks to see if deckCount is not less than zero and the total of the cards in the previous state isn't more than what was there before. 
+
+My overall coverage is 5.91% and my coverage of cardEffect is 10.80%.
+
+testBuyCard.c:
+Like testAdventurer.c, testBuyCard.c was initialized with a completely randomized game state along with randomized variables. With this test I have a main if/ else combo that breaks the code into two categories. The first category is if the game state is such that a buy cannot happen (meaning that the player doesn't have enough buys or coins, or there is not enough in supply), and I then test to make sure nothing doesn't change even though a buy shouldn't take place. So, I make sure coins, supply, or buys are not decremented, and I make sure that the card doesn't magically end up on the top of the discard pile anyway. That is all handled in the if, in the scenario where the player has everything needed to complete the buy I then do the same four checks but in reverse. I make sure the buys, coins, and supply are all decremented correctly and the card does end up at the top of the discard pile.
+
+My overall coverage is 8.87% and my coverage of buyCard is 100%.
+
+The testing process:
+When I run my tests on my code it now runs without complaint. The only way I was able to work my way through making my testers was to fix the bugs I found in my code along the way. For testBuyCard it was fairly easy to get working since my implementation of buyCard is pretty simple (but effective). My original thought was to just do a lot of 'if' statements without any order to it, but then later realized that there were only two cases in which the code can be in (either the player buys a card or they don't). Once I got it formatted that way it went quickly from there (granted I ran into so logic issues because I was trying to confuse myself). My implementation of testAdventurer was harder to write because of the shuffle. With the shuffle in there the post and pre deckCount or discardCount could be anything (within a resonable range), which then rules out the use of memcmp(). So, the only things I could think of to check for was the number of treasures available and that the counts were in the proper ranges. 
+
+Group test results:
+BROOKJON:
+testAdventurer - When I test brookjon's adventurer implementation everything passes my tests besides handCount periodically gains an excessive amounts of cards after adventurer is called. I didn't send him an official bug report due to the fact we study together fairly regularly so I just mentioned to him that his adventurer implementation gives away free cards every once in a while.
+When I run gcov of testAdventurer on his code I get overall coverage of 11.71% and 6.20% of cardEffect.
+
+testBuyCard - After running testBuyCard on brookjon's my code reports that the only decrementing that he does is to numBuys. So I get consistent reports about him not decrementing supply or coins. When I let him know this fact he told me he was aware. 
+When I run gcov of testBuyCard on his code I get a coverage of 100% and 7.43% coverage overall.
+
+MURROWN:
+testAdventurer - Segmentation Faults and I am unable to do further testing.
+
+testBuyCard - Originally when I ran my test on his code I was confused because it was decrementing everything even without buys. However, after looking at his code I realized that he decrements by default no matter if a buy takes place. There are no catches or conditionals.
+Running gcov on his code I get 7.58% overall coverage and 100% coverage of his buyCard.
+
+KROPFB:
+testAdventurer - This code runs for a short while then seg faults. My test for adventurer isn't very in depth, so it is reporting that the counts are ok. Despite the fact the counts are ok it still seg faults shortly after execution.
+When I run gcov of testBuyCard on his code I get a coverage of 82.22%.
+
+testBuyCard - His code runs for a little while but everytime I have tried running it the code has seg faulted. It is also very talkative code so my print statements are being ignored and I am un able to fully utilize my test I created. However, from what I can somewhat see is that he is buying the card without decrementing correctly.
+
+ADAMSMIC:
+testAdventurer - This seg faults shortly after execution and nothing helpful is printed to the screen (meaning their code is talkative and my output isn't displaying).
+
+testBuyCard - Their implementation of buyCard seems to work. My tester doesn't seem to pick up any wrong doing in their code. I get 8.44% overall coverage and 100% buyCard coverage.
+
+WESTB:
+testAdventurer - This implementation seems to work fairly well besides the sporadic times when handCount is not being incremented when there are two treasures available. I am getting 2.24% overall coverage and 4.15% coverage of cardEffect.
+
+testBuyCard - From the look of my output it seems like after a card has been bought none of the variables are decremented accordingly. And, every so often when the card isn't bought it is added to the discard pile anyway. I get 10.09% overall coverage and 100% coverage with buyCard.
+
+After thoughts:
+What I would have done differently if I had the chance would be to add in more testers. I wasn't able to implement anymore than just the two I have and I would have liked to have tested more functions in the code. Another thing I would have liked to have done would be to change around my tester code to have the output be more useful and not as redundant. Meaning, put in tallies and just have a summary at the end of what my testers found. That would have made the code run faster and it would have the potential to be more clean about what is going wrong with the code that I am testing. 
+
+The set up of this project is pretty well thought out. It is interesting, easy to understand (for the most part), and can truely be fun. I really like the idea of making test reports and using svn so we have easy access to our code along with the code of others. However, I did have trouble with svn off and on with weird errors and untimatly not checking in when I thought it did. With that I definately learned to be more careful.
+
+
+
+
+
+
+
+
+
+
+
+

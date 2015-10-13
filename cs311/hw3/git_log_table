@@ -1,0 +1,13 @@
+Thu, 23 Feb 2012 17:37:10 -0800 & Fnished polishing my code and calculating the runtime for various numbers of threads. I just need to make the graph and writeup now. \\ \hline 
+
+Mon, 20 Feb 2012 23:36:59 -0800 & Optimized my code a bit and got it mostly ready to submit. I still need to add the header and run the timings. \\ \hline 
+
+Mon, 13 Feb 2012 01:45:24 -0800 & New method is showing nicely so far. I have the threading in place and have begun the optimization process. 
+The last change I made provided a 30% speed boost, and I believe I can make a few more changes of this sort. Also, I want to find an optimal 
+size for how many bytes should be covered by each mutex. I will work on more optimization later, and then clean up my code and add the comment header later. \\ \hline 
+
+Sun, 12 Feb 2012 19:36:53 -0800 & My initial attempts would take nearly 18 hours to complete. My attempts to optimize them did little to help. I have decided to try a new method which looks promising. I now need to addapt it to run in parallel, then look into optimization methods. \\ \hline 
+
+Sat, 11 Feb 2012 02:47:49 -0800 & Changed my original design document to a plain text file so that I can later include it my writeup without changing the timestamp. \\ \hline 
+
+Sat, 11 Feb 2012 02:16:33 -0800 & Initial commit. Wrote my initial design concepts and started toying with my code. I have all the serial parts finished and am ready to start implementing the threaded sections tomorrow. \\ \hline 

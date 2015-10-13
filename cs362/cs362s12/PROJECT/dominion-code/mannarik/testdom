@@ -1,0 +1,2 @@
+rm -rf test.out
+./testBuyCard >> test.out

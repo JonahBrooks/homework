@@ -1,0 +1,9 @@
+Fri, 16 Mar 2012 20:12:21 -0700 & All done. It only seems to work from computer within the network that is running the server, but oh well. Also, I wasn't able to get the manage.py -> compute kill signal to work correctly. I have commented out the code that was attempting to implement that, and will mention it in the writeup. \\ \hline 
+
+Fri, 16 Mar 2012 00:02:01 -0700 & Everything is finished except for the ability to have report kill manage, and manage kill compute. Everything else is working as I want it to. \\ \hline 
+
+Thu, 15 Mar 2012 07:50:16 -0700 & Forgot to commit last night. I got both sides encoding and decoding messages properly, and a range request/reply function set up. I can now run the program completely using one client. \\ \hline 
+
+Tue, 13 Mar 2012 22:54:30 -0700 & Added functionality to compute.cpp. It can now tell how many operations it can perform in a second, and it can encode and decode unsigned ints into character arrays that can be sent via sockets. I also refactored the code to make it more readable. \\ \hline 
+
+Mon, 12 Mar 2012 23:02:43 -0700 & Initial commit. Basic parrot function between python server and c++ client. IOPS calculations and perfect number checker implemented in c++. \\ \hline 

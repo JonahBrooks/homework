@@ -1,0 +1,34 @@
+Savannah Van Beek
+Test Report 2
+
+Quick note, I wasn't quite able to get the testdom and makefile working the way it 
+should. I basically have it all it the makefile and it just compiles and runs everything
+in there. That was the only way I could figure out how to automatically pipe it into the
+file test.out. I tried copying over the makefile (and other necessary code) from GROCEA,
+but I don't understand how it made the executable testdom. 
+
+For this test report I created testAdventurer.c and I worked more on my testBuyCard.c. 
+There are sill something wrong with my testBuyCard.c program, but I haven't been able 
+to figure out what it is. It compiles, runs, and exits normally, but when I use memcmp()
+something must be changing that I don't intend. Almost every single time memcmp() fails
+which means something happens to gameState Post that doesn't happen to gameState pre.
+Other than that issue the testing went well. I'm not sure what exactly is changing 
+because I am printing out everything that I could potentially be changing and then some.
+I am also confused by the fact of when I tested Jonah Brooks code with my testBuyCard.c
+program it still had the same issue, but at a much smaller frequency. Mine was failing
+almost every single time, but on his it seems to only fail less than half the time. 
+
+I haven't tested many since I only have the one working test (testAdventurer), but with
+it I was able to find and fix bugs in my own Adventurer implementation along with Jonah
+Brooks implementation of Adventurer. Even though my test is basic enough, I was able to
+find that he wasn't incrementing the his hand. On line 642 in his dominion.c file
+he doesn't subtract one from hand[][] so when he calls discardCard() he passes in the
+wrong hand position. Then when discardCard() checks the hand position it see that it is
+an in valid position and doesn't discard it. So he just keeps drawing and drawing until
+all of his cards are in his hand. 
+
+When I run gcov on my code I get 5.01% which seems reasonable since all that I was really
+able to get implemented and working correctly was testAdventurer.c.
+
+When I run gcov on Jonah Brooks code I get an 11.65% coverage. Which is strange that I 
+cover more of his code with the same tests than mine, but there it is. 

@@ -1,0 +1,49 @@
+Ian Erickson
+CS362 Report 2
+5/17/2012
+
+Testing done:
+
+I tested 3 different cases to make sure that buyCard was actually working properly. These test cases 
+mostly covered checking that the card isn't being bought with resources that the player doesn't have.
+
+The first case was making sure that coins were actually decrementing, thus not allowing a player to 
+infinitely buy cards simply because they initially had the correct amount of coins. I tested 3 people's 
+code from my group, as well as my own:
+
+mcelfrec: passed
+wheeleri: failed
+brookjon: passed
+ericksoi: passed
+
+I found that wheeleri's code was decrementing the number of buys, but was not at any point decrementing 
+number of coins.
+
+The second case was checking if the player had the correct amount of money to buy any given card, so they 
+can't just buy any card at any given time. This should have been my first case, but I tested for it after
+testing the coin decrementing. I tested 3 people's code from my group, as well as my own:
+
+mcelfrec: passed
+wheeleri: passed
+brookjon: passed
+ericksoi: passed
+
+The third case that I did augmented the first. I tested to make sure that at any point in the code the 
+number of coins was equal to what it should be based on actions taken. I tested 3 people's code from my 
+group, as well as my own:
+
+mcelfrec: passed
+wheeleri: failed
+brookjon: passed
+ericksoi: passed
+
+It was no surprise to me that the results of the third case and the first case were the same, but I 
+thought it would be a valid thing to test regardless. 
+
+I don't think that I did my testing very efficiently (did it case by case, all by hand), and I think for 
+the next test report I'd like to automate it a little bit. I'm not sure whether my dominion code is 100% 
+or not, but based on these tests it seems to be working. For future testing I'd like to look more into 
+card availability rather than coin-to-card transactions. It seems like a lot could go wrong with which 
+cards are available, number of buys available, etc. I would also like to work a little more with gcov 
+because I didn't quite get around to it, but it seems as though that would give me a very clear view of 
+what is going on within everybody's code. 

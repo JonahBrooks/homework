@@ -1,0 +1,5 @@
+Infinite Loop in cardEffect for Feast
+
+Best Solution: set x = 0 after printf("None of that card left, sorry!\n")
+
+Other Notes: Might want to check choices to see if valid, my test program sends -1 for choice1 which is invalid

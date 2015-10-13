@@ -1,0 +1,140 @@
+I took the approach of random testing. 
+The first test case is that if I have an adequate amount of money purchasing the card is possible
+	for (n = 0; n < 17; n++) {
+		G.coins=8;
+		checkBuyCard(n, &G);
+	}
+	this goes trough and tests all the cards to make sure that they can be bought.
+	
+The Second test case is that with not enough money the card will not be bought
+basically it checks to make sure -1 is returned when you use buy card
+
+The Third test case is that if you buy a card then buy another card your money will have
+gone down so that buying the second card is not possible
+	G.coins=5;
+	checkBuyCard(silver, &G);
+	checkBuyCardFail(silver, &G);
+	
+	Since silver cost 3 you shouldn't be able to buy it twice
+
+All of the test cases are pretty short only requiring a few lines of code
+My method for choosing inputs is just to try all of the different cards
+
+I tested my own code to find that it failed the last test because my code
+didn't decrement coins after buying a card.
+
+I also tested Randb as a randomly selected student. None of my tests failed
+on his dominion.c 
+
+At this point I have only tested those 2 dominions as it took a bit to get
+rid of problems with my tester code.
+
+For future code I plan to test problems with trying to buy a card that has run
+out
+
+Other possible bugs haven't crossed my mind although I want to incorporate 
+more different testing methods to cover more types of possible problems.
+
+
+In time for a second round of testing.
+
+I updated all my tester code to make sure that the circumstances make sense for every situation
+I made sure that when I was buying a card that there was at least on in supply and there was an
+apropriate amount of money for what I am testing. 
+
+I also added two test cases to my test code. One to make sure that you actually had the buys.
+And another one to make sure that the buy card function can't buy the card if there isn't any
+left in the resouses.	
+
+I tested my groups projects
+y = passed test
+n = failed
+
+tester name		Enough money	Not Enough	Decrement Coins		none in resourses	not enough buys
+westb(me)		y				y			y					n					n
+murrown			y				n			n					n					n
+adamsmic		y				y			y					y					y
+brookjon		y				y			n					y					y
+kropfd			y				y			n					y					n
+vanbeeks		y				y			y					y					y
+wheelri			y				n			n					n					n
+ericksoi		y				y			y					n					n
+mcelfrec		y				y			y					y					y
+
+
+I learned after testing that I need to update my dominion.c to check to see if cards are available and
+make sure there are enough buys to get the card.
+
+I added a test for draw card. I was trying to implement a adventurer card check but some problem came up that
+gave like 500 lines of errors for 40 lines of code and I couldn't figure out what was wrong.
+
+The test for draw card came up with no errors for me and I figured that most people's code for draw card should
+be identical to mine. The draw card test used random testing to make sure that you can draw a card with varying
+different decks. 
+
+To find out code coverage I used gcov after using my test suite.
+This is what I got for coverage.
+ 
+Function 'supplyCount'
+Lines executed:0.00% of 2
+
+Function 'fullDeckCount'
+Lines executed:0.00% of 9
+
+Function 'whoseTurn'
+Lines executed:0.00% of 2
+
+Function 'handCard'
+Lines executed:0.00% of 3
+
+Function 'numHandCards'
+Lines executed:0.00% of 2
+
+Function 'isGameOver'
+Lines executed:0.00% of 10
+
+Function 'scoreFor'
+Lines executed:0.00% of 42
+
+Function 'getWinners'
+Lines executed:0.00% of 24
+
+Function 'getCost'
+Lines executed:63.33% of 30
+
+Function 'discardCard'
+Lines executed:0.00% of 13
+
+Function 'gainCard'
+Lines executed:0.00% of 13
+
+Function 'updateCoins'
+Lines executed:63.64% of 11
+
+Function 'buyCard'
+Lines executed:100.00% of 10
+
+Function 'shuffle'
+Lines executed:93.75% of 16
+
+Function 'drawCard'
+Lines executed:34.62% of 26
+
+Function 'endTurn'
+Lines executed:0.00% of 20
+
+Function 'cardEffect'
+Lines executed:0.00% of 240
+
+Function 'playCard'
+Lines executed:0.00% of 14
+
+Function 'initializeGame'
+Lines executed:85.48% of 62
+
+File 'dominion.c'
+Lines executed:21.26% of 555
+
+According to this my draw card test needed more testing, and so did initializeGame. overall I think my code
+covered a good amount of dominion. With more time I could test the whole thing but for the purpose of the class
+I don't think that is feasable.

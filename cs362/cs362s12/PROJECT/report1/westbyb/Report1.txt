@@ -1,0 +1,211 @@
+Brian Westby
+Test Report 1 
+5/1/12
+
+################################################################################
+Bug Report 1:
+Initial run of 
+  `make clean; make testdom` 
+from the testBuyCard.c & testDrawCard.c file that the professor used in class wouldn't compile, which is odd, as the dominion.c file that I used was the same dominion.c file, with buyCard and adventurer implemented, and it appeared to compile in class just fine. Went to fix testBuyCard.c first, which had an implicit declaration of floor which caused three warnings, and and implicit declaration of exit.
+
+File: testBuyCard.c
+Function: main
+Bug: `warning: implicit declaration of function ‘floor’`
+Fix: Added `#include <math.h>` to testBuyCard.c at line 6.
+Status: Fixed
+
+File: testBuyCard.c
+Function: main
+Bug: `warning: implicit declaration of function ‘exit’`
+Fix: Added `#include <stdlib.h>` to testBuyCard.c at line 7.
+Status: Fixed
+
+File: testBuyCard.c
+Function: checkDrawCard
+Bug: `warning: control reaches end of non-void function`
+Fix: Will see if other bug fixes will solve this issue, as it simply means no value was returned, and the return value could rely on the fixing of the other issues in the file.
+Status: Pending
+
+File: testDrawCard.c
+Function: main
+Bug: `warning: implicit declaration of function ‘floor’`
+Fix: Added `#include <math.h>` to testDrawCard.c at line 6
+Status:
+
+File: testDrawCard.c
+Function: main
+Bug: `warning: implicit declaration of function ‘exit’`
+Fix: Added `#include <stdlib.h>` to testDrawCard.c at line 7.
+Status: Fixed
+
+File: testDrawCard.c
+Function: checkDrawCard
+Bug: `warning: control reaches end of non-void function`
+Fix: Same as testBuyCard.c. Function seems to not return anything, whereas checkDrawCard should return an int.
+Status: Pending
+
+################################################################################
+Bug Report 2
+After cleaning up the previous issues, I'm still trying to get everything to work correctly. Previous run also said that "DEBUG" kept getting redefined, as it was already defined within dominion.h, so I commented out
+  `#define DEBUG 0`
+which solved the issue, but we'll see if this stays commented out throughout the rest of the report. Upon trying to compile again, the non-void function issue still exists, so that didn't fix itself. Also, when trying to run `./testdom` it says I don't have the permission to do so, so that also needs investigating, although I'm not sure I would classify that as a bug.
+
+File: testDrawCard.c/testBuyCard.c
+Function: checkDrawCard
+Bug: `warning: control reaches end of non-void function`
+Fix: When checkDrawCard is called in the main function, it is not stored in any variable, which would lead me to believe that it does not need to be of type int. 
+  `checkDrawCard(p, &G);`
+I changed it to a void function, and we'll see how it goes from there.
+Status: Pending
+
+################################################################################
+Bug Report 3
+Changing the checkDrawCard functions to void fixed the issue, although we'll see if it needed to be an int as things go forward, but it doesn't appear to need to be. When I try to run `./testdom`, it still says I don't have permissions, which is confusing, so I sent out an email to the class, which hopefully gets a response. `testdom` doesn't seem to do the trick either.
+
+File: testdom
+Function: N/A
+Bug: Permissions denied.
+Fix: Rewrote testdom file, while keeping contents the same.
+Status: Fixed.
+
+################################################################################
+Bug Report 4
+It was an oversight on my part on the testdom file. Simply had to remake the file, as I'm sure the permissions were set differently on the file done in class today. ./testdom sends it's output to the file `test.out`. Here's a portion of the file:
+  
+  Tue May  1 20:18:33 PDT 2012
+  Testing drawCard.
+  RANDOM TESTS.
+  Current hand count: 51
+  Current hand count: 85
+  Current hand count: 277
+  Current hand count: 346
+  Current hand count: 469
+  Current hand count: 126
+  Current hand count: 148
+  Current hand count: 366
+  Current hand count: 255
+  Current hand count: 384
+  Current hand count: 411
+  Current hand count: 332
+  Current hand count: 404
+  Current hand count: 22
+  Current hand count: 479
+  Current hand count: 180
+  Current hand count: 389
+  Current hand count: 149
+  Current hand count: 444
+  Current hand count: 126
+  Current hand count: 9
+  
+The real output is much (much) longer. The output is this way because of the following reasons:
+
+  #Tue May  1 20:18:33 PDT 2012#
+  Comes from the testdom file:
+    `date >& test.out`
+    
+  #Testing drawCard.#
+  #RANDOM TESTS.#
+  Comes from the main function of testDrawCard. Simple print statements:
+    `printf ("Testing drawCard.\n");
+    printf ("RANDOM TESTS.\n");`
+    
+  #Current hand count:#
+  Print statement from drawCard, showing the current hand count. The number sent to drawCard is determined by:
+    `for (n = 0; n < 2000; n++) {
+      for (i = 0; i < sizeof(struct gameState); i++) {
+        ((char*)&G)[i] = floor(Random() * 256);
+      }
+      p = floor(Random() * 2);
+      G.deckCount[p] = floor(Random() * MAX_DECK);
+      G.discardCount[p] = floor(Random() * MAX_DECK);
+      G.handCount[p] = floor(Random() * MAX_HAND);
+      checkDrawCard(p, &G);
+    }`
+
+Once all of the tests are done on drawCard, confirmation messages are sent to let you know that the tests are done.
+  
+  #ALL TESTS OK#
+  Comes from:
+    `printf ("ALL TESTS OK\n");`
+    
+There are more tests after that, but the program calls exit, so those fixed tests don't run. The same tests (2000 of them) are run for buyCard, with the same results.
+
+################################################################################
+Testing group's code with ./testdom
+
+Group members:
+dunhame
+wolfej
+randb
+wandlins
+olsojeff
+westbyb //me
+parkan
+milleand
+
+All tests done within respective dominion-code folder.
+Ran
+  `make clean; make all; make testdom`
+then
+  `./testdom`
+  
+Each test sends 2000 numbers to both buyCard and drawCard, and then sends a confirmation message when all tests complete successfully. Otherwise it fails and sends an abort message.
+  
+dunhame: 
+./testdom kept saying I didn't have permission to run again. Running sudo ./testdom just got me reported. Turns out 
+  `chmod 775 testdom`
+fixes this issue. From there, running `./testdom` prints to test.out with no issues, so it would seem that for this test, dunhame's dominion.c works without bugs.
+
+milleand:
+./testdom works for milleand's code for both drawCard and buyCard. Since drawCard is implemented for us, buyCard is the only test that could/should fail. For this test, milleand passes.
+
+olsojeff:
+The copy of oslojeff's code gave two warnings that the other group members code did not:
+  dominion.c:600: warning: unused variable ‘i’
+  dominion.c:620: warning: ‘who’ may be used uninitialized in this function
+However, these issues did not stop the tests from completing, however I imagine these issues will trip a different test. However, i is simply unused and who is initialized unncessarily, so the issues aren't large, but should be addressed none-the-less. Both drawCard and buyCard tests passed successfully.
+
+parkan:
+Both drawCard and buyCard tests complete sucessfully. Code compiles correctly, as it should after the last assignment. No surprises here. Perhaps the test was too simple.
+
+randb:
+Running testdom on rand's dominion.c resulted in an error:
+
+  `testDrawCard: testDrawCard.c:39: checkDrawCard: Assertion `r == 0' failed.
+  ./testdom: line 4: 22749 Aborted                 (core dumped) ./testDrawCard >> test.out
+  testBuyCard: testBuyCard.c:39: checkDrawCard: Assertion `r == 0' failed.
+  ./testdom: line 6: 22752 Aborted                 (core dumped) ./testBuyCard >> test.out`
+  
+Both tests failed after the first random number is sent to it (in this case, 51), and then fails on the second number. While the buyCard implementation seems to be correct, and we know drawCard is implemented correctly, apparently the assertion r==0 is what causes the test to fail for both cases.
+
+wandlins:
+Compiling wandlin's dominion.c gives the following error:
+
+  `dominion.c: In function ‘cardEffect’:
+  dominion.c:623: error: expected ‘;’ before ‘for’
+  dominion.c:623: warning: statement with no effect
+  dominion.c:623: error: expected ‘;’ before ‘)’ token
+  dominion.c:623: error: expected statement before ‘)’ token
+  dominion.c:800: warning: statement with no effect
+  dominion.c:969: warning: statement with no effect
+  make: *** [dominion.o] Error 1
+  gcc -c dominion.c -g -Wall -fprofile-arcs -ftest-coverage -Wall
+  dominion.c: In function ‘cardEffect’:
+  dominion.c:623: error: expected ‘;’ before ‘for’
+  dominion.c:623: warning: statement with no effect
+  dominion.c:623: error: expected ‘;’ before ‘)’ token
+  dominion.c:623: error: expected statement before ‘)’ token
+  dominion.c:800: warning: statement with no effect
+  dominion.c:969: warning: statement with no effect
+  make: *** [dominion.o] Error 1`
+  
+So the code doesn't compile (although this was simply the code in the dominion-code folder, perhaps newer code will compile). Can't run `./testdom` on a program tht doesn't compile. Fixing the code seems like a simple enough task, as it appears to mainly be syntax errors and missing ;'s.
+
+wolfej:
+Both the buyCard and drawCard tests complete sucessfully, for all 2000 tests each.
+
+################################################################################
+Future tests
+
+This test covered numbers that were conventional, and didn't stress the game too much. Future tests would cover numbers that would do a better job of stressing the system, and then accounting for those inputs in the code so that it doesn't break when odd inputs are given. But for the time being, typical inputs do not break my dominion.c file.
+Using this test was quite useful in terms of testing a large number of inputs at once time, instead of what I was used to doing in terms of manually setting inputs and testing them one at a time. Random numbers also helped cover a range that might not have initially been covered.

@@ -1,0 +1,8 @@
+mcconnjo:
+
+doesn’t actually check to make sure the 
+player has enough buys or cards prior to buying
+
+SEG Faults on Adventurer tests
+
+-Seg Fault on Smithy Card Implementation

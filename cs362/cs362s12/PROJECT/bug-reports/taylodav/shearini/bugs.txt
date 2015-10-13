@@ -1,0 +1,15 @@
+shearini:
+	-the numBuys left for the player did not match what was expected.
+	-the implementation is not decrementing the number of buys correctly for a player
+	-buyCard never takes into account the possibility of buying a card that has a value of 0, like a curse card
+	SOLUTION:
+		altering the coin check conditional from [if (state->coins < getCost(supplyPos))] to [if (state->coins <= getCost(supplyPos))].
+		decrement the numBuys of the player by 1 per buy.
+		
+something wrong with buying a card with various number of available buys
+
+SEG Faults on Adventurer tests
+-problems with the handCard and numHandCards functions which is causing errors to return
+-decrement the numActions counter at the end of using the Adventurer card
+
+-Seg Fault on Smithy Card Implementation

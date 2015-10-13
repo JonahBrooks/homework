@@ -1,0 +1,6 @@
+
+rm -rf test.out
+date >& test.out
+./testDrawCard >> test.out
+date >> test.out
+./testBuyCard >> test.out

@@ -1,0 +1,17 @@
+brookjon buyCard Bug
+	Running my test I found that neither coins nor supplyCount was being modified after buy. 
+	
+	
+	FIX: add on or around Lines 265 and 266
+	
+	state->supplyCount[supplyPos]--;
+    	state->coins -= getCost(supplyPos);
+	
+	By adding the two lines I have fixed the bug and it passes my test.
+	
+ellingsn BuyCard Bug
+	numBuys were not changing at all
+	
+	line 264 (state->numBuys)--;
+	
+	FIX: remove the parenthesis

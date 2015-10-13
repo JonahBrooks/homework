@@ -1,0 +1,239 @@
+Jonah Brooks
+CS362 Final Report
+06-11-12
+
+1. General Overview of Design
+
+    My main approach to this project primarily revolved around random testing and 
+modularity in my test suite. I created a single file, testdom.c, that would run through
+each of my testers; testAdventurerCard, testBuyCard, and testDrawCard. In this file I
+created helper functions that randomly initialized the game state, tallied the errors,
+handled segfaults, and printed results. I then created a loop that randomly tests each
+function once, printing information on each error found to a verbose log file (log.out).
+Once this loop has finished, I print out the aggregate results of each test function.
+
+    I chose to use random testing due to its relatively high ratio of thoroughness to
+code written; in other words, I chose it because it would catch lots of bugs with very
+little effort. Right now I have it set to run 2000 test cases over randomly generated,
+but valid, game states. This is a enough to catch even very rare test cases, such as ones
+that are only found 1 or 2 times out of 2000. It also runs fairly quickly, so I could
+easily ramp it up to 4000, or 8000, or even higher. It's still possible for there to be
+bugs that my tests won't find, but it the random nature of my tests is not likely to be
+the reason those cases are not found.
+
+    As far as the modularity of my code, I chose this approach in order to make my test
+suite extensible. I came to be very happy with this choice over the course of this
+project, as it made adding new tests or adjusting the current tests much quicker. As an
+example of the modularity, I use a standard struct (seen below) for tracking errors, and 
+a standard function for tallying them. This means that I do not need to make any effort
+for tracking errors when I add a function to my test suite. I took the same approach 
+with generating the game state, reporting the test results, and handling segfaults.
+
+My error tracking struct, standard across all tests:
+
+struct errorState {
+  int tests;
+  int successes;
+  int fails;
+  int player_err;
+  int coin_err;
+  int buys_err;
+  int actions_err;
+  int hand_err;
+  int deck_err;
+  int discard_err;
+  int supply_err;
+  int segfaults;
+  int unknown_err; 
+} buyCard_errs, drawCard_errs, adventurerCard_errs;
+
+
+Example header for my function calls:
+
+void errorReport(struct errorState *errs, char *test);
+
+
+    This modularity also allows me to use my functions to test sequences of function
+calls, rather than testing only one call at a time. For instance, I could test failure
+rates in the event of calling buyCard 5 consecutive times, or playing a certain sequence
+of cards. However, I did not implement this type of testing. This is definitely something
+I would implement in the future if I had time, as it could help narrow down the cause
+of certain bugs.
+
+
+2. Specific Implementation
+
+    Most of my implementation followed suit from my initial design, where I just create
+a game state, initialize it randomly, copy it with memcpy, call the function in question,
+modify the copy to (hopefully) match the newly changed original, then compare. The one
+specific aspect of my code that I'd like to mention is in how I handled segfaults.
+Initially, I had not planned to handle them at all, but then I realized that I could gain
+no useful data on any code that contained a segfault in any one of my test cases. This 
+made a lot of my tests futile, and largely useless. In order to remedy this, I chose to
+use sigsetjmp and siglongjmp to treat segfaults as a simple error, just like a failed
+incrementation of handCount or something of that sort.
+
+    To make use of these functions, I created a signal handler for SIGSEGV that calls
+siglongjmp, which resets the programs state back where it was at the time of the last
+call to sigsetjmp. Then, in each of my tester functions, I wrapped the call to the 
+function I wished to test inside of a condition that included sigsetjmp; the conditional
+would then either proceed or clear the segfault flag, increment the number of segfaults 
+found, then escape the test function, depending on the return value of sigsetjmp.
+
+Example of this conditional:
+
+if (sigsetjmp(jump_state, 1) == 0) {
+    r = drawCard (p, post);
+} else {
+    sigprocmask(SIG_SETMASK, NULL, &jump_mask);
+    drawCard_errs.segfaults++;
+    drawCard_errs.fails++;
+    drawCard_errs.tests++;
+    return(-1);
+}
+
+
+    This allowed me to not only test functions that contained segfaults, but to actively
+report on the rate at which segfaults occurred. I could also dump any relevant data to
+the test log to help locate the segfault if needed, but I did not include this in my
+current test suite. I would like to include this feature in the future if I had time.
+
+ 
+3. Running the Test Suite
+
+    Another interesting approach I took on this project was in how I ran my tests. In 
+addition to running tests and compiling gcov data for a few of my team members, I also 
+ran my test suite on every dominion.c file in the class. This allowed me to get a general
+overview of how the class did on their projects, as well as gave me a bit of insight into
+which problems were most common amongst my classmates. While I did not make much use of
+this information, I could have used it as a base when making the decision as to which 
+aspects of my code I should have individual unit tests.
+
+    The other reason I chose to run my tests on the entire class's code is that it was
+remarkably simple to do; I simply wrote a quick bash script that ran my test on the 
+dominion.c file made by each person listed in the groups.txt file. This script is
+included below:
+
+rm -rf "test_results"
+mkdir "test_results"
+grep "." ../../groups.txt | grep -v 'ellingsn\|taylodav\|wolfej' | while read ONID
+#for ONID in "brookjon" "vanbeeks" "kropfb" "murrown"
+do
+  echo "Testing $ONID"
+  mkdir "./test_results/$ONID"
+  cp "../../dominion-code/$ONID/dominion.c" "./"
+  make clean && make testdom && ./testdom > "./test_results/testdom_out" 
+  cp "test.out" "./test_results/$ONID/test_$ONID.out"
+  cp "log.out" "./test_results/$ONID/log_$ONID.out"
+  gcov -f dominion.c > "./test_results/$ONID/gcov_$ONID.out"
+  cp "./dominion.c.gcov" "./test_results/$ONID/$ONID.gcov"
+done
+
+    One thing to note about this script is the second grep command I ran. This command
+removes ellingsn, taylodav, and wolfej from the list of files I should test. This is done
+for one simple reason: my code cannot handle infinite loops that do not segfault from
+within the infinite loop. This would likely be the next thing I would implement in the
+future, as my test suite should never encounter anything that prevents it from gathering
+data. However, it would have been much more difficult to handle infinite loops than it
+was to handle segfaults. For that matter, it is technically impossible to handle them
+perfectly without solving the halting problem. If I had the time later on, I would
+implement threads that make sure no single call to any function takes more than a given
+amount of time, reverting the state with another siglongjmp if an infinite loop is 
+detected.
+
+
+4. Test Results
+
+    Aside from the three infinite loop problems mentioned above, I noticed that a few
+of my classmates' dominion.c files would occasionally generate infinite loops, although
+not very often. I also noticed that, while it is fairly common for adventurer to 
+segfault (8 of my classmates' implementations), no one was segfaulting in either buyCard
+or drawCard. I also noticed that only two of my classmates had mostly correct adventurer
+implementations, and no one had a perfect implementation. This is in contrast to 
+drawCard, which was passed all my tests on everyone's code. That's likely because most
+of the class did not modify that code from what was provided.
+
+    As far as code coverage goes, my code covered 100% of buyCard for all but one of the
+dominion.c files I tested. That one was randb, and I covered 92.8% of his 14 line 
+buyCard. This is due to the fact that my random tests never encountered a situation in
+which I entered the conditional: if(state->phase != transition). Aside from this, the
+line I covered the least was inside another similar conditional which checks that the
+player has enough coins before allowing the purchase; 354 of my 2000 test cases covered
+this line.
+
+    I got 100% coverage on all but 4 of my classmates' drawCard implementations. Those
+four are as follows:
+
+bartoszk lines executed:95.45% of 22
+ericksoi lines executed:36.36% of 22
+randb    lines executed:95.65% of 23
+tangke   lines executed:95.45% of 22
+
+    The standout here is Ian Erickson's implementation. It seems my tester never
+generated a test case in which the follow condition succeeded: 
+
+    if(state->deckCount[player] <= 0)
+
+    Although unlikely, it is possible for 2000 random tests to never pick 0 out of 500
+possible values for the deckCount. It seems that's exactly what happened on my test of
+Ian's code. The other's were cases where I failed to enter the following conditional:
+
+    if(deckCounter == 0)
+
+    This is much more likely to happen, as this is only the case in which deckCount AND
+discardCount are randomly assigned 0. Again, increasing the number of tests run from 2000
+to, say, 16000 should make these sorts of situations that much closer to impossible.
+
+    Statistics on my coverage of adventurer is a lot harder to gather, as it is enclosed
+in a larger function. While my coverage ranges from 3.54% to 11.11%, this is likely more
+of a statement on the varying lengths of my classmates' implementations than it does on
+my varying coverage. Below is a brief breakdown of my coverage of my team member's 
+adventurer implementations:
+
+
+wheeleri:
+    Nearly all of the code was covered in this implementation, with the lines that add
+treasure to the player's hand being run the fewest times, at 1980 times each. Most of
+the other lines were executed around a million times each, with one conditional remaining
+completely untouched. This is due to the fact that my tests would always get stuck in
+the loop until a segfault occurred, as also seen in my test output, which showed 100% 
+of my test cases resulted in a segfault.
+
+
+vanbeeks:
+    My testing covered 100% of Savannah's adventurer implementation, with the fewest
+executions being the lines that handle the shuffling of the deck, each of which was
+executed 122 times. This is likely the case because, of all my team members, Savannah's
+adventurer card was by far the most soundly implemented, and therefore can handle nearly
+all the test cases I generated for it. Her code was the second most successful of all
+of my classmates', succeeding 1930 out of 2000 adventurer tests.
+
+murrown:
+     Nathan's code segfaulted once durring my testing, which resulted in 1999 tests
+executing the lines which run the least number of times. Beyond that, my tests managed 
+100% coverage of his code. Aside from the one segfault, his implementation was very
+successful in every area other than discardCount; 1907 of his 1984 failed test cases
+were caused by discardCount errors.
+
+kropfb:
+    Similar to Nathan's code, my tests covered 100% of Byron's adventurer implementation.
+Due to three segfaults, the line executed the fewest number of times was executed 1997
+times. Also like Nathan, most of Byron's errors were caused by discardCount not matching
+my expected value. Aside from this, Byron's code results in very few errors.
+
+
+5. Summary
+
+    All in all I am very impressed with the power of gcov, and of various testing
+methods. Being able to find such concise information on so much code by running a few
+basic scripts and greps is very exciting. If I had more time, I would have loved to have
+included an infinite loop handler, as well as written tests for the rest of the functions
+in dominion. Regardless, I feel that I learned a great deal about a lot of things over
+the course of this project, and I look forward to using some of these tools and methods
+in many of my future programming projects.
+
+    Finally, all of my test data is included in tester-code/brookjon/test_results, which
+includes significantly more data than was presented here. This writeup was mostly an
+overview of my testing methods and a discussion on the more prominent findings of my
+tests. The full logs, gcov data, and error counts can be found in each person's directory
+within my test_results directory.

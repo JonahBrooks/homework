@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 7fb2bf7a7495e10465a931cb59249182ff56e5e0 Jonah Brooks <brookjon@flip3.engr.oregonstate.edu> 1365650888 -0700	commit (initial): Testing
+7fb2bf7a7495e10465a931cb59249182ff56e5e0 20896e0915e25338b7fe61259296639429c5e804 Jonah Brooks <brookjon@flip3.engr.oregonstate.edu> 1365651676 -0700	pull: Fast-forward
+20896e0915e25338b7fe61259296639429c5e804 2e5e3fe23ae8c8a8593f828616d5f7e107b9663c Jonah Brooks <brookjon@flip1.engr.oregonstate.edu> 1365733167 -0700	commit: Added tentative todo list
+2e5e3fe23ae8c8a8593f828616d5f7e107b9663c f8b32c02de576851cab21f66c571b5223ff0968a Jonah Brooks <brookjon@flip1.engr.oregonstate.edu> 1365736573 -0700	commit: Initial work on homework 1. Got parts of the GameState class implemented.
+f8b32c02de576851cab21f66c571b5223ff0968a 618bcaaec839160982b5455c6c74b99d13ac74c0 Jonah Brooks <brookjon@flip3.engr.oregonstate.edu> 1365990931 -0700	commit: Mostly finished the node class. Need graphSearch and io.
+618bcaaec839160982b5455c6c74b99d13ac74c0 160f4c2e4c4bd662f6ba7ddd2663508e9d5b30c0 Jonah Brooks <brookjon@flip1.engr.oregonstate.edu> 1366085651 -0700	commit: Learned how to use priority_queues...
+160f4c2e4c4bd662f6ba7ddd2663508e9d5b30c0 f16bbcf728a2568032e78dd84721f306cb954319 Jonah Brooks <brookjon@flip2.engr.oregonstate.edu> 1366345297 -0700	commit: Finished! I think!
+f16bbcf728a2568032e78dd84721f306cb954319 af2d413c8b0300dbad7aa94f90bb8dd61c8db4ea Jonah Brooks <brookjon@flip2.engr.oregonstate.edu> 1366396997 -0700	commit: Everything except the writeup!

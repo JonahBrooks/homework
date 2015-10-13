@@ -1,0 +1,20 @@
+Known Bugs: 
+
+ [ ] Invoking the game without any arguments will cause it to segfault, because
+    atoi gets confused with no argv. Invoking with ./playdom $not-a-number will
+    cause atoi to ask for an integer to use. 
+
+ [ ] Player Interface issues:
+    [ ] Accepts bad input ("buy silver" is apparently a bad input) and 
+        ends up with a "?" card in the hand. Should instead re-ask until
+        it gets a valid card, or translate more leniently from typo'd 
+        card names into supply numbers.
+    [ ] Goes ZOOM! if bad input causes two bots to play each other. Should 
+        confirm that the player intended bot vs. bot, then offer some delay.
+        Possibly also witty remarks from the robots to keep it entertaining.
+
+ [ ] Documentation:
+    [ ] Needs either defaults or a shell script to invoke the game with sane argv
+    [ ] Comments should explain scope of each function -- should buyCard decrement
+        the coins, or is that the problem of whoever invoked it? This will be
+        very nice to have when we move from unit to integration testing. 

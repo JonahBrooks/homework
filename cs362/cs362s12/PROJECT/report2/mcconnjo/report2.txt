@@ -1,0 +1,48 @@
+Jordan McConnell
+Test Report2
+
+My strategy for this round of testing was to test more functions and to
+streamline the testing process by making a helper file that does a lot of the
+common code. While writing my third testing function, I noticed that I was
+rewriting a lot of the same code and so I saw this as the perfect opportunity
+to write some common functions. 
+
+The first of these functions was just a simple resetGameState function,
+although it is very simple to implement, it does throw out some of the compile
+errors if I don't have to rewrite this every time. All this function does is
+reset all the bytes in struct gameState to NULL.
+
+another function I wrote was a confirm, which basically is like an assert
+except I don't like assert because it will fail the whole program. This allows
+a condition to fail and lets the program keep running. It also displays a
+message to print out if the assert fails. I did take into account though if
+there is a repeated failure to actually fail the program and so I have it do
+this after 10 failed assertions.
+
+Probably the most helpful of the functions I made was randomUniqueKingdom
+which gives 10 random but unique values to be used in a game of dominion. This
+was very useful for random testing as now I can truly try testing the game
+with random cards each time.
+code:
+
+
+I decided to test the handCard function because I noticed it was not doing
+bounds checking on the input value. Through testing I found that without
+checking the bounds of the input the function can give Segmentation faults and
+crash.
+
+I also decided to test the isGameOver function. This was where the
+randomUniqueKingdom function really came in handy and allowed me to easily do
+random testing on this function, of which I found that it wasn't testing for
+the last enum card treasure_map
+
+Finally I tested the fullDeckCount function, I did random testing on it first,
+of which it succeeds for all valid data, and then I did robustness testing on
+it to see if bad arguments can throw it off. If an invalid player number is
+passed into the function, it will segFault. To fix this I added a condition to
+the function that player >= 0 and player < numPlayers. This eliminated the
+bugs I found for this function.
+
+
+I wasn't able to get to testing of others people codes for this report as I
+ran out of time. 

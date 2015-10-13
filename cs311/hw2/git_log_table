@@ -1,0 +1,11 @@
+Tue, 7 Feb 2012 17:42:10 -0800 & Finished my code and timings. Now I just need to finish my write-up, make sure it all runs on os-class, and tar it up. \\ \hline 
+
+Sun, 5 Feb 2012 15:27:30 -0800 & Forgot to commit yesterday, but I got my code to the point where it was mostly functional with a few major bugs. Today I fixed those bugs and added the last features I want to add. I am mostly finished with my code now, except for some possible additional error checking and commenting. \\ \hline 
+
+Thu, 2 Feb 2012 17:18:21 -0800 & All the pipes, forks, and execs are working correctly now. All that is left to do is suppress and output the sorted sub-lists. I also may want to process the words a bit before sending them to the sorters, such as removing punctuation and making them all lower case. \\ \hline 
+
+Thu, 2 Feb 2012 01:26:59 -0800 & Almost done. A few final tweaks and it'll be ready. One annoying bug with forking still exists, but that's about it. \\ \hline 
+
+Wed, 1 Feb 2012 20:16:22 -0800 & Long haul; created functions for each task I need to complete and placed in the pipe creation and forking code. I just have to close pipes, exec, and write the suppressor \\ \hline 
+
+Mon, 30 Jan 2012 17:53:24 -0800 & Worked on my code a bit the other day just to whip together a quick parser. Refined it today to start making it do what the project actually needs. Still a long way to go \\ \hline 

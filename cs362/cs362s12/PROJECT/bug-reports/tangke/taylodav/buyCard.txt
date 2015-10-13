@@ -1,0 +1,18 @@
+find:
+	if((state->numBuys != 0) && ((state->supplyCount[supplyPos]) != 0) 
+							&& (state->coins >= getCost(supplyPos))) {
+							
+replace with:
+	if((state->numBuys > 0) && ((state->supplyCount[supplyPos]) > 0) 
+							&& (state->coins >= getCost(supplyPos))) {
+							
+find:
+	state->coins = state->coins - getCost(supplyPos);
+	
+add before:
+	state->phase = 1;
+	
+find and delete:
+	int who = state->whoseTurn;
+	state->discard[who][state->discardCount[who]] = supplyPos;
+	state->discardCount[who]++;

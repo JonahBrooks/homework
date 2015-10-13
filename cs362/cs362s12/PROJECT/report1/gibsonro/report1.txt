@@ -1,0 +1,14 @@
+I ran a series of initialized game through three tests with some random components to exercise some of the code:
+	-Call buyCard on a random card, then compare the resulting state to a memcpy'd version, and run a member-wise comparison of the two states.  The prior state is then used to store some of the information from the states, and buyCard called again, without having ended the turn. Having started a game with only one buy phase, this tests whether buyCard is only allowing the correct number of purchases. If there is something wrong, an assertion will catch it after the report about where the differences between expected and actual values are, so they can be investigated easily with a debugger.
+	-The game is then reinitialized and buyCard is called again, with the selected card as a copper. This time it checks to see if the game is actually buying the copper, and then calls it again to make sure it isn't able to buy it twice. Comparisons are reported to make it easier to narrow down where a problem might be, assertions are made about where the copper should be. 
+	-The game is reintialized again, the players hand is set to all curses and a copy is made. Then it attempts to buy an adventurer, and asserts that the two are equal. While it is undefined behavior whether attempting to buy a card puts you in the buy phase, this tests that you can't buy a card that you shouldn't be able to.
+	
+
+turcottm - failed: state->supplyCount was not the expected value after buyCard for the target card
+gibsonro - PASSED
+luisramg - failed: supplyCount, discard, discardCount, not the expected value after buyCard.
+nolandr - failed: coins were unequal after attempting to buy a copper.
+junkerd - failed: copper was not properly discarde after being bought, along with other things not being right after buyCarding a copper
+gormanv - failed: after attempting to buy a card twice with only 1 buy action, it appears that the discard and discardCount have changed
+genzg - failed: buying a copper using buyCard did not result in the copper ending the buy phase in the discarded cards
+bartoszk - PASSED

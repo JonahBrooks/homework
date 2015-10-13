@@ -1,0 +1,1 @@
+./test 200 200 &>test.out

@@ -1,0 +1,14 @@
+ellingsn:
+	-the player’s discard count is off by 1
+	-following conclusion. The numbuys is definitely not decremented properly, the player’s coin count is also not decremented properly
+	-Original implementation, need to change this!!
+	SOLUTION:
+		decrement the player’s coin cost by the cost of the card, even if it is zero, decrease the buy count, increase your discard count, and decrease the 		supply count
+		
+	-numBuys were not changing at all
+	-line 264 (state->numBuys)--;
+	-Solution: remove the parenthesis
+	
+**This implementation is stock, no changes made**
+
+-Seg Fault on Smithy Card Implementation

@@ -1,0 +1,41 @@
+
+Test suite 2: Random Games
+
+This test suite creates a list of random player behavior including buyCard, playCard and endTurn. It then executes this script and attempts to play a game.
+
+
+
+With occasionally strategic logic:
+Lines executed:65.34% of 580
+
+I had managed to get up to 75% coverage, but I wasn't able to replicate it after changing the strategy logic.
+
+turcottm - 
+	Creation of variable (int x) in a switch statement line 647 prevents compiling in g++
+	Infinite loop when calling playCard on a feast
+	Score becomes negative
+gibsonro -
+	Passes
+luisramg	
+	Creation of variable (int x) in a switch statement line 939 prevents compiling in g++
+	Infinite loop when calling playCard on a feast
+	Score becomes negative
+nolandr
+	Creation of variable (int x) in a switch statement line 702 prevents compiling in g++
+	Infinite loop when calling playCard on a feast
+	Score becomes negative
+junkerd
+	Creation of variable (int x) in a switch statement line 697 prevents compiling in g++
+	Infinite loop when calling playCard on a feast
+	Score becomes negative
+gormanv
+	Creation of variable (int x) in a switch statement line 645 prevents compiling in g++
+	Infinite loop when calling playCard on a feast
+	Score becomes negative
+genzg
+	Creation of variable (int x) in a switch statement line 645 prevents compiling in g++
+	Infinite loop when calling playCard on a feast
+	Score becomes negative
+	buyCard declares "int who" twice once at the beginning of the method, once at the end.
+bartoszk
+	Passed.

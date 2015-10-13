@@ -1,0 +1,1 @@
+numBuys is not decrementing. Also, the return value when invalid is supposed to be -1 and it has a return value of 999. 

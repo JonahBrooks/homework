@@ -1,0 +1,64 @@
+Bug reports
+
+nolandr:
+================================
+
+Date of testing: May 1, 2012
+Tested by: Gregorio Luis Ramirez
+Test: Function buyCard in dominion.c
+
+Bug description: 
+
+Function buyCard does not check if the selected card is available from the supply deck. This causes my test program testBuyCard to fail. A suggested way to fix this bug is to include the following if statement/fragment:
+    
+    if (supplyCount(supplyPos, state) <1){
+	    printf("There are no cards of that type available\n");
+	    return -1;
+	}
+
+Date of testing: May 17, 2012
+Tested by: Gregorio Luis Ramirez
+Test: Function cardEffect in dominion.c
+
+Bug description: 
+
+1) Using testAll function, we found a bug in the case feast because it does not return -1 when buying is now allowed because the cost of the card is expensive or invalid. This can be solved by adding the statement:
+
+    return -1;
+
+for these two cases: (1) card is too expensive when buying, and (2) card is not found in the supply deck.
+
+2) Using testAdventurer function, we found that the implementation does not discard the other cards properly when discovering the cards. This can be solved by adding the following line in the adventurer case when discarding cards:
+
+    state->discardCount[currentPlayer]++;
+
+ 
+
+
+bartoszk
+================================
+
+Date of testing: May 17, 2012
+Tested by: Gregorio Luis Ramirez
+Test: Function cardEffect in dominion.c
+
+Bug description: 
+
+Using testAll, we detected a fault in the case feast in cardEffect. This fault generated an infinite loop in testAll because it was found that the case did not return -1 for cases were buying was not allowed on cases were the card was too expensive or was not found in the supply pile. This can be fixed by adding the following return statement for those cases:
+
+    return -1;
+
+
+turcottm
+================================
+
+Date of testing: May 17, 2012
+Tested by: Gregorio Luis Ramirez
+Test: Function cardEffect in dominion.c
+
+Bug description: 
+
+Using testAll, we detected a fault in the case feast in cardEffect. This fault generated an infinite loop in testAll because it was found that the case did not return -1 for cases were buying was not allowed on cases were the card was too expensive or was not found in the supply pile. This can be fixed by adding the following return statement for those cases:
+
+    return -1;
+

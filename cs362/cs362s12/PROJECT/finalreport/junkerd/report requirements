@@ -1,0 +1,27 @@
+Detailed discussion of test approach taken
+	Detailed discussion of the test process
+	I want to see source code – show, don’t just tell
+		Not a dump of all your code, but representative portions to indicate any of these that apply:
+	Structure of a test case
+	Length of test cases
+	Method for choosing inputs
+	Specification method used
+	How to handle segfaults/crashes
+Development history of the test system
+Complete set of test statistics gathered:  coverages, number of tests performed, number of faults detected, etc.
+	Areas particularly well tested, areas that have not been thoroughly tested – remaining risks of failure
+Communications with partners
+	Give some representative examples, show me what a bug report and response looked like
+	Revisions to tested code (and to tester)
+Regression strategy, regression failures discovered
+Quality of code 
+	on first testing
+	when finished
+	Lines of code at beginning, when finished
+Final status of all bugs reported so far (FIXED, WONTFIX, BOGUS…)
+	Details of bugs (possibly of all discovered bugs, if it fits), including the severity, nature, fix, pointer to test case (or full test case if it is small enough)
+Opinions for future testers
+	What would you have done differently, given time
+	How well did any tools you used work?
+	What infrastructure did you develop or did you need
+	How useful was automated testing vs. hand unit tests vs. code inspection, in your case?

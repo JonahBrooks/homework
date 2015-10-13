@@ -1,0 +1,2 @@
+Infinite loop.
+Adventurer specification only allows for one shuffle if unadequate treasure is found in the deck.

@@ -1,0 +1,1 @@
+The code compiles without any problems. When testing the buyCard, the numBuys doesn’t usually decrease. Also, the coins are not being decreased after a card is bought.

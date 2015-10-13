@@ -1,0 +1,22 @@
+Jonah Brooks
+Programming Assignment 3
+
+Results:
+
+Training data prediction results:
+Positive: 88.5%         708/800 (Positive reviews correctly identified)
+Negative: 98.875%       791/800 (Negative reviews correctly identified)
+
+Test data prediction results:
+Positive: 73%   146/200 (Positive reviews correctly identified)
+Negative: 91%   182/200 (Negative reviews correctly identified)
+
+
+
+Discussion:
+
+I think my classifier was fairly accurate. Prediction accuracy for both the positive and negative class was above 80% in the training data. I'm not sure why the negative class had a higher accuracy. It's possible that negative reviews have more unique and commonly used words, such as "sucks." I would guess that negative reviews are probably more likely to have misspelled words as well. Mostly, however, I would guess that negative reviews may have "tainted" positive words through sarcasm or a small positive section in a largely negative review, which would reduce the accuracy of the positive class identification.
+
+The test data set went similarly to how the training data set went. The accuracy was generally lower here, of course, since this data was not used in learning the Bayesian network while the training data was. The same logic above likely explains the lower accuracy for the positive class in this data set as well.
+
+Over all, I am fairly happy with how my classifier turned out, and I'm impressed that such a relatively simple procedure can classify data so well.

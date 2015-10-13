@@ -1,0 +1,90 @@
+TEST REPORT 2
+Nathan Murrow
+May 17, 2012
+
+THE TESTS
+Each test case is one operation on the game state, in other words, the tests observe how the game state changes after execution of a function. In this case, I only tested buying cards, but I made my test software easily extendable to other tests. The input for the tested function is a game state, which is generated randomly. A large number of these states (thousands) is tested for each group member's code. The random values are constrained to reasonable values that could arise
+naturally in a normal game. Regarding segfaults and crashes, my testing system does not crash when a program it is testing crashes because it opens subprocesses to do its testing. However, further investigation to determine that these failed cases
+are being counted correctly would be prudent. Specifications were a problem in my first round of testing, however, because I am using difference testing now, it is not as necessary to have solid specifications because many specifications can be inferred from "majority rules". This is one of the major strengths of my new system. Because there are a large number of sample implementations, an implementation that behaves slightly differently than expected can be identified
+easily. Naturally, this method fails where every implementation uses the same code base, so it cannot account for all errors, but it can catch most errors where the code is written independently.
+
+THE TESTING PROCESS
+As usual, communication with partners is scarce and there is no hurry for anyone to fix their bugs. However, as an example of a bug report, I will present the output for my testing program. It will identify a class of errors by who is different from the majority of tested implementations and count the occurrences of each class:
+
+INITIAL     : c0 nP1 wT0 sC5 nB1 $2 dC327
+RESULTS
+Majority (4): c0 nP1 wT0 sC4 nB0 $2 dC328
+westb       : c0 nP1 wT0 sC4 nB1 $2 dC328
+wheeleri    : c0 nP1 wT0 sC5 nB0 $2 dC328
+mcelfrec    : c0 nP1 wT0 sC3 nB0 $2 dC329
+brookjon    : c0 nP1 wT0 sC5 nB0 $2 dC328
+Occurrences : 67/1000
+In this case, two people fail to decrement the supply count, one person buys an extra card, and the fourth fails to decrease the number of buys. They all have different problems, but there are 67 total reports that involve these four people specifically.
+
+INITIAL     : c15 nP1 wT0 sC8 nB0 $3 dC234
+RESULTS
+Majority (6): c15 nP1 wT0 sC8 nB0 $3 dC234
+wheeleri    : c15 nP1 wT0 sC8 nB-1 $-1 dC235
+murrown     : c15 nP1 wT0 sC7 nB-1 $-1 dC235
+Occurrences : 431/1000
+In this case, both implementations have the same problem. This pair shows up in 431 cases, nearly half of all cases. Clearly this bug needs to be addressed immediately.
+
+The tests will also identify which implementations are the most robust:
+
+Successes out of 1000 tests:
+murrown     : 514
+adamsmic    : 1000
+brookjon    : 486
+kropfb      : 498
+westb       : 431
+vanbeeks    : 1000
+wheeleri    : 0
+mcelfrec    : 486
+
+Finally, it will demonstrate the amount of code covered by the tests:
+
+File 'murrown.c'
+Lines executed:7.17% of 530
+Branches executed:6.85% of 409
+Taken at least once:6.60% of 409
+Calls executed:1.09% of 92
+
+File 'adamsmic.c'
+Lines executed:8.18% of 538
+Branches executed:8.23% of 413
+Taken at least once:7.99% of 413
+Calls executed:2.11% of 95
+
+There are limited revisions to the code as a result of the bug reports, however, these reports will quickly identify regression failures as long as the modifications to the code are within the scope of the unit test. This is because the errors will probably be detected unless most of the group makes the same error at the same time. This is the beauty of difference testing.
+
+It is doubtful that these bugs will get fixed before the term is over.
+
+FUTURE PLANS
+My test reports are weak in that more unit tests need to be implemented and more code coverage needs to be attained. Given more time, I would write more tests and develop other methods of testing that will be able to investigate the code that is common to all implementations. However, this infrastructure that I have developed is extremely handy for detecting bugs, though it might not be practical in a real world setting because we do not usually have the luxury of so many
+different implementations. Using the gcov tool to determine code coverage was enlightening; it reveals that there is much left to be tested. Of the different testing methods, I like automated testing the best. Most of the time, testing is a repetitive task, so you might as well let a computer do it!
+
+CODE COVERAGE:
+
+File 'murrown.c'
+Lines executed:7.17% of 530
+
+File 'adamsmic.c'
+Lines executed:8.18% of 538
+
+File 'brookjon.c'
+Lines executed:7.68% of 534
+
+File 'kropfb.c'
+Lines executed:10.13% of 543
+
+File 'westb.c'
+Lines executed:9.66% of 528
+
+File 'vanbeeks.c'
+Lines executed:8.70% of 529
+
+File 'wheeleri.c'
+Lines executed:6.82% of 528
+
+File 'mcelfrec.c'
+Lines executed:10.25% of 527

@@ -1,0 +1,88 @@
+Emily Dunham
+CS362 Test Report 1
+5/1/2012
+    The present status of my tests is that unit testing has been implemented and 
+partially automated. Coverage and test automation tools have yet to be applied
+to the code base. Tests are designed to cover minimal units, and future work
+includes separating test methods from automation code -- for instance, the
+testBuyCard and testDrawCard files executed by the testdom script handle
+repeted tests by looping within their individual main methods. A superior way
+to handle repeated tests would be to have the testBuyCard and testDrawCard
+files only contain helper functions that test what the file claims to, then
+include them in a central testing file which can run any function from either
+file on a valid gameState. Random testing by not only passing in a random
+gameState, but also doing things to it in a random order rather than only
+doing one category of thing at a time, has a better chance of discovering
+integration bugs because it more accurately simulates actual gameplay. 
+    One main feature which I plan to implement for the second test report is a
+better random gameState generator. I plan to populate each field of the
+gameState with a psuedo-random number that falls within acceptable values
+which would be encountered in the game. For instance, one will never play
+Dominion with -3 players, so one or two tests to ensure that functions fail
+gracefully when handed an invalid value will suffice to cover all cases in
+which the number of players is illegal. Once a small number of "smarter" tests
+have confirmed that the implementation can handle an illegal state correctly,
+a large number of "dumb" tests can be applied at random to a randomly
+generated legal gameState to ensure that no situation likely to be encountered
+during play will cause the game to fail. I plan to have the gameState
+generator take a few random numbers as inputs and calculate all card values
+from them, because some research into optimizing C code indicates that
+generating random values is a bottleneck in execution time. A thorough set of
+random tests will require a new gameState before each set of tests, so
+gameStates will have to be generated quite frequently. This means that
+generating 3 or 4 random numbers per gameState rather than approximately 20
+(one for each stack of cards, hand, etc.) is likely to result in significantly
+reduced testing times. 
+    The greatest weakness of my test system at present is that it ignores
+integration between various files in the codebase. Even once I check every
+function within each file of the game, integration testing will be required 
+to confirm that no file interacts with another in a way that damages the
+game's state. Although failures caused by integration problems will be evident
+to the end user, integration testing needs to be included in the automated
+testing in order to identify the sources of errors which become visible much
+later in the game.
+    My test system's current history is that its base was copied from the
+in-class example files and then only slightly modified so far. Further changes
+are in development, but I implemented a code freeze after checking in a
+version which meets the assignment requirements by compiling. My next step in
+development will be to introduce a testing framework, and since multiple
+options will be tried and the time to get them fully functional with the
+dominion code is unknown, it seems wiser to stick to code which definitely
+works until the assignment can be graded.
+    Other plans include making the game's player interface suck slightly less
+by fixing various annoying traits, such as lack of sufficient documentation,
+which I have noted in the README file in my folder within the dominion-code
+directory. 
+
+   Since the list of groups changed several times and doesn't appear to have
+stabilized until less than 24 hours before this project's due date, I have not
+yet invested significant time into examining other students' code. For the
+next report, I will certainly have an example or two of tickets filed for bugs
+in others' code, and probably significant frustration at their unfamiliarity
+with ticket tracking (if the class's use of subversion so far is any
+indication of their general familiarity with real-world development tools).
+    My communication with classmates and group members about the game has so
+far been limited to providing assistance when they encounter problems (such as
+informing a peer who had problems with execute permissions on a file that
+"chmod +x <file>" gives execute permissions), and providing advice on easier
+ways to use version control (such as explaining the purpose of commit messages
+and why it's helpful to use them). 
+
+    In order to meet the first deadline of having "working" Dominion code, I
+performed quite a bit of testing by hand. As well as reading the source code,
+I played the game against the robot to ensure that no conspicuous failures
+showed up. Most of my future plans, such as implementing a testing framework
+and breaking the code into smaller units, have already been discussed. 
+    Before my testing will be complete, I plan to fully document the pre- and
+post-conditions that each major function will have if it's working correctly.
+Although self-documenting code is great for telling you what the code does,
+it's not so helpful for explaining what a piece of broken code is actually
+supposed to do. Correct documentation for a function in the Dominion code will
+allow me to verify that my unit test for that function covers all cases and
+checks the way that the function is genuinely supposed to behave. In addition,
+it will allow for a final logical overview to ensure that all of the major
+pieces which make my code a complete dominion game are present. If some
+feature slipped through the cracks of previous testing -- function A assumes
+that function B will implement the feature, but function B assumes that the
+feature was already implemented by function A -- this logical overview will be
+able to catch that error.  

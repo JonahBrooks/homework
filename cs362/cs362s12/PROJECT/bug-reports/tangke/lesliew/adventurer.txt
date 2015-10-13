@@ -1,0 +1,2 @@
+Segmentation fault.
+Need to provide logic for when the player's deck is exhausted.

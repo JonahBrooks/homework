@@ -1,0 +1,336 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{alltt}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsthm}
+% \usepackage{balance}
+% \usepackage{color}
+% \usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{geometry}
+% \usepackage{graphicx}
+% \usepackage{float}
+% \usepackage{pstricks, pst-node}
+% \usepackage[TABBOTCAP, tight]{subfigure}
+% \usepackage{url}
+
+\input{pygments.tex}
+
+\geometry{textheight=8.5in, textwidth=6in}
+
+\title{Final Test Report for CS362}
+\date{11 June, 2012}
+\author{Ian Shearin (shearini)}
+
+% PDF metadata
+\hypersetup{
+	pdftitle={Final Test Report for CS362},
+	pdfauthor={Ian Shearin},
+	pdfkeywords={Oregon State University} {College of Engineering}
+	            {School of EECS} {CS362} {Dr. Alex Groce},
+	colorlinks=true,
+	linkcolor=red,
+	citecolor=green,
+	filecolor=magenta,
+	urlcolor=cyan
+}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Test Case Overview}
+Each test case consists of two parts, both contained in the same {\tt .c} file.
+There are four unit tests, one each for adventurer, {\tt buyCard}, and
+{\tt drawCard}, and there is a more inclusive test that tries random games.
+
+\subsection{Unit Tests --- First Part}
+The first part sets up the test and runs the second part a number of times, as
+defined by {\tt NUM\_TESTS}. Setup consists of filling a game state with
+random data, some of which is constrained to limits defined globally. This is
+because Dominion is not supposed to run outside of these limits. The input for
+the function is also selected at random.
+
+Below is the source code for this part of the test case for {\tt drawCard}. You
+can see a loop for each test run, a loop to fill data randomly, and some
+statements which constrain some of the data in the game state. The call to
+{\tt checkDrawCard} is the second part of the test case, where is where most of
+the work is done.
+
+\begin{scriptsize}
+\input{snip-testDrawCard.tex}
+\end{scriptsize}
+
+\subsection{Unit Tests --- Second Part}
+The second part of the test case runs the function being tested and has a look
+at the results in two ways.
+
+First, if the function returns something other than zero, the test complains,
+but does not stop, since invalid inputs should cause this behavior. It is up to
+the user running the test to determine if an input, which is displayed, should
+cause an error. Some of the unit tests also have special cases which cause the
+test to fail.
+
+Second, the game state which was modified by by the function is compared to a
+copy which is put through a sort of reference function. Since the reference
+cannot be perfect, a difference between the states is notified to the user of
+the test, who must decide which function is in error.
+
+If both steps occur without error, the test is considered to have passed. This
+does not mean the code is correct, it just means the test could not find
+anything wrong with it.
+
+The second part of the test case for {\tt drawCard} is below.
+
+\begin{scriptsize}
+\input{snip-checkDrawCard.tex}
+\end{scriptsize}
+
+The heart of the test is the part the simulates the function. Unfortunately,
+this means practly rewriting Dominion, but at least these are indepedent. Here
+is this part for {\tt buyCard}:
+
+\begin{scriptsize}
+\input{snip-checkBuyCard.tex}
+\end{scriptsize}
+
+\subsection{Seg Faults}
+In the previous version of the tester, seg faults would cause an entire unit
+test to become silent. There was no indication of a seg fault and no data on
+other testes, even successful ones. To get around this, a seg fault handler was
+added. Although all it does is print ``seg fault'', it allows other test runs
+to print.
+
+\section{Failed Tests}
+In the event of a failed test or crash, the tester can
+{\tt \#DEFINE NOISY\_TEST} for any specific test case and see input and result
+data, which are useful for finding bugs. Failed test runs typically print
+something helpful, anyways.
+
+\section{Tests Development History}
+The tester code is further development of code for previous reports, which was
+based on code from class. The major improvements over the code from class
+include:
+\begin{itemize}
+	\item Implementation of more unit tests
+	\item Checking for bugs while simulating the function rather than just a
+	state comparison using {\tt memcmp}.
+	\item Seg fault handler
+\end{itemize}
+
+\section{Test Suite}
+The overall test suite consists of two parts. The first part just runs each of
+the test cases. This helps to find bugs isolated to particular functions. The
+second part looks for bugs when running functions after functions using the
+same game state, as would happen in a real game of Dominion. The actual
+detection of this test is weak, as it only looks for invalid cards in the
+current player's hands. It relies more on the test user to track the game and
+make sure it is following the rules. The code for the test suite,
+{\tt testAll}, is below.
+
+\begin{scriptsize}
+\input{snip-testAll.tex}
+\end{scriptsize}
+
+
+\section{Example Test Run}
+\begin{scriptsize}
+\begin{alltt}
+\begin{verbatim}
+$ make testdom
+$ ./testdom
+$ cat test.out
+Mon Jun 11 19:46:35 PDT 2012
+Testing drawCard randomly
+  ++pass++
+...
+  ++pass++
+End of drawCard tests
+
+Mon Jun 11 19:46:35 PDT 2012
+Testing buyCard randomly
+  buyCard returned non-zero value for p = 0, c = 11
+  buyCard returned non-zero value for p = 2, c = 11
+  buyCard didn't buy card for p = 2, c = 16
+  buyCard returned non-zero value for p = 2, c = 22
+  buyCard didn't buy card for p = 1, c = 28
+  buyCard didn't buy card for p = 1, c = 3
+  buyCard didn't buy card for p = 0, c = 29
+  buyCard didn't buy card for p = 1, c = 15
+  buyCard didn't buy card for p = 0, c = 4
+  buyCard returned non-zero value for p = 2, c = 24
+...
+  buyCard returned non-zero value for p = 3, c = 3
+End of buyCard tests
+
+Mon Jun 11 19:46:36 PDT 2012
+Testing cardEffect (Adventurer) randomly
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Seg fault
+  Too many seg faults
+
+Mon Jun 11 19:46:36 PDT 2012
+Testing Dominion randomly
+  <1,0> State: turn: 0, in hand: 4 4 4 4 1 > ENDTURN: 
+  <1,1> State: turn: 1, in hand: 1 1 4 4 4 > BUY 24:   buyCard returned non-zero value: -1 for card: 24
+
+  <1,2> State: turn: 1, in hand: 1 1 4 4 4 > ENDTURN: 
+  <1,3> State: turn: 0, in hand: 4 4 4 1 1 > ENDTURN: 
+  <1,4> State: turn: 1, in hand: 4 4 4 4 1 > ENDTURN: 
+  <1,5> State: turn: 0, in hand: 1 4 4 1 4 > PLAY 0:   playCard returned non-zero value: -1 for val: 0
+
+  <1,6> State: turn: 0, in hand: 1 4 4 1 4 > ENDTURN: 
+  <1,7> State: turn: 1, in hand: 1 4 4 4 4 > ENDTURN: 
+  <1,8> State: turn: 0, in hand: 1 4 4 4 4 > BUY 1: 
+  <1,9> State: turn: 0, in hand: 1 4 4 4 4 > ENDTURN: 
+  <1,10> State: turn: 1, in hand: 1 4 4 4 1 > BUY 12:   buyCard returned non-zero value: -1 for card: 12
+
+  <1,11> State: turn: 1, in hand: 1 4 4 4 1 > PLAY 0:   playCard returned non-zero value: -1 for val: 0
+
+  <1,12> State: turn: 1, in hand: 1 4 4 4 1 > PLAY 0:   playCard returned non-zero value: -1 for val: 0
+
+  <1,13> State: turn: 1, in hand: 1 4 4 4 1 > ENDTURN: 
+  <1,14> State: turn: 0, in hand: 1 4 4 1 1 > ENDTURN: 
+  <1,15> State: turn: 1, in hand: 4 4 4 4 1 > BUY 19:   buyCard returned non-zero value: -1 for card: 19
+
+  <1,16> State: turn: 1, in hand: 4 4 4 4 1 > BUY -1: 
+  <1,17> State: turn: 1, in hand: 4 4 4 4 1 > ENDTURN: 
+  <1,18> State: turn: 0, in hand: 4 4 4 4 4 > BUY 3:   buyCard returned non-zero value: -1 for card: 3
+
+  <1,19> State: turn: 0, in hand: 4 4 4 4 4 > ENDTURN: 
+  <1,20> State: turn: 1, in hand: 1 4 4 1 4 > ENDTURN: 
+  <1,21> State: turn: 0, in hand: 1 1 4 1 4 > BUY 21:   buyCard returned non-zero value: -1 for card: 21
+
+  <1,22> State: turn: 0, in hand: 1 1 4 1 4 > PLAY 3:   playCard returned non-zero value: -1 for val: 3
+
+  <1,23> State: turn: 0, in hand: 1 1 4 1 4 > BUY -1: 
+  <1,24> State: turn: 0, in hand: 1 1 4 1 4 > BUY 20: 
+  <1,25> State: turn: 0, in hand: 1 1 4 1 4 > BUY 14:   buyCard returned non-zero value: -1 for card: 14
+
+  <1,26> State: turn: 0, in hand: 1 1 4 1 4 > BUY 24:   buyCard returned non-zero value: -1 for card: 24
+
+  <1,27> State: turn: 0, in hand: 1 1 4 1 4 > PLAY 0:   playCard returned non-zero value: -1 for val: 0
+
+  <1,28> State: turn: 0, in hand: 1 1 4 1 4 > PLAY 2:   playCard returned non-zero value: -1 for val: 2
+
+  <1,29> State: turn: 0, in hand: 1 1 4 1 4 > BUY 7:   buyCard returned non-zero value: -1 for card: 7
+
+  <1,30> State: turn: 0, in hand: 1 1 4 1 4 > ENDTURN: 
+  <1,31> State: turn: 1, in hand: 1 4 4 1 4 > BUY 22: 
+  <1,32> State: turn: 1, in hand: 1 4 4 1 4 > BUY 7:   buyCard returned non-zero value: -1 for card: 7
+
+  <1,33> State: turn: 1, in hand: 1 4 4 1 4 > PLAY 3:   playCard returned non-zero value: -1 for val: 3
+
+  <1,34> State: turn: 1, in hand: 1 4 4 1 4 > BUY 25:   buyCard returned non-zero value: -1 for card: 25
+
+  <1,35> State: turn: 1, in hand: 1 4 4 1 4 > ENDTURN: 
+  <1,36> State: turn: 0, in hand: 1 4 4 4 4 > PLAY 0:   playCard returned non-zero value: -1 for val: 0
+
+  <1,37> State: turn: 0, in hand: 1 4 4 4 4 > PLAY 4:   playCard returned non-zero value: -1 for val: 4
+
+  <1,38> State: turn: 0, in hand: 1 4 4 4 4 > ENDTURN: 
+  <1,39> State: turn: 1, in hand: 1 4 -1 
+  Stop: Invalid card in hand: -1
+
+\end{verbatim}
+\end{alltt}
+\end{scriptsize}
+
+You can clearly see when a function returns non-zero and analyze why it did.
+For example, {\tt buyCard} returned -1 because you cannot buy card 24 with
+only three monies. After the last end turn, an invalid card is drawn.
+
+\section{Bug Reporting}
+Looking in the {\tt bug-reports} directory revealed that David Taylor had
+already discoverd all the of the same (and more) bugs I had. He had also
+elaborated on suspected causes and possible fixes. Unfortunatly, this left me
+with nothing to add.
+
+Had I discovered a bug with my tests, a report would have been indicative of
+the function and behavior, as this information is output by my tests, but would
+have been lacking in location and ideas. Some bugs I have in my code are:
+
+\begin{itemize}
+	\item {\tt cardEffect} (adventurer) always seg faults.
+	\item {\tt buyCard} will properly report that a card cannot be bought, but
+	when a card be bought, the hand and deck counts do not change, indicating
+	the card is never bought.
+	\item Some random game allows an invalid card, -1, into the player's hand.
+\end{itemize}
+
+I found these bugs with my own tester code. David also found them, and gave
+suggestions as to why they occur and how to fix them.
+
+\section{Coverage}
+My tests get good coverage over the functions of interest when run on my own
+{\tt dominion.c}, but it is important to compare the coverage between
+implementations. Included in the comparison is every users's {\tt dominion.c},
+including my own, and excluding one which ran forever (and therefor generated
+no coverage numbers).
+
+For {\tt drawCard}, the coverage numbers are almost identical. All
+implementations were very similar. The main if-else had one branch covered
+about a dozen times, and the other about 500. More coverage of the first branch
+would be nice and could be accomplished with a tweak of the test's random
+number generator. Only one line is never run. This line is part a of more in-
+depth implementation and appears to be catch for something going horribly
+wrong.
+
+The implementation for {\tt buyCard} vary a lot. Some are three to five lines,
+and some are fourty lines with lots of conditionals. Some people never actually
+implemented it. Everything was covered, and even the corner cases had a few
+runs. An interesting exception was one implementation (lesliew), which actually
+took coin cards out of the player's hand. During testing, only coppers were
+removed.
+
+For both functions, ellingsn and tangke wrote longer code than seems to check
+for rare conditions.
+
+Exact coverage numbers for one run of the test suite on each person's code is
+in my tester-code directory, in the files named after the user and with the
+extension ``.coverage''.
+
+\section{Changes to Dominion Code}
+My implementation of adventurer always seg faults, and {\tt buyCard} never
+successfully buys a card. The output from the noisy test for {\tt buyCard} is
+enough to help me figure out where this bug is, so I could go fix it, had I the
+time. The output for the adventurer test, however, is completely useless and I
+a very hard time finding where the bug is. Fortunatly, the bug reports from
+David Taylor would be very helpful for me in fixing these bugs.
+
+\section{For Future Testers}
+The method of testing a function against a reference using random data is
+simple in concept and gets good coverage. However, it is time consuming and
+inaccurate to write each reference function.
+
+Having run the test suite on many peoples' code, do not use differential
+testing. Most of the implementations contain very similar bugs.
+
+\section{Test Usefulness}
+Since the function being tested is never explored, the test output can only
+show the input state and that \emph{something} whent wrong. Bugs in part of a
+function cannot be isolated, nor can delta debugging be performed.
+
+Given the simplicity of the Dominion code, it would probably be more affective
+to take the time to read through it for understanding and then rewrite anything
+that does not seem right.
+
+
+\end{document}

@@ -1,0 +1,520 @@
+file binsearch.c: Parsing
+Converting
+Type-checking binsearch
+Generating GOTO Program
+Adding CPROVER library
+Function Pointer Removal
+Partial Inlining
+Generic Property Instrumentation
+Starting Bounded Model Checking
+Unwinding loop c::main.0 iteration 1 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 2 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 3 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 4 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 5 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 6 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 7 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 8 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 9 file binsearch.c line 28 function main
+Unwinding loop c::main.0 iteration 10 file binsearch.c line 28 function main
+Unwinding loop c::binsearch.0 iteration 1 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 2 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 3 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 4 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 5 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 6 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 7 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 8 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 9 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 10 file binsearch.c line 9 function binsearch
+Unwinding loop c::binsearch.0 iteration 11 file binsearch.c line 9 function binsearch
+size of program expression: 410 assignments
+simple slicing removed 1 assignments
+Generated 2 VCC(s), 2 remaining after simplification
+
+VERIFICATION CONDITIONS:
+
+file binsearch.c line 9 function binsearch
+unwinding assertion loop 0
+{-1} __CPROVER_memory#1 == ARRAY_OF(0)
+{-2} __CPROVER_deallocated#1 == NULL
+{-3} __CPROVER_malloc_object#1 == NULL
+{-4} __CPROVER_malloc_size#1 == 0
+{-5} __CPROVER_rounding_mode#1 == 0
+{-6} return_value_nondet_int$1@1#1 == nondet_symbol(symex::nondet0)
+{-7} t@1#1 == return_value_nondet_int$1@1#1
+{-8} in@1#1 == 0
+{-9} i@1#1 == 0
+{-10} a@1#1 == a@1#0 WITH [0:=nondet_symbol(symex::nondet1)]
+{-11} \guard#1 == (a@1#1[0] == t@1#1)
+{-12} in@1#2 == 1
+{-13} in@1#3 == (!\guard#1 ? in@1#1 : in@1#2)
+{-14} i@1#2 == 1
+{-15} a@1#2 == a@1#1 WITH [1:=nondet_symbol(symex::nondet2)]
+{-16} !(a@1#2[0] >= a@1#2[1])
+{-17} \guard#2 == (a@1#2[1] == t@1#1)
+{-18} in@1#4 == 1
+{-19} in@1#5 == (!\guard#2 ? in@1#3 : in@1#4)
+{-20} i@1#3 == 2
+{-21} a@1#3 == a@1#2 WITH [2:=nondet_symbol(symex::nondet3)]
+{-22} !(a@1#3[1] >= a@1#3[2])
+{-23} \guard#3 == (a@1#3[2] == t@1#1)
+{-24} in@1#6 == 1
+{-25} in@1#7 == (!\guard#3 ? in@1#5 : in@1#6)
+{-26} i@1#4 == 3
+{-27} a@1#4 == a@1#3 WITH [3:=nondet_symbol(symex::nondet4)]
+{-28} !(a@1#4[2] >= a@1#4[3])
+{-29} \guard#4 == (a@1#4[3] == t@1#1)
+{-30} in@1#8 == 1
+{-31} in@1#9 == (!\guard#4 ? in@1#7 : in@1#8)
+{-32} i@1#5 == 4
+{-33} a@1#5 == a@1#4 WITH [4:=nondet_symbol(symex::nondet5)]
+{-34} !(a@1#5[3] >= a@1#5[4])
+{-35} \guard#5 == (a@1#5[4] == t@1#1)
+{-36} in@1#10 == 1
+{-37} in@1#11 == (!\guard#5 ? in@1#9 : in@1#10)
+{-38} i@1#6 == 5
+{-39} a@1#6 == a@1#5 WITH [5:=nondet_symbol(symex::nondet6)]
+{-40} !(a@1#6[4] >= a@1#6[5])
+{-41} \guard#6 == (a@1#6[5] == t@1#1)
+{-42} in@1#12 == 1
+{-43} in@1#13 == (!\guard#6 ? in@1#11 : in@1#12)
+{-44} i@1#7 == 6
+{-45} a@1#7 == a@1#6 WITH [6:=nondet_symbol(symex::nondet7)]
+{-46} !(a@1#7[5] >= a@1#7[6])
+{-47} \guard#7 == (a@1#7[6] == t@1#1)
+{-48} in@1#14 == 1
+{-49} in@1#15 == (!\guard#7 ? in@1#13 : in@1#14)
+{-50} i@1#8 == 7
+{-51} a@1#8 == a@1#7 WITH [7:=nondet_symbol(symex::nondet8)]
+{-52} !(a@1#8[6] >= a@1#8[7])
+{-53} \guard#8 == (a@1#8[7] == t@1#1)
+{-54} in@1#16 == 1
+{-55} in@1#17 == (!\guard#8 ? in@1#15 : in@1#16)
+{-56} i@1#9 == 8
+{-57} a@1#9 == a@1#8 WITH [8:=nondet_symbol(symex::nondet9)]
+{-58} !(a@1#9[7] >= a@1#9[8])
+{-59} \guard#9 == (a@1#9[8] == t@1#1)
+{-60} in@1#18 == 1
+{-61} in@1#19 == (!\guard#9 ? in@1#17 : in@1#18)
+{-62} i@1#10 == 9
+{-63} a@1#10 == a@1#9 WITH [9:=nondet_symbol(symex::nondet10)]
+{-64} !(a@1#10[8] >= a@1#10[9])
+{-65} \guard#10 == (a@1#10[9] == t@1#1)
+{-66} in@1#20 == 1
+{-67} in@1#21 == (!\guard#10 ? in@1#19 : in@1#20)
+{-68} i@1#11 == 10
+{-69} a@1#1 == &a@1[0]
+{-70} c::$file::binsearch::t@1#1 == c::$file::main::1::t@1#1
+{-71} s@1#1 == 10
+{-72} l@1#1 == 0
+{-73} r@1#1 == 9
+{-74} m@1#1 == 4
+{-75} \guard#11 == (a@1#10[4] == t@1#1)
+{-76} v@1#1 == 4
+{-77} v@1#2 == v@1#0
+{-78} \guard#12 == !(t@1#1 >= a@1#10[4])
+{-79} r@1#2 == 3
+{-80} r@1#3 == r@1#1
+{-81} l@1#2 == 5
+{-82} l@1#3 == (\guard#12 ? l@1#1 : l@1#2)
+{-83} r@1#4 == (\guard#12 ? r@1#2 : r@1#3)
+{-84} \guard#13 == r@1#4 >= l@1#3
+{-85} m@1#2 == (r@1#4 + -l@1#3) / 2 + l@1#3
+{-86} \guard#14 == (a@1#10[(long int)m@1#2] == t@1#1)
+{-87} v@1#3 == m@1#2
+{-88} v@1#4 == v@1#2
+{-89} \guard#15 == !(t@1#1 >= a@1#10[(long int)m@1#2])
+{-90} r@1#5 == -1 + m@1#2
+{-91} r@1#6 == r@1#4
+{-92} l@1#4 == 1 + m@1#2
+{-93} l@1#5 == (\guard#15 ? l@1#3 : l@1#4)
+{-94} r@1#7 == (\guard#15 ? r@1#5 : r@1#6)
+{-95} \guard#16 == r@1#7 >= l@1#5
+{-96} m@1#3 == (r@1#7 + -l@1#5) / 2 + l@1#5
+{-97} \guard#17 == (a@1#10[(long int)m@1#3] == t@1#1)
+{-98} v@1#5 == m@1#3
+{-99} v@1#6 == v@1#4
+{-100} \guard#18 == !(t@1#1 >= a@1#10[(long int)m@1#3])
+{-101} r@1#8 == -1 + m@1#3
+{-102} r@1#9 == r@1#7
+{-103} l@1#6 == 1 + m@1#3
+{-104} l@1#7 == (\guard#18 ? l@1#5 : l@1#6)
+{-105} r@1#10 == (\guard#18 ? r@1#8 : r@1#9)
+{-106} \guard#19 == r@1#10 >= l@1#7
+{-107} m@1#4 == (r@1#10 + -l@1#7) / 2 + l@1#7
+{-108} \guard#20 == (a@1#10[(long int)m@1#4] == t@1#1)
+{-109} v@1#7 == m@1#4
+{-110} v@1#8 == v@1#6
+{-111} \guard#21 == !(t@1#1 >= a@1#10[(long int)m@1#4])
+{-112} r@1#11 == -1 + m@1#4
+{-113} r@1#12 == r@1#10
+{-114} l@1#8 == 1 + m@1#4
+{-115} l@1#9 == (\guard#21 ? l@1#7 : l@1#8)
+{-116} r@1#13 == (\guard#21 ? r@1#11 : r@1#12)
+{-117} \guard#22 == r@1#13 >= l@1#9
+{-118} m@1#5 == (r@1#13 + -l@1#9) / 2 + l@1#9
+{-119} \guard#23 == (a@1#10[(long int)m@1#5] == t@1#1)
+{-120} v@1#9 == m@1#5
+{-121} v@1#10 == v@1#8
+{-122} \guard#24 == !(t@1#1 >= a@1#10[(long int)m@1#5])
+{-123} r@1#14 == -1 + m@1#5
+{-124} r@1#15 == r@1#13
+{-125} l@1#10 == 1 + m@1#5
+{-126} l@1#11 == (\guard#24 ? l@1#9 : l@1#10)
+{-127} r@1#16 == (\guard#24 ? r@1#14 : r@1#15)
+{-128} \guard#25 == r@1#16 >= l@1#11
+{-129} m@1#6 == (r@1#16 + -l@1#11) / 2 + l@1#11
+{-130} \guard#26 == (a@1#10[(long int)m@1#6] == t@1#1)
+{-131} v@1#11 == m@1#6
+{-132} v@1#12 == v@1#10
+{-133} \guard#27 == !(t@1#1 >= a@1#10[(long int)m@1#6])
+{-134} r@1#17 == -1 + m@1#6
+{-135} r@1#18 == r@1#16
+{-136} l@1#12 == 1 + m@1#6
+{-137} l@1#13 == (\guard#27 ? l@1#11 : l@1#12)
+{-138} r@1#19 == (\guard#27 ? r@1#17 : r@1#18)
+{-139} \guard#28 == r@1#19 >= l@1#13
+{-140} m@1#7 == (r@1#19 + -l@1#13) / 2 + l@1#13
+{-141} \guard#29 == (a@1#10[(long int)m@1#7] == t@1#1)
+{-142} v@1#13 == m@1#7
+{-143} v@1#14 == v@1#12
+{-144} \guard#30 == !(t@1#1 >= a@1#10[(long int)m@1#7])
+{-145} r@1#20 == -1 + m@1#7
+{-146} r@1#21 == r@1#19
+{-147} l@1#14 == 1 + m@1#7
+{-148} l@1#15 == (\guard#30 ? l@1#13 : l@1#14)
+{-149} r@1#22 == (\guard#30 ? r@1#20 : r@1#21)
+{-150} \guard#31 == r@1#22 >= l@1#15
+{-151} m@1#8 == (r@1#22 + -l@1#15) / 2 + l@1#15
+{-152} \guard#32 == (a@1#10[(long int)m@1#8] == t@1#1)
+{-153} v@1#15 == m@1#8
+{-154} v@1#16 == v@1#14
+{-155} \guard#33 == !(t@1#1 >= a@1#10[(long int)m@1#8])
+{-156} r@1#23 == -1 + m@1#8
+{-157} r@1#24 == r@1#22
+{-158} l@1#16 == 1 + m@1#8
+{-159} l@1#17 == (\guard#33 ? l@1#15 : l@1#16)
+{-160} r@1#25 == (\guard#33 ? r@1#23 : r@1#24)
+{-161} \guard#34 == r@1#25 >= l@1#17
+{-162} m@1#9 == (r@1#25 + -l@1#17) / 2 + l@1#17
+{-163} \guard#35 == (a@1#10[(long int)m@1#9] == t@1#1)
+{-164} v@1#17 == m@1#9
+{-165} v@1#18 == v@1#16
+{-166} \guard#36 == !(t@1#1 >= a@1#10[(long int)m@1#9])
+{-167} r@1#26 == -1 + m@1#9
+{-168} r@1#27 == r@1#25
+{-169} l@1#18 == 1 + m@1#9
+{-170} l@1#19 == (\guard#36 ? l@1#17 : l@1#18)
+{-171} r@1#28 == (\guard#36 ? r@1#26 : r@1#27)
+{-172} \guard#37 == r@1#28 >= l@1#19
+{-173} m@1#10 == (r@1#28 + -l@1#19) / 2 + l@1#19
+{-174} \guard#38 == (a@1#10[(long int)m@1#10] == t@1#1)
+{-175} v@1#19 == m@1#10
+{-176} v@1#20 == v@1#18
+{-177} \guard#39 == !(t@1#1 >= a@1#10[(long int)m@1#10])
+{-178} r@1#29 == -1 + m@1#10
+{-179} r@1#30 == r@1#28
+{-180} l@1#20 == 1 + m@1#10
+{-181} l@1#21 == (\guard#39 ? l@1#19 : l@1#20)
+{-182} r@1#31 == (\guard#39 ? r@1#29 : r@1#30)
+{-183} \guard#40 == r@1#31 >= l@1#21
+{-184} m@1#11 == (r@1#31 + -l@1#21) / 2 + l@1#21
+{-185} \guard#41 == (a@1#10[(long int)m@1#11] == t@1#1)
+{-186} v@1#21 == m@1#11
+{-187} v@1#22 == v@1#20
+{-188} \guard#42 == !(t@1#1 >= a@1#10[(long int)m@1#11])
+{-189} r@1#32 == -1 + m@1#11
+{-190} r@1#33 == r@1#31
+{-191} l@1#22 == 1 + m@1#11
+{-192} l@1#23 == (\guard#42 ? l@1#21 : l@1#22)
+{-193} r@1#34 == (\guard#42 ? r@1#32 : r@1#33)
+|--------------------------
+{1} !(!\guard#11 && \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && !\guard#38 && \guard#40 && !\guard#41)
+
+file binsearch.c line 39 function main
+assertion
+{-1} __CPROVER_memory#1 == ARRAY_OF(0)
+{-2} __CPROVER_deallocated#1 == NULL
+{-3} __CPROVER_malloc_object#1 == NULL
+{-4} __CPROVER_malloc_size#1 == 0
+{-5} __CPROVER_rounding_mode#1 == 0
+{-6} return_value_nondet_int$1@1#1 == nondet_symbol(symex::nondet0)
+{-7} t@1#1 == return_value_nondet_int$1@1#1
+{-8} in@1#1 == 0
+{-9} i@1#1 == 0
+{-10} a@1#1 == a@1#0 WITH [0:=nondet_symbol(symex::nondet1)]
+{-11} \guard#1 == (a@1#1[0] == t@1#1)
+{-12} in@1#2 == 1
+{-13} in@1#3 == (!\guard#1 ? in@1#1 : in@1#2)
+{-14} i@1#2 == 1
+{-15} a@1#2 == a@1#1 WITH [1:=nondet_symbol(symex::nondet2)]
+{-16} !(a@1#2[0] >= a@1#2[1])
+{-17} \guard#2 == (a@1#2[1] == t@1#1)
+{-18} in@1#4 == 1
+{-19} in@1#5 == (!\guard#2 ? in@1#3 : in@1#4)
+{-20} i@1#3 == 2
+{-21} a@1#3 == a@1#2 WITH [2:=nondet_symbol(symex::nondet3)]
+{-22} !(a@1#3[1] >= a@1#3[2])
+{-23} \guard#3 == (a@1#3[2] == t@1#1)
+{-24} in@1#6 == 1
+{-25} in@1#7 == (!\guard#3 ? in@1#5 : in@1#6)
+{-26} i@1#4 == 3
+{-27} a@1#4 == a@1#3 WITH [3:=nondet_symbol(symex::nondet4)]
+{-28} !(a@1#4[2] >= a@1#4[3])
+{-29} \guard#4 == (a@1#4[3] == t@1#1)
+{-30} in@1#8 == 1
+{-31} in@1#9 == (!\guard#4 ? in@1#7 : in@1#8)
+{-32} i@1#5 == 4
+{-33} a@1#5 == a@1#4 WITH [4:=nondet_symbol(symex::nondet5)]
+{-34} !(a@1#5[3] >= a@1#5[4])
+{-35} \guard#5 == (a@1#5[4] == t@1#1)
+{-36} in@1#10 == 1
+{-37} in@1#11 == (!\guard#5 ? in@1#9 : in@1#10)
+{-38} i@1#6 == 5
+{-39} a@1#6 == a@1#5 WITH [5:=nondet_symbol(symex::nondet6)]
+{-40} !(a@1#6[4] >= a@1#6[5])
+{-41} \guard#6 == (a@1#6[5] == t@1#1)
+{-42} in@1#12 == 1
+{-43} in@1#13 == (!\guard#6 ? in@1#11 : in@1#12)
+{-44} i@1#7 == 6
+{-45} a@1#7 == a@1#6 WITH [6:=nondet_symbol(symex::nondet7)]
+{-46} !(a@1#7[5] >= a@1#7[6])
+{-47} \guard#7 == (a@1#7[6] == t@1#1)
+{-48} in@1#14 == 1
+{-49} in@1#15 == (!\guard#7 ? in@1#13 : in@1#14)
+{-50} i@1#8 == 7
+{-51} a@1#8 == a@1#7 WITH [7:=nondet_symbol(symex::nondet8)]
+{-52} !(a@1#8[6] >= a@1#8[7])
+{-53} \guard#8 == (a@1#8[7] == t@1#1)
+{-54} in@1#16 == 1
+{-55} in@1#17 == (!\guard#8 ? in@1#15 : in@1#16)
+{-56} i@1#9 == 8
+{-57} a@1#9 == a@1#8 WITH [8:=nondet_symbol(symex::nondet9)]
+{-58} !(a@1#9[7] >= a@1#9[8])
+{-59} \guard#9 == (a@1#9[8] == t@1#1)
+{-60} in@1#18 == 1
+{-61} in@1#19 == (!\guard#9 ? in@1#17 : in@1#18)
+{-62} i@1#10 == 9
+{-63} a@1#10 == a@1#9 WITH [9:=nondet_symbol(symex::nondet10)]
+{-64} !(a@1#10[8] >= a@1#10[9])
+{-65} \guard#10 == (a@1#10[9] == t@1#1)
+{-66} in@1#20 == 1
+{-67} in@1#21 == (!\guard#10 ? in@1#19 : in@1#20)
+{-68} i@1#11 == 10
+{-69} a@1#1 == &a@1[0]
+{-70} c::$file::binsearch::t@1#1 == c::$file::main::1::t@1#1
+{-71} s@1#1 == 10
+{-72} l@1#1 == 0
+{-73} r@1#1 == 9
+{-74} m@1#1 == 4
+{-75} \guard#11 == (a@1#10[4] == t@1#1)
+{-76} v@1#1 == 4
+{-77} v@1#2 == v@1#0
+{-78} \guard#12 == !(t@1#1 >= a@1#10[4])
+{-79} r@1#2 == 3
+{-80} r@1#3 == r@1#1
+{-81} l@1#2 == 5
+{-82} l@1#3 == (\guard#12 ? l@1#1 : l@1#2)
+{-83} r@1#4 == (\guard#12 ? r@1#2 : r@1#3)
+{-84} \guard#13 == r@1#4 >= l@1#3
+{-85} m@1#2 == (r@1#4 + -l@1#3) / 2 + l@1#3
+{-86} \guard#14 == (a@1#10[(long int)m@1#2] == t@1#1)
+{-87} v@1#3 == m@1#2
+{-88} v@1#4 == v@1#2
+{-89} \guard#15 == !(t@1#1 >= a@1#10[(long int)m@1#2])
+{-90} r@1#5 == -1 + m@1#2
+{-91} r@1#6 == r@1#4
+{-92} l@1#4 == 1 + m@1#2
+{-93} l@1#5 == (\guard#15 ? l@1#3 : l@1#4)
+{-94} r@1#7 == (\guard#15 ? r@1#5 : r@1#6)
+{-95} \guard#16 == r@1#7 >= l@1#5
+{-96} m@1#3 == (r@1#7 + -l@1#5) / 2 + l@1#5
+{-97} \guard#17 == (a@1#10[(long int)m@1#3] == t@1#1)
+{-98} v@1#5 == m@1#3
+{-99} v@1#6 == v@1#4
+{-100} \guard#18 == !(t@1#1 >= a@1#10[(long int)m@1#3])
+{-101} r@1#8 == -1 + m@1#3
+{-102} r@1#9 == r@1#7
+{-103} l@1#6 == 1 + m@1#3
+{-104} l@1#7 == (\guard#18 ? l@1#5 : l@1#6)
+{-105} r@1#10 == (\guard#18 ? r@1#8 : r@1#9)
+{-106} \guard#19 == r@1#10 >= l@1#7
+{-107} m@1#4 == (r@1#10 + -l@1#7) / 2 + l@1#7
+{-108} \guard#20 == (a@1#10[(long int)m@1#4] == t@1#1)
+{-109} v@1#7 == m@1#4
+{-110} v@1#8 == v@1#6
+{-111} \guard#21 == !(t@1#1 >= a@1#10[(long int)m@1#4])
+{-112} r@1#11 == -1 + m@1#4
+{-113} r@1#12 == r@1#10
+{-114} l@1#8 == 1 + m@1#4
+{-115} l@1#9 == (\guard#21 ? l@1#7 : l@1#8)
+{-116} r@1#13 == (\guard#21 ? r@1#11 : r@1#12)
+{-117} \guard#22 == r@1#13 >= l@1#9
+{-118} m@1#5 == (r@1#13 + -l@1#9) / 2 + l@1#9
+{-119} \guard#23 == (a@1#10[(long int)m@1#5] == t@1#1)
+{-120} v@1#9 == m@1#5
+{-121} v@1#10 == v@1#8
+{-122} \guard#24 == !(t@1#1 >= a@1#10[(long int)m@1#5])
+{-123} r@1#14 == -1 + m@1#5
+{-124} r@1#15 == r@1#13
+{-125} l@1#10 == 1 + m@1#5
+{-126} l@1#11 == (\guard#24 ? l@1#9 : l@1#10)
+{-127} r@1#16 == (\guard#24 ? r@1#14 : r@1#15)
+{-128} \guard#25 == r@1#16 >= l@1#11
+{-129} m@1#6 == (r@1#16 + -l@1#11) / 2 + l@1#11
+{-130} \guard#26 == (a@1#10[(long int)m@1#6] == t@1#1)
+{-131} v@1#11 == m@1#6
+{-132} v@1#12 == v@1#10
+{-133} \guard#27 == !(t@1#1 >= a@1#10[(long int)m@1#6])
+{-134} r@1#17 == -1 + m@1#6
+{-135} r@1#18 == r@1#16
+{-136} l@1#12 == 1 + m@1#6
+{-137} l@1#13 == (\guard#27 ? l@1#11 : l@1#12)
+{-138} r@1#19 == (\guard#27 ? r@1#17 : r@1#18)
+{-139} \guard#28 == r@1#19 >= l@1#13
+{-140} m@1#7 == (r@1#19 + -l@1#13) / 2 + l@1#13
+{-141} \guard#29 == (a@1#10[(long int)m@1#7] == t@1#1)
+{-142} v@1#13 == m@1#7
+{-143} v@1#14 == v@1#12
+{-144} \guard#30 == !(t@1#1 >= a@1#10[(long int)m@1#7])
+{-145} r@1#20 == -1 + m@1#7
+{-146} r@1#21 == r@1#19
+{-147} l@1#14 == 1 + m@1#7
+{-148} l@1#15 == (\guard#30 ? l@1#13 : l@1#14)
+{-149} r@1#22 == (\guard#30 ? r@1#20 : r@1#21)
+{-150} \guard#31 == r@1#22 >= l@1#15
+{-151} m@1#8 == (r@1#22 + -l@1#15) / 2 + l@1#15
+{-152} \guard#32 == (a@1#10[(long int)m@1#8] == t@1#1)
+{-153} v@1#15 == m@1#8
+{-154} v@1#16 == v@1#14
+{-155} \guard#33 == !(t@1#1 >= a@1#10[(long int)m@1#8])
+{-156} r@1#23 == -1 + m@1#8
+{-157} r@1#24 == r@1#22
+{-158} l@1#16 == 1 + m@1#8
+{-159} l@1#17 == (\guard#33 ? l@1#15 : l@1#16)
+{-160} r@1#25 == (\guard#33 ? r@1#23 : r@1#24)
+{-161} \guard#34 == r@1#25 >= l@1#17
+{-162} m@1#9 == (r@1#25 + -l@1#17) / 2 + l@1#17
+{-163} \guard#35 == (a@1#10[(long int)m@1#9] == t@1#1)
+{-164} v@1#17 == m@1#9
+{-165} v@1#18 == v@1#16
+{-166} \guard#36 == !(t@1#1 >= a@1#10[(long int)m@1#9])
+{-167} r@1#26 == -1 + m@1#9
+{-168} r@1#27 == r@1#25
+{-169} l@1#18 == 1 + m@1#9
+{-170} l@1#19 == (\guard#36 ? l@1#17 : l@1#18)
+{-171} r@1#28 == (\guard#36 ? r@1#26 : r@1#27)
+{-172} \guard#37 == r@1#28 >= l@1#19
+{-173} m@1#10 == (r@1#28 + -l@1#19) / 2 + l@1#19
+{-174} \guard#38 == (a@1#10[(long int)m@1#10] == t@1#1)
+{-175} v@1#19 == m@1#10
+{-176} v@1#20 == v@1#18
+{-177} \guard#39 == !(t@1#1 >= a@1#10[(long int)m@1#10])
+{-178} r@1#29 == -1 + m@1#10
+{-179} r@1#30 == r@1#28
+{-180} l@1#20 == 1 + m@1#10
+{-181} l@1#21 == (\guard#39 ? l@1#19 : l@1#20)
+{-182} r@1#31 == (\guard#39 ? r@1#29 : r@1#30)
+{-183} \guard#40 == r@1#31 >= l@1#21
+{-184} m@1#11 == (r@1#31 + -l@1#21) / 2 + l@1#21
+{-185} \guard#41 == (a@1#10[(long int)m@1#11] == t@1#1)
+{-186} v@1#21 == m@1#11
+{-187} v@1#22 == v@1#20
+{-188} \guard#42 == !(t@1#1 >= a@1#10[(long int)m@1#11])
+{-189} r@1#32 == -1 + m@1#11
+{-190} r@1#33 == r@1#31
+{-191} l@1#22 == 1 + m@1#11
+{-192} l@1#23 == (\guard#42 ? l@1#21 : l@1#22)
+{-193} r@1#34 == (\guard#42 ? r@1#32 : r@1#33)
+{-194} v@1#23 == v@1#20
+{-195} l@1#24 == l@1#21
+{-196} r@1#35 == r@1#31
+{-197} m@1#12 == m@1#10
+{-198} v@1#24 == (!\guard#37 ? v@1#18 : v@1#23)
+{-199} l@1#25 == (!\guard#37 ? l@1#19 : l@1#24)
+{-200} r@1#36 == (!\guard#37 ? r@1#28 : r@1#35)
+{-201} m@1#13 == (!\guard#37 ? m@1#9 : m@1#12)
+{-202} v@1#25 == (!\guard#34 ? v@1#16 : v@1#24)
+{-203} l@1#26 == (!\guard#34 ? l@1#17 : l@1#25)
+{-204} r@1#37 == (!\guard#34 ? r@1#25 : r@1#36)
+{-205} m@1#14 == (!\guard#34 ? m@1#8 : m@1#13)
+{-206} v@1#26 == (!\guard#31 ? v@1#14 : v@1#25)
+{-207} l@1#27 == (!\guard#31 ? l@1#15 : l@1#26)
+{-208} r@1#38 == (!\guard#31 ? r@1#22 : r@1#37)
+{-209} m@1#15 == (!\guard#31 ? m@1#7 : m@1#14)
+{-210} v@1#27 == (!\guard#28 ? v@1#12 : v@1#26)
+{-211} l@1#28 == (!\guard#28 ? l@1#13 : l@1#27)
+{-212} r@1#39 == (!\guard#28 ? r@1#19 : r@1#38)
+{-213} m@1#16 == (!\guard#28 ? m@1#6 : m@1#15)
+{-214} v@1#28 == (!\guard#25 ? v@1#10 : v@1#27)
+{-215} l@1#29 == (!\guard#25 ? l@1#11 : l@1#28)
+{-216} r@1#40 == (!\guard#25 ? r@1#16 : r@1#39)
+{-217} m@1#17 == (!\guard#25 ? m@1#5 : m@1#16)
+{-218} v@1#29 == (!\guard#22 ? v@1#8 : v@1#28)
+{-219} l@1#30 == (!\guard#22 ? l@1#9 : l@1#29)
+{-220} r@1#41 == (!\guard#22 ? r@1#13 : r@1#40)
+{-221} m@1#18 == (!\guard#22 ? m@1#4 : m@1#17)
+{-222} v@1#30 == (!\guard#19 ? v@1#6 : v@1#29)
+{-223} l@1#31 == (!\guard#19 ? l@1#7 : l@1#30)
+{-224} r@1#42 == (!\guard#19 ? r@1#10 : r@1#41)
+{-225} m@1#19 == (!\guard#19 ? m@1#3 : m@1#18)
+{-226} v@1#31 == (!\guard#16 ? v@1#4 : v@1#30)
+{-227} l@1#32 == (!\guard#16 ? l@1#5 : l@1#31)
+{-228} r@1#43 == (!\guard#16 ? r@1#7 : r@1#42)
+{-229} m@1#20 == (!\guard#16 ? m@1#2 : m@1#19)
+{-230} v@1#32 == (!\guard#13 ? v@1#2 : v@1#31)
+{-231} l@1#33 == (!\guard#13 ? l@1#3 : l@1#32)
+{-232} r@1#44 == (!\guard#13 ? r@1#4 : r@1#43)
+{-233} m@1#21 == (!\guard#13 ? m@1#1 : m@1#20)
+{-234} v@1#33 == -1
+{-235} v@1#34 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && !\guard#38 && \guard#40 && \guard#41 ? v@1#21 : v@1#33)
+{-236} l@1#34 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && !\guard#38 && \guard#40 && \guard#41 ? l@1#21 : l@1#33)
+{-237} r@1#45 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && !\guard#38 && \guard#40 && \guard#41 ? r@1#31 : r@1#44)
+{-238} m@1#22 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && !\guard#38 && \guard#40 && \guard#41 ? m@1#11 : m@1#21)
+{-239} v@1#35 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && \guard#38 ? v@1#19 : v@1#34)
+{-240} l@1#35 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && \guard#38 ? l@1#19 : l@1#34)
+{-241} r@1#46 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && \guard#38 ? r@1#28 : r@1#45)
+{-242} m@1#23 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && \guard#38 ? m@1#10 : m@1#22)
+{-243} v@1#36 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && \guard#35 ? v@1#17 : v@1#35)
+{-244} l@1#36 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && \guard#35 ? l@1#17 : l@1#35)
+{-245} r@1#47 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && \guard#35 ? r@1#25 : r@1#46)
+{-246} m@1#24 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && \guard#35 ? m@1#9 : m@1#23)
+{-247} v@1#37 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && \guard#32 ? v@1#15 : v@1#36)
+{-248} l@1#37 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && \guard#32 ? l@1#15 : l@1#36)
+{-249} r@1#48 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && \guard#32 ? r@1#22 : r@1#47)
+{-250} m@1#25 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && \guard#32 ? m@1#8 : m@1#24)
+{-251} v@1#38 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && \guard#29 ? v@1#13 : v@1#37)
+{-252} l@1#38 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && \guard#29 ? l@1#13 : l@1#37)
+{-253} r@1#49 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && \guard#29 ? r@1#19 : r@1#48)
+{-254} m@1#26 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && \guard#29 ? m@1#7 : m@1#25)
+{-255} v@1#39 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && \guard#26 ? v@1#11 : v@1#38)
+{-256} l@1#39 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && \guard#26 ? l@1#11 : l@1#38)
+{-257} r@1#50 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && \guard#26 ? r@1#16 : r@1#49)
+{-258} m@1#27 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && \guard#26 ? m@1#6 : m@1#26)
+{-259} v@1#40 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && \guard#23 ? v@1#9 : v@1#39)
+{-260} l@1#40 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && \guard#23 ? l@1#9 : l@1#39)
+{-261} r@1#51 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && \guard#23 ? r@1#13 : r@1#50)
+{-262} m@1#28 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && \guard#23 ? m@1#5 : m@1#27)
+{-263} v@1#41 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && \guard#20 ? v@1#7 : v@1#40)
+{-264} l@1#41 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && \guard#20 ? l@1#7 : l@1#40)
+{-265} r@1#52 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && \guard#20 ? r@1#10 : r@1#51)
+{-266} m@1#29 == (\guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && \guard#20 ? m@1#4 : m@1#28)
+{-267} v@1#42 == (\guard#13 && !\guard#14 && \guard#16 && \guard#17 ? v@1#5 : v@1#41)
+{-268} l@1#42 == (\guard#13 && !\guard#14 && \guard#16 && \guard#17 ? l@1#5 : l@1#41)
+{-269} r@1#53 == (\guard#13 && !\guard#14 && \guard#16 && \guard#17 ? r@1#7 : r@1#52)
+{-270} m@1#30 == (\guard#13 && !\guard#14 && \guard#16 && \guard#17 ? m@1#3 : m@1#29)
+{-271} v@1#43 == (\guard#13 && \guard#14 ? v@1#3 : v@1#42)
+{-272} l@1#43 == (\guard#13 && \guard#14 ? l@1#3 : l@1#42)
+{-273} r@1#54 == (\guard#13 && \guard#14 ? r@1#4 : r@1#53)
+{-274} m@1#31 == (\guard#13 && \guard#14 ? m@1#2 : m@1#30)
+{-275} v@1#44 == (\guard#11 ? v@1#1 : v@1#43)
+{-276} l@1#44 == (\guard#11 ? l@1#1 : l@1#43)
+{-277} r@1#55 == (\guard#11 ? r@1#1 : r@1#54)
+{-278} m@1#32 == (\guard#11 ? m@1#1 : m@1#31)
+{-279} tmp_condition$2@1#1 == (in@1#21 == 0 && v@1#44 == -1)
+{-280} tmp_condition$3@1#1 == (a@1#10[(long int)v@1#44] == t@1#1)
+{-281} tmp_condition$3@1#2 == (tmp_condition$2@1#1 ? tmp_condition$3@1#0 : tmp_condition$3@1#1)
+|--------------------------
+{1} !\guard#11 && (\guard#13 && !\guard#14 && (\guard#16 && !\guard#17 && (\guard#19 && !\guard#20 && (\guard#22 && !\guard#23 && (\guard#25 && !\guard#26 && (\guard#28 && !\guard#29 && (\guard#31 && !\guard#32 && (\guard#34 && !\guard#35 && (\guard#37 && !\guard#38 && !\guard#40 || !\guard#37) || !\guard#34) || !\guard#31) || !\guard#28) || !\guard#25) || !\guard#22) || !\guard#19) || !\guard#16) || !\guard#13 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && !\guard#38 && \guard#40 && \guard#41 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && !\guard#35 && \guard#37 && \guard#38 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && !\guard#32 && \guard#34 && \guard#35 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && !\guard#29 && \guard#31 && \guard#32 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && !\guard#26 && \guard#28 && \guard#29 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && !\guard#23 && \guard#25 && \guard#26 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && !\guard#20 && \guard#22 && \guard#23 || \guard#13 && !\guard#14 && \guard#16 && !\guard#17 && \guard#19 && \guard#20 || \guard#13 && !\guard#14 && \guard#16 && \guard#17 || \guard#13 && \guard#14) || \guard#11 => tmp_condition$2@1#1 || tmp_condition$3@1#2
+

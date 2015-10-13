@@ -1,0 +1,55 @@
+: ^ swap s>f s>f f** f>s ;
+
+cr
+s" Problem 3: " type
+16 32 / 74 16 3 ^ * 5 10 / + + .
+cr
+
+cr
+s" Problem 4: " type
+16 32 / 74 16 3 ^ * 5 10 / + + .
+cr
+
+cr
+s" Problem 5: " type
+16.0e0 32.0e0 f/ 74.0e0 16.0e0 3.0e0 f** f* 5 10 / s>f f+ f+ fe.
+cr
+
+cr
+s" Problem 6: " type
+16 32 / 74 16 3 ^ * 5 10 / + + .
+cr
+
+cr
+s" Problem 7: " type
+variable y
+fvariable x
+16 y !
+32.0e0 x f!
+y s>f x f@ f+ 3.0e0 6 s>f f* 10.0e0 f/ f- fe.
+cr
+
+cr
+s" Problem 8: " type
+: p8 5 3 < if 7 else 2 then ;
+p8 .
+cr
+
+cr
+s" Problem 9: " type
+: p9 5 3 > if 7 else 2 then ;
+p9 .
+cr
+
+cr
+s" Problem 10: " type
+: p10 5 0 do I . loop ;
+p10
+cr
+
+cr
+s" Problem 11: (no output)" type
+: convertint s>d ;
+cr
+cr
+

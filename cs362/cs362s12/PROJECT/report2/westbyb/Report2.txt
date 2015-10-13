@@ -1,0 +1,103 @@
+Brian Westby
+Test Report #2
+5/16/12
+
+################################################################################
+Bug Report 1:
+Using delta debugging, with the example provided in class, I tested my copy of dominion.c using the following line:
+	`python MyDD.py >& test.out`
+	
+The delta debugging creates 'delta's to test with different card values, and then sees what the output is. If it fails, the test prints a failure message, and if it passes, it prints a pass. If the dominion.c file seg faults, the file will also output that as well.
+
+It used the bug2.c file. It produced the following output in test.out. I will include only a portion, as the actual file is quite long:
+
+	`NOW DELTAS ARE: [(0, '#include "dominion.h"\n'), (1, '\n'), (2, 'int main () {\n'), (3, '  struct gameState G;\n'), (4, '  int k[10] = {adventurer, minion, village, smithy, gardens, mine,\n'), (5, '\t       treasure_map, council_room, great_hall, steward};\n'), (6, '  initializeGame(2, k, 1, &G);\n'), (7, '  \n'), (8, '  endTurn(&G);\n'), (9, '  endTurn(&G);\n'), (10, '  buyCard(0, &G);\n'), (11, '  endTurn(&G);\n'), (12, '  endTurn(&G);\n'), (13, '  endTurn(&G);\n'), (14, '  endTurn(&G);\n'), (15, '  buyCard(0, &G);\n'), (16, '  endTurn(&G);\n'), (17, '  endTurn(&G);\n'), (18, '  endTurn(&G);\n'), (19, '  endTurn(&G);\n'), (20, '  buyCard(0, &G);\n'), (21, '  endTurn(&G);\n'), (22, '  endTurn(&G);\n'), (23, '  endTurn(&G);\n'), (24, '  endTurn(&G);\n'), (25, '  buyCard(0, &G);\n'), (26, '  endTurn(&G);\n'), (27, '  endTurn(&G);\n'), (28, '  endTurn(&G);\n'), (29, '  endTurn(&G);\n'), (30, '  buyCard(0, &G);\n'), (31, '  endTurn(&G);\n'), (32, '  endTurn(&G);\n'), (33, '  endTurn(&G);\n'), (34, '  endTurn(&G);\n'), (35, '  buyCard(0, &G);\n'), (36, '  endTurn(&G);\n'), (37, '  endTurn(&G);\n'), (38, '  endTurn(&G);\n'), (39, '  endTurn(&G);\n'), (40, '  buyCard(0, &G);\n'), (41, '  endTurn(&G);\n'), (42, '  endTurn(&G);\n'), (43, '  endTurn(&G);\n'), (44, '  endTurn(&G);\n'), (45, '  buyCard(0, &G);\n'), (46, '  endTurn(&G);\n'), (47, '  endTurn(&G);\n'), (48, '  endTurn(&G);\n'), (49, '  endTurn(&G);\n'), (50, '  buyCard(0, &G);\n'), (51, '  endTurn(&G);\n'), (52, '  endTurn(&G);\n'), (53, '  endTurn(&G);\n'), (54, '  endTurn(&G);\n'), (55, '  buyCard(0, &G);\n'), (56, '  endTurn(&G);\n'), (57, '  endTurn(&G);\n'), (58, '  endTurn(&G);\n'), (59, '  endTurn(&G);\n'), (60, '  buyCard(0, &G);\n'), (61, '  endTurn(&G);\n'), (62, '  endTurn(&G);\n'), (63, '  endTurn(&G);\n'), (64, '  endTurn(&G);\n'), (65, '  buyCard(0, &G);\n'), (66, '  endTurn(&G);\n'), (67, '  endTurn(&G);\n'), (68, '  endTurn(&G);\n'), (69, '  endTurn(&G);\n'), (70, '  buyCard(0, &G);\n'), (71, '  endTurn(&G);\n'), (72, '  endTurn(&G);\n'), (73, '  endTurn(&G);\n'), (74, '  endTurn(&G);\n'), (75, '  buyCard(0, &G);\n'), (76, '  endTurn(&G);\n'), (77, '  endTurn(&G);\n'), (78, '  endTurn(&G);\n'), (79, '  endTurn(&G);\n'), (80, '  buyCard(0, &G);\n'), (81, '  endTurn(&G);\n'), (82, '  endTurn(&G);\n'), (83, '  endTurn(&G);\n'), (84, '  endTurn(&G);\n'), (85, '  buyCard(0, &G);\n'), (86, '  endTurn(&G);\n'), (87, '  endTurn(&G);\n'), (88, '  endTurn(&G);\n'), (89, '  endTurn(&G);\n'), (90, '  buyCard(0, &G);\n'), (91, '  endTurn(&G);\n'), (92, '  endTurn(&G);\n'), (93, '  endTurn(&G);\n'), (94, '  endTurn(&G);\n'), (95, '  buyCard(0, &G);\n'), (96, '  endTurn(&G);\n'), (97, '  endTurn(&G);\n'), (98, '  buyCard(-198198191, &G);\n')]
+	OUTPUT OF GCC:
+	gcc: dominion.o: No such file or directory
+	gcc: rngs.o: No such file or directory
+	bugtemp.c: In function ‘main’:
+	bugtemp.c:99: error: expected declaration or statement at end of input
+	sh: ./bugp: No such file or directory
+	dd: done
+	The 1-minimal failure-inducing input is [(0, '#include "dominion.h"\n'), (1, '\n'), (2, 'int main () {\n'), (3, '  struct gameState G;\n'), (4, '  int k[10] = {adventurer, minion, village, smithy, gardens, mine,\n'), (5, '\t       treasure_map, council_room, great_hall, steward};\n'), (6, '  initializeGame(2, k, 1, &G);\n'), (7, '  \n'), (8, '  endTurn(&G);\n'), (9, '  endTurn(&G);\n'), (10, '  buyCard(0, &G);\n'), (11, '  endTurn(&G);\n'), (12, '  endTurn(&G);\n'), (13, '  endTurn(&G);\n'), (14, '  endTurn(&G);\n'), (15, '  buyCard(0, &G);\n'), (16, '  endTurn(&G);\n'), (17, '  endTurn(&G);\n'), (18, '  endTurn(&G);\n'), (19, '  endTurn(&G);\n'), (20, '  buyCard(0, &G);\n'), (21, '  endTurn(&G);\n'), (22, '  endTurn(&G);\n'), (23, '  endTurn(&G);\n'), (24, '  endTurn(&G);\n'), (25, '  buyCard(0, &G);\n'), (26, '  endTurn(&G);\n'), (27, '  endTurn(&G);\n'), (28, '  endTurn(&G);\n'), (29, '  endTurn(&G);\n'), (30, '  buyCard(0, &G);\n'), (31, '  endTurn(&G);\n'), (32, '  endTurn(&G);\n'), (33, '  endTurn(&G);\n'), (34, '  endTurn(&G);\n'), (35, '  buyCard(0, &G);\n'), (36, '  endTurn(&G);\n'), (37, '  endTurn(&G);\n'), (38, '  endTurn(&G);\n'), (39, '  endTurn(&G);\n'), (40, '  buyCard(0, &G);\n'), (41, '  endTurn(&G);\n'), (42, '  endTurn(&G);\n'), (43, '  endTurn(&G);\n'), (44, '  endTurn(&G);\n'), (45, '  buyCard(0, &G);\n'), (46, '  endTurn(&G);\n'), (47, '  endTurn(&G);\n'), (48, '  endTurn(&G);\n'), (49, '  endTurn(&G);\n'), (50, '  buyCard(0, &G);\n'), (51, '  endTurn(&G);\n'), (52, '  endTurn(&G);\n'), (53, '  endTurn(&G);\n'), (54, '  endTurn(&G);\n'), (55, '  buyCard(0, &G);\n'), (56, '  endTurn(&G);\n'), (57, '  endTurn(&G);\n'), (58, '  endTurn(&G);\n'), (59, '  endTurn(&G);\n'), (60, '  buyCard(0, &G);\n'), (61, '  endTurn(&G);\n'), (62, '  endTurn(&G);\n'), (63, '  endTurn(&G);\n'), (64, '  endTurn(&G);\n'), (65, '  buyCard(0, &G);\n'), (66, '  endTurn(&G);\n'), (67, '  endTurn(&G);\n'), (68, '  endTurn(&G);\n'), (69, '  endTurn(&G);\n'), (70, '  buyCard(0, &G);\n'), (71, '  endTurn(&G);\n'), (72, '  endTurn(&G);\n'), (73, '  endTurn(&G);\n'), (74, '  endTurn(&G);\n'), (75, '  buyCard(0, &G);\n'), (76, '  endTurn(&G);\n'), (77, '  endTurn(&G);\n'), (78, '  endTurn(&G);\n'), (79, '  endTurn(&G);\n'), (80, '  buyCard(0, &G);\n'), (81, '  endTurn(&G);\n'), (82, '  endTurn(&G);\n'), (83, '  endTurn(&G);\n'), (84, '  endTurn(&G);\n'), (85, '  buyCard(0, &G);\n'), (86, '  endTurn(&G);\n'), (87, '  endTurn(&G);\n'), (88, '  endTurn(&G);\n'), (89, '  endTurn(&G);\n'), (90, '  buyCard(0, &G);\n'), (91, '  endTurn(&G);\n'), (92, '  endTurn(&G);\n'), (93, '  endTurn(&G);\n'), (94, '  endTurn(&G);\n'), (95, '  buyCard(0, &G);\n'), (96, '  endTurn(&G);\n'), (97, '  endTurn(&G);\n'), (98, '  buyCard(-198198191, &G);\n'), (99, '}\n')]
+	Removing any element will make the failure go away.`
+	
+That was the end portion of the `test.out` file.
+
+minimal.c, what MyDD.py edits at the end, is as follows:
+
+ `int main () {
+  	struct gameState G;
+  	int k[10] = {adventurer, minion, village, smithy, gardens, mine,
+	       	treasure_map, council_room, great_hall, steward};
+  	initializeGame(2, k, 1, &G);
+  
+  	endTurn(&G);
+  	endTurn(&G);
+  	buyCard(0, &G);
+  	endTurn(&G);
+  	endTurn(&G);
+  	endTurn(&G);
+  	endTurn(&G);
+  	buyCard(0, &G);
+  	endTurn(&G);
+  	endTurn(&G);
+  	endTurn(&G);
+  	endTurn(&G);
+  	buyCard(0, &G);
+  	...
+  	buyCard(-198198191, &G);
+	}
+
+The example provided in class did not have the endTurn(&G) and buyCard(0, &G), but had everything else. However, it still stops at a similar point, which is reassuring.
+
+################################################################################
+Bug Report 2:
+Running the same test as last time, but using bug.c instead of bug2.c fails as thus:
+
+	`THE DELTAS IS: [(0, 'int main () {\n'), (1, '  int i = 0;\n'), (2, '  int j; /* CRITICAL */\n'), (3, '  int k;\n'), (4, '  j = 4; /* CRITICAL */\n'), (5, '  k = 32;\n'), (6, '  int *p = &i;\n'), (7, '  if (j == 4) { /* CRITICAL */\n'), (8, '    p = 0; /* CRITICAL */\n'), (9, '    k = 16;\n'), (10, '    j = 12;\n'), (11, '  }\n'), (12, '  printf ("OK: *p = %d\\n", *p); /* CRITICAL */\n'), (13, '}\n')]
+	Simplifying failure-inducing input...
+	NOW DELTAS ARE: [(0, 'int main () {\n'), (1, '  int i = 0;\n'), (2, '  int j; /* CRITICAL */\n'), (3, '  int k;\n'), (4, '  j = 4; /* CRITICAL */\n'), (5, '  k = 32;\n'), (6, '  int *p = &i;\n'), (7, '  if (j == 4) { /* CRITICAL */\n'), (8, '    p = 0; /* CRITICAL */\n'), (9, '    k = 16;\n'), (10, '    j = 12;\n'), (11, '  }\n'), (12, '  printf ("OK: *p = %d\\n", *p); /* CRITICAL */\n'), (13, '}\n')]
+	Traceback (most recent call last):
+  	File "MyDD.py", line 56, in <module>
+    	c = mydd.ddmin(deltas)              # Invoke DDMIN
+  	File "/nfs/stak/students/w/westbyb/public_html/CS362/cs362s12/PROJECT/tester-code/westbyb/DD/DD.py", line 713, in ddmin
+    return self.ddgen(c, 1, 0)
+  	File "/nfs/stak/students/w/westbyb/public_html/CS362/cs362s12/PROJECT/tester-code/westbyb/DD/DD.py", line 605, in ddgen
+    outcome = self._dd(c, n)
+  	File "/nfs/stak/students/w/westbyb/public_html/CS362/cs362s12/PROJECT/tester-code/westbyb/DD/DD.py", line 623, in _dd
+    assert tc == self.FAIL or tc == self.UNRESOLVED
+	AssertionError`
+	
+Which is fine, because it was an outdated test anyways, but it was interesting to see how it would affect my dominion.c. 
+
+################################################################################
+It would appear that my dominion.c holds up well against the Delta Debugging, as there is no seg. fault. Although it didn't result in the most effecient minimal.c, it still resulted in something close to it.
+
+################################################################################
+Testing group's code
+
+Group members:
+dunhame
+wolfej
+randb
+wandlins
+olsojeff
+westbyb //me
+parkan
+milleand
+
+dunhame: No segmentation fault. Passed!
+wolfej: No segmentation fault. Passed!
+randb: No segmentation fault. Passed!
+wandlins: No segmentation fault. Passed!
+olsojeff: No segmentation fault. Passed!
+parkan: No segmentation fault. Passed!
+milleand: No segmentation fault. Passed!
+
+Seeing as how not everyone in my group's code passed the test last week, it seems things have improved since then. However this is only one test, so it's limited to certain specifications, but for these, they pass.
+
+################################################################################
+Future tests
+
+Future tests will continue to cover more types of possible iterations of dominion, and as I learn new debugging techniques, I will likely run it through those passes on the final report.

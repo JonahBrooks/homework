@@ -1,0 +1,21 @@
+lesliew:
+	-When buying a card, the buying function doesn’t decrease the coin count of the player by the correct amount
+	-the discard count for the player is not what is to be expected 
+	- the supply count of the cards of each type are not decreasing properly either.
+	SOLUTION:
+		looking generally at buying cards, and not buying specific cards. Look specifically at each card’s value, decrement the player’s coin cost by the cost 		of the card, even if it is zero, decrease the buy count, increase your discard count, and decrease the supply count, and this should solve a lot of the 	problems that are present.
+
+shearini:
+	-the numBuys left for the player did not match what was expected.
+	-the implementation is not decrementing the number of buys correctly for a player
+	-buyCard never takes into account the possibility of buying a card that has a value of 0, like a curse card
+	SOLUTION:
+		altering the coin check conditional from [if (state->coins < getCost(supplyPos))] to [if (state->coins <= getCost(supplyPos))].
+		decrement the numBuys of the player by 1 per buy.
+
+ellingsn:
+	-the player’s discard count is off by 1
+	-following conclusion. The numbuys is definitely not decremented properly, the player’s coin count is also not decremented properly
+	-Original implementation, need to change this!!
+	SOLUTION:
+		decrement the player’s coin cost by the cost of the card, even if it is zero, decrease the buy count, increase your discard count, and decrease the 		supply count

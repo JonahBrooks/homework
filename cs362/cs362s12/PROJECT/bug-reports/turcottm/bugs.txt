@@ -1,0 +1,2 @@
+luisramg:
+	buyCard doesn't update coins after buy

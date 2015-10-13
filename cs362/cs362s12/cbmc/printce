@@ -1,0 +1,2 @@
+grep "a={" $1 | tail -1
+egrep "t=|r=|l=|m=|v=" $1

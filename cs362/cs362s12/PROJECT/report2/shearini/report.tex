@@ -1,0 +1,249 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{alltt}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsthm}
+% \usepackage{balance}
+% \usepackage{color}
+% \usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{geometry}
+% \usepackage{graphicx}
+% \usepackage{float}
+% \usepackage{pstricks, pst-node}
+% \usepackage[TABBOTCAP, tight]{subfigure}
+% \usepackage{url}
+
+\input{pygments.tex}
+
+\geometry{textheight=8.5in, textwidth=6in}
+
+\title{Test Report 2 for CS262}
+\date{17 May, 2012}
+\author{Ian Shearin (shearini)}
+
+% PDF metadata
+\hypersetup{
+	pdftitle={Test Report 2 for CS262},
+	pdfauthor={Ian Shearin},
+	pdfkeywords={Oregon State University} {College of Engineering}
+	            {School of EECS} {CS362} {Dr. Alex Groce},
+	colorlinks=true,
+	linkcolor=red,
+	citecolor=green,
+	filecolor=magenta,
+	urlcolor=cyan
+}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Test Case Overview}
+Each test case consists of two parts, both contained in the same {\tt .c} file.
+
+\subsection{First Part}
+The first part sets up the test and runs the second part a number of times, as
+defined by {\tt NUM\_TESTS}. Setup consists of filling a game state with
+random data, some of which is constrained to limits defined globally. This is
+because Dominion is not supposed to run outside of these limits. The input for
+the function is also selected at random.
+
+Below is the source code for this part of the test case for {\tt drawCard}. You
+can see a loop for each test run, a loop to fill data randomly, and some
+statements which constrain some of the data in the game state. The call to
+{\tt checkDrawCard} is the second part of the test case, where is where most of
+the work is done.
+
+\begin{scriptsize}
+\input{snip-testDrawCard.tex}
+\end{scriptsize}
+
+\subsection{Second Part}
+The second part of the test case runs the function being tested and has a look
+at the results in two ways.
+
+First, if the function returns something other than zero, the test complains,
+but does not stop, since invalid inputs should cause an error. It is up to the
+user running the test to determine if an input, which is displayed, should
+cause an error.
+
+Second, the game state which was modified by by the function is compared to a
+copy which is put through a sort of reference function. Since the reference
+cannot be perfect, a difference between the states is notified to the user of
+the test, who must decide which function is in error.
+
+The second part of the test case for {\tt drawCard} is below.
+
+\begin{scriptsize}
+\input{snip-checkDrawCard.tex}
+\end{scriptsize}
+
+
+\section{Failed Tests}
+In the event of a failed test or crash, the tester can
+{\tt \#DEFINE NOISY\_TEST} for any specific test case and see input and result
+data, which are useful for finding bugs.
+
+\section{Tests Development History}
+These tests are very much based on those seen in class. The major change is the
+incorporation of the {\tt NOISY\_TEST} constant to make the tests less chatty
+and more automated when off, and more informative to the test user when on.
+
+\section{Test Suite}
+The overall test suite consists of two parts. The first part just runs each of
+the test cases. This helps to find bugs isolated to particular functions. The
+second part looks for bugs when running functions after functions using the
+same game state, as would happen in a real game of Dominion. The actual
+detection of this test is weak, as it only looks for invalid cards in the
+current player's hands. It relies more on the test user to track the game and
+make sure it is following the rules. The code for the test suite,
+{\tt testAll}, is below.
+
+\begin{scriptsize}
+\input{snip-testAll.tex}
+\end{scriptsize}
+
+
+\section{Example Test Run}
+\begin{scriptsize}
+\begin{alltt}
+\begin{verbatim}
+$ make testdom
+$ ./testdom
+$ cat test.out
+Thu May 17 20:24:59 PDT 2012
+Testing drawCard randomly
+End of drawCard tests
+
+Thu May 17 20:25:02 PDT 2012
+Testing buyCard randomly
+End of buyCard tests
+
+Thu May 17 20:25:05 PDT 2012
+Testing Dominion randomly
+  <1,0> State: turn: 0, in hand: 4 4 4 4 1 > ENDTURN: 
+  <1,1> State: turn: 1, in hand: 1 1 4 4 4 > BUY 24:   buyCard returned non-zero value: -1 for card: 24
+
+  <1,2> State: turn: 1, in hand: 1 1 4 4 4 > ENDTURN: 
+  <1,3> State: turn: 0, in hand: 4 4 4 1 1 > ENDTURN: 
+  <1,4> State: turn: 1, in hand: 4 4 4 4 1 > ENDTURN: 
+  <1,5> State: turn: 0, in hand: 1 4 4 1 4 > PLAY 0:   playCard returned non-zero value: -1 for val: 
+
+  <1,6> State: turn: 0, in hand: 1 4 4 1 4 > ENDTURN: 
+  <1,7> State: turn: 1, in hand: 1 4 4 4 4 > ENDTURN: 
+  <1,8> State: turn: 0, in hand: 1 4 4 4 4 > BUY 1: 
+  <1,9> State: turn: 0, in hand: 1 4 4 4 4 > ENDTURN: 
+  <1,10> State: turn: 1, in hand: 1 4 4 4 1 > BUY 12:   buyCard returned non-zero value: -1 for card: 12
+
+  <1,11> State: turn: 1, in hand: 1 4 4 4 1 > PLAY 0:   playCard returned non-zero value: -1 for val: 
+
+  <1,12> State: turn: 1, in hand: 1 4 4 4 1 > PLAY 0:   playCard returned non-zero value: -1 for val: 
+
+  <1,13> State: turn: 1, in hand: 1 4 4 4 1 > ENDTURN: 
+  <1,14> State: turn: 0, in hand: 1 4 4 1 1 > ENDTURN: 
+  <1,15> State: turn: 1, in hand: 4 4 4 4 1 > BUY 19:   buyCard returned non-zero value: -1 for card: 19
+
+  <1,16> State: turn: 1, in hand: 4 4 4 4 1 > BUY -1: 
+  <1,17> State: turn: 1, in hand: 4 4 4 4 1 > ENDTURN: 
+  <1,18> State: turn: 0, in hand: 4 4 4 4 4 > BUY 3:   buyCard returned non-zero value: -1 for card: 3
+
+  <1,19> State: turn: 0, in hand: 4 4 4 4 4 > ENDTURN: 
+  <1,20> State: turn: 1, in hand: 1 4 4 1 4 > ENDTURN: 
+  <1,21> State: turn: 0, in hand: 1 1 4 1 4 > BUY 21:   buyCard returned non-zero value: -1 for card: 21
+
+  <1,22> State: turn: 0, in hand: 1 1 4 1 4 > PLAY 3:   playCard returned non-zero value: -1 for val: 
+
+  <1,23> State: turn: 0, in hand: 1 1 4 1 4 > BUY -1: 
+  <1,24> State: turn: 0, in hand: 1 1 4 1 4 > BUY 20: 
+  <1,25> State: turn: 0, in hand: 1 1 4 1 4 > BUY 14:   buyCard returned non-zero value: -1 for card: 14
+
+  <1,26> State: turn: 0, in hand: 1 1 4 1 4 > BUY 24:   buyCard returned non-zero value: -1 for card: 24
+
+  <1,27> State: turn: 0, in hand: 1 1 4 1 4 > PLAY 0:   playCard returned non-zero value: -1 for val: 
+
+  <1,28> State: turn: 0, in hand: 1 1 4 1 4 > PLAY 2:   playCard returned non-zero value: -1 for val: 
+
+  <1,29> State: turn: 0, in hand: 1 1 4 1 4 > BUY 7:   buyCard returned non-zero value: -1 for card: 7
+
+  <1,30> State: turn: 0, in hand: 1 1 4 1 4 > ENDTURN: 
+  <1,31> State: turn: 1, in hand: 1 4 4 1 4 > BUY 22: 
+  <1,32> State: turn: 1, in hand: 1 4 4 1 4 > BUY 7:   buyCard returned non-zero value: -1 for card: 7
+
+  <1,33> State: turn: 1, in hand: 1 4 4 1 4 > PLAY 3:   playCard returned non-zero value: -1 for val: 
+
+  <1,34> State: turn: 1, in hand: 1 4 4 1 4 > BUY 25:   buyCard returned non-zero value: -1 for card: 25
+
+  <1,35> State: turn: 1, in hand: 1 4 4 1 4 > ENDTURN: 
+  <1,36> State: turn: 0, in hand: 1 4 4 4 4 > PLAY 0:   playCard returned non-zero value: -1 for val: 
+
+  <1,37> State: turn: 0, in hand: 1 4 4 4 4 > PLAY 4:   playCard returned non-zero value: -1 for val: 
+
+  <1,38> State: turn: 0, in hand: 1 4 4 4 4 > ENDTURN: 
+  <1,39> State: turn: 1, in hand: 1 4 -1 
+  Stop: Invalid card in hand: -1
+
+\end{verbatim}
+\end{alltt}
+\end{scriptsize}
+
+You can clearly see when a function returns non-zero and analyze why it did.
+For example, {\tt buyCard} returned -1 because you cannot buy card 24 with
+only three monies. After the last end turn, an invalid card is drawn.
+
+\section{Example Bug Report}
+Such a test run might warrant a bug report like so: (This is a test of my own
+code, so I did not actually file this.)
+
+bug: Invalid draw
+id: shearini-shearini-00
+date: 2012.05.18
+time: 0334
+severity: high
+priority: After Minecraft...
+reported-by: shearini
+reported-to: shearini
+file: dominion.c
+status: new
+description: After a number of valid plays, drawCard adds the invalid card
+``-1'' to the player's hand, likely due to a need to shuffle the discard pile
+back into the draw pile while drawing. (Just a guess, though.)
+
+\section{Coverage}
+The only file of interest is {\tt dominion.c}, in which the functions
+specifically being tested are {\tt drawCard}, {\tt buyCard}, and {\tt endTurn}
+(through {\tt testAll}).
+
+Looking at the coverage numbers, every line of these functions was covered.
+However, {\tt buyCard} appears to have been run only 31 times. Since the test
+for {\tt buyCard} is run more than 31 times, I think {\tt buyCard} is only
+really being tested through {\tt testAll}. {\tt drawCard} is run over 8000
+times, with the least-run lines being run 20. The tests have fine coverage.
+
+Other parts of {\tt dominion.c} are also covered but never called directly by
+the tests, meaning they are used by the functions of interest, but never
+tested. As the test suite expands, coverage will grow.
+
+\section{Changes to Dominion Code}
+As in the sample bug report, {\tt drawCard} (possibly) has a bug. Instead of
+fixing this bug, however, I will leave it be to see if future tests can better
+pin down the nature and location of the bug.
+
+\section{For Future Testers}
+The method of testing a function against a reference using random data is
+simple in concept and gets good coverage. However, it is time consuming to
+write each reference function.
+
+\section{Test Usefulness}
+Since the function being tested is never explored, the test output can only
+show the input state and that ``something'' when wrong. Bugs in part of a
+function cannot be isolated, nor can delta debugging be performed.
+
+Given the simplicity of the Dominion code, it would probably be more affective
+to take the time to read through it for understanding and then rewrite anything
+that does not seem right.
+
+
+\end{document}

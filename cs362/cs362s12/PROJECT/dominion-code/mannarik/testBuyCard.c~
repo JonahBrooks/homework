@@ -1,0 +1,43 @@
+#include "dominion.h"
+#include "dominion_helpers.h"
+#include <string.h>
+#include <stdio.h>
+#include <assert.h>
+#include "rngs.h"
+#include <math.h>
+
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
+#ifndef NOISY_TEST
+#define NOISY_TEST 1
+#endif
+
+#define NUM_RDM 100    /* Number of random tests to run */
+
+int checkBuyCard() {
+	return 0;
+}
+
+int main () {
+	struct gameState G;
+	printf("Testing buyCard\n\n");
+
+	printf("%d Random Tests\n", NUM_RDM);
+	
+	SelectStream(2);
+	PutSeed(3);
+	
+	int player;  /* Choosing a random player to test */
+	int i;
+	int j;
+	for(i = 0; i < NUM_RDM; ++i) {
+		for(j = 0; j < sizeof(struct gameState); j++) {
+			((char*) &G)[j] = floor(Random() * 256);
+		}
+		player = floor(Random() * 2);
+		printf("player: %d\n", player);
+	}
+}
+

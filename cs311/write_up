@@ -1,0 +1,15 @@
+In this assignment I used the sieve of ero-something, I actually learned how to malloc, I used multiple mutexes, I implemented functions for the bitmap, and I choose to pre-set the first handful of numbers to prevent collisions.
+
+I decided to use the sieve of ero-something because it seemed like the most effiecient algorithm. The implementation was simple to understand and make work.
+
+I used malloc this time because I couldn't think of another way that would work as well as malloc. It was much simplier to understand and use than using compiler predefined constants.
+
+I originally was only using one mutex, but after I started doing my timings I realized that using just one is highly inefficient. I put my mutexes in an array and divided up the work amoung them. This drastically decrease my timings.
+
+This time I used functions to make my code more organized and clearer to read. With functions it was also easier to just call them when they were needed.
+
+Another decision I made was to pre set the first handfull of numbers to avoid collision amoung the threads.
+
+I didn't really write up an official design for this assignment, but while planning out the program I wrote out scribbles on a paper about how I vaguely wanted to implement things. I took a picture of it and attached it.
+
+

@@ -1,0 +1,127 @@
+\documentclass[letterpaper,12pt]{article}
+
+% \usepackage{alltt}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsthm}
+% \usepackage{balance}
+% \usepackage{color}
+% \usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{geometry}
+% \usepackage{graphicx}
+% \usepackage{float}
+% \usepackage{pstricks, pst-node}
+% \usepackage[TABBOTCAP, tight]{subfigure}
+% \usepackage{url}
+
+\geometry{textheight=8.5in, textwidth=6in}
+
+\title{Test Report 1 for CS262}
+\date{1 May, 2012}
+\author{Ian Shearin (shearini)}
+
+% PDF metadata
+\hypersetup{
+	pdftitle={Test Report 1 for CS262},
+	pdfauthor={Ian Shearin},
+	pdfkeywords={Oregon State University} {College of Engineering}
+	            {School of EECS} {CS362} {Dr. Alex Groce},
+	colorlinks=true,
+	linkcolor=red,
+	citecolor=green,
+	filecolor=magenta,
+	urlcolor=cyan
+}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Test Process}
+At this point in the development cycle (class), I feel as though most of our
+implementations of Dominion are mediocre at best. Running implemtations and
+looking at code are the most direct and applicable approaches at this point. To
+do real testing, a simple comparison test consisting first of common input,
+then an erroneous input, then some extreme cases, should catch many bugs. Since
+all of the data reguarding Dominion is stored in a single varaiable, it makes
+sense to analyze this variable.
+
+\begin{verbatim}
+void testSomeFunction()
+{
+	struct gameState gameState1;
+	struct gameState gameState2;
+	int *randomInput;
+	int randoms[4];
+	int numRandom;
+	int currentInput;
+
+	/* Test cases */
+	randoms = {0, 1, -1, 4000000};
+
+	for (currentInput = 0; currentInput < numRandom; currentInput++)
+	{
+		/* Both games states start the same */
+		initalizeGame(gameState1);
+		memcpy(gameState2, gameState1, sizeof(struct gameState));
+
+		randomInput = randoms[currentInput];
+
+		/* Run the function on one game state */
+		someFunction(gameState1, randomInput);
+
+		/* Run the control on the other state */
+		if (randomInput < someTolerance && randomInput > someOtherTolerance)
+			gameState1->someVariable += randomInput;
+
+		/* If the states are different it _could_ be a bug: Tell the tester */
+		printf("Possible big in someFunction with input %d\n", randomInput);
+	}
+
+	printf("Done testing someFunction\n");
+}
+\end{verbatim}
+
+Note that this approach cannot cover any functions with random data. These
+functions will be testing in the future by replacing the random number
+generator with a consistent number generator. It also relies heavily on good
+test data, but is easily modified to cover random or all possible data.
+
+Output from the tests is useful when a test fails, as it says exactly where
+and what. However, the test gives no useful information about passed tests.
+Ignorance is {\em not} bliss. When a control is written wrong, every thing is
+out the window.
+
+\section{Test Revisions}
+The code seen above is the very first testing code I wrote. The concepts are
+taken from code seen in class, with some modifications to make changes to test
+data easier. This code needs to be tuned for each function to be tested.
+Specifically, the control needs to actually do what the function is supposed to
+do.
+
+\section{Regression Strategy and Failures}
+One of the major shortcomings of this testing style is that it only covers
+functions run on clean data. It does not run functions on data messed with by
+other functions or completely bogus data. It should be improved by running a
+set or random series of control-implentation pairs and comparing the states
+each time.
+
+\section{Quality of Own Code}
+My code is terrible and I do not need testing to tell me that.
+
+\section{Bugs}
+I already know of several major bugs in my implementation of Dominion, simply
+from running it. I will focus on fixing these bugs, and those repoted by others
+(which are likely to be the same) before running these tests.
+
+\section{For Future Testers}
+Take the time to set up existing tools like GCOV. They can be confusing and
+time-consuming to learn, but they are really helpful. (Well, some of them.)
+
+The next step: If you want to continue with this style of testing, change the
+specific test data to a full spread and run delta debugging on that.
+
+
+\end{document}

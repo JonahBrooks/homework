@@ -1,0 +1,80 @@
+                                                  
+~~~~brookjon~~~~
+Tests Run: 2000 
+Successful: 915 
+Failed: 1085
+
+Buy Errors: 0
+Coin Errors: 1085
+Action Errors: 0
+Hand Errors: 0
+Deck Errors: 0
+Discard Errors: 0
+Supply Errors: 1085
+Player Errors: 0
+Unknown Errors: 0
+\n
+Function 'compare'
+Lines executed:0.00% of 6
+
+Function 'shuffle'
+Lines executed:0.00% of 16
+
+Function 'supplyCount'
+Lines executed:0.00% of 2
+
+Function 'fullDeckCount'
+Lines executed:0.00% of 9
+
+Function 'whoseTurn'
+Lines executed:0.00% of 2
+
+Function 'handCard'
+Lines executed:0.00% of 3
+
+Function 'numHandCards'
+Lines executed:0.00% of 2
+
+Function 'isGameOver'
+Lines executed:0.00% of 10
+
+Function 'scoreFor'
+Lines executed:0.00% of 24
+
+Function 'getWinners'
+Lines executed:0.00% of 24
+
+Function 'drawCard'
+Lines executed:0.00% of 22
+
+Function 'getCost'
+Lines executed:10.00% of 30
+
+Function 'buyCard'
+Lines executed:100.00% of 12
+
+Function 'discardCard'
+Lines executed:0.00% of 13
+
+Function 'gainCard'
+Lines executed:0.00% of 13
+
+Function 'updateCoins'
+Lines executed:0.00% of 11
+
+Function 'cardEffect'
+Lines executed:0.00% of 237
+
+Function 'endTurn'
+Lines executed:0.00% of 20
+
+Function 'playCard'
+Lines executed:0.00% of 14
+
+Function 'initializeGame'
+Lines executed:0.00% of 62
+
+File 'dominion.c'
+Lines executed:2.82% of 532
+dominion.c:creating 'dominion.c.gcov'
+

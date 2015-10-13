@@ -1,0 +1,6 @@
+1. ARP, DHCP, DNS, HTTP, ICMPv6, IGMP, MDNS, NTP, SSDP, TCP
+
+2. Around 0.2 seconds
+
+3. The server to which I sent the HTTP request is at 128.119.245.12
+   My IP address (as listed by wireshark) is 192.168.1.110 

@@ -1,0 +1,96 @@
+Since my previous test report, I added two test cases to
+my testBuyCard.c, bringing the total test coverage up to
+these five cases:
+
+--------------------------------------------------------
+
+Test #1: Can every card be bough successfully, given
+	sufficient Buys and coins?
+
+Test #2: Given insufficient coins, will every card FAIL
+	to buy correctly?
+
+Test #3: Given 5 coins, and when attempting to buy a card
+	worth 3, will buyCard fail on the second call?
+	That is, does it decrement your coin count
+	properly?
+
+Test #4: Given two buys, will buyCard only succeed twice?
+	That is, does it check your numBuys?
+
+Test #5: Given a limited supply count, will buyCard
+	decrement the supply of the card you are buying,
+	and fail if the count has reached 0?
+
+---------------------------------------------------------
+
+
+The way the code is written, these tests are done in this
+order, and if one fails, it will not proceed to test the
+others. In a future test report, I will change this
+(perhaps to use something other than the assert function).
+
+For now though, having tested the buyCard function of
+all of my group members, these were my findings. All of
+these tests were done based on the dominion.c files that
+were checked in the SVN Repository by 7:00 PM on Thursday,
+May 17, in the dominion-code folder.
+
+
+
+
+	  |  Test #1 passed, but test #2 failed immediately.
+ellingsn  |  Upon looking at the code, the buyCard function
+	  |  looked completely unimplemented (it was identical
+	  |  to the dominion.c we began the project with).
+	  |
+---------------------------------------------------------------
+	  |
+	  |
+omaraa	  |  All five tests passed.
+	  |
+	  |
+---------------------------------------------------------------
+	  |
+	  |  Test #1 passed, but test #2 failed immediately.
+taylodav  |  On inspection of the code, it seems like the logic
+	  |  of the buyCard method is wrong; it only returns -1
+	  |  if gainCard fails, which is incorrect.
+	  |
+---------------------------------------------------------------
+	  |
+	  |  Test #1 passed, but test #2 failed immediately.
+lesliew	  |  Looking at the code, it seems like the code writer
+	  |  is unaware of how money is kept track of.
+	  |
+---------------------------------------------------------------
+	  |
+	  |
+nicolgl	  |  Code does not compile.
+	  |
+	  |
+---------------------------------------------------------------
+	  |
+	  |
+tangke	  |  Code does not compile.
+	  |
+	  |
+---------------------------------------------------------------
+	  |
+	  |  See above, in
+nguyenta  |  "ellingsn"
+	  |
+	  |
+---------------------------------------------------------------
+	  |
+	  |  Tests #1 through #3 passed, but test #4 failed,
+shearini  |  indicating that this implementation does not check
+	  |  a player's remaining buys.
+	  |
+---------------------------------------------------------------
+	  |
+	  |  Test #1 passed, but test #2 failed immediately.
+mcconnjo  |  The code looks like it's checking for the right
+	  |  things, but it's all marked "TODO" in comments.
+	  |
+

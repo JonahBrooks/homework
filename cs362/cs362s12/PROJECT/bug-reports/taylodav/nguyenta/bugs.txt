@@ -1,0 +1,5 @@
+nguyenta:
+
+**Original stock dominion.c code**
+
+-Seg Fault on Smithy Card Implementation

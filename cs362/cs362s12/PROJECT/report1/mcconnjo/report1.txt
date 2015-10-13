@@ -1,0 +1,21 @@
+Jordan McConnell
+cs 362
+buyCard Test
+
+For the first test I chose to test the function that we were required to
+implement. With buyCard there are a number of pre and post conditions that I
+wanted to test. When the buyCard function is called certain things must
+change. The first is the coins should be decremented by the amount that is
+returned by getCost(). Second, supplyCount[supplyPos] should be decremented by
+one. Third, the discard of the current player should add that card which was
+purchased and then increment its count. Finally, the number of buys should be
+decremented by one. 
+
+There are some preconditions for buyCard to work, which I am testing for.
+First is that there is still a supply of that particular count, this is done
+by making sure that its count is greater than 0. Next is to make sure that the
+person is not buying something when they have no more numBuys left. Third is
+that the player has enough coins to buy the card.
+
+Currently the tests are not working properly and the asserts fail when they
+should not be failing. 

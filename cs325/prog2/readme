@@ -1,0 +1,24 @@
+Programming Assingment #2
+CS325
+02-19-2012
+
+Savannah Van Beek and I (Jonah Brooks) worked on the second programming assignment together. 
+
+We zipped it up. There were 5 files, DeterministicSelect, RandomizedSelect, SillySelect, Pivot_Finder (for the DeterministicSelect), and time. 
+
+DeterministicSelect:
+	This funtion implements the Deterministic Select algorithm. 
+
+Pivot_Finder
+	This function was used by the DeterministicSelect function to find the pivot values. 
+
+RandomizedSelect:
+	This function implements the Randomized Select algorithm. 
+
+SillySelect:
+	This function implements the program iteratively. 
+
+Time:
+	This found the average time, min time, and max time.
+
+*Note: DeterministicSelect and RandomizedSelect were ran under the assumption of no duplicates entries. 

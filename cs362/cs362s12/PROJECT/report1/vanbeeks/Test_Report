@@ -1,0 +1,9 @@
+Savannah Van Beek
+Test Report 1
+05-01-2012
+
+Unfortunately I haven't made much progress with my test report. I tried to change up testBuyCard to make sure that my buyCard is doing what it needs to. However, I keep running into a segmentation fault and it seems to want to think that the numBuys is less than one. I tried putting a couple of asserts in my testBuyCard.c file, but once I started testing it I was getting an error saying that the assert failed and that numBuys in less than zero. I hunted down where it is initialized to be one at the beginning of each players turn, so it shouldn't be failing. I will keep looking. I am very tired so I could be missing something simple.
+
+My plan for the next couple days is to continue with the development of my own tester-code and instead of just testing mine, I will start testing my teams code as well. 
+
+I know of a bug that is in my adventurer card that I want to build a test to see if I can catch it. The bug that I know of is when there are no more treasure cards in the players deck to draw, so in that case the game could be caught in a infinite loop. I want to create something to test that and see if that case is being caught by my teammates. 

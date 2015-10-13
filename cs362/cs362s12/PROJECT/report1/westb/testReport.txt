@@ -1,0 +1,36 @@
+I took the approach of random testing. 
+The first test case is that if I have an adequate amount of money purchasing the card is possible
+	for (n = 0; n < 17; n++) {
+		G.coins=8;
+		checkBuyCard(n, &G);
+	}
+	this goes trough and tests all the cards to make sure that they can be bought.
+	
+The Second test case is that with not enough money the card will not be bought
+basically it checks to make sure -1 is returned when you use buy card
+
+The Third test case is that if you buy a card then buy another card your money will have
+gone down so that buying the second card is not possible
+	G.coins=5;
+	checkBuyCard(silver, &G);
+	checkBuyCardFail(silver, &G);
+	
+	Since silver cost 3 you shouldn't be able to buy it twice
+
+All of the test cases are pretty short only requiring a few lines of code
+My method for choosing inputs is just to try all of the different cards
+
+I tested my own code to find that it failed the last test because my code
+didn't decrement coins after buying a card.
+
+I also tested Randb as a randomly selected student. None of my tests failed
+on his dominion.c 
+
+At this point I have only tested those 2 dominions as it took a bit to get
+rid of problems with my tester code.
+
+For future code I plan to test problems with trying to buy a card that has run
+out
+
+Other possible bugs haven't crossed my mind although I want to incorporate 
+more different testing methods to cover more types of possible problems.

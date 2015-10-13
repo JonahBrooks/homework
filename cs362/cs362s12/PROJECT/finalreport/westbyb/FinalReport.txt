@@ -1,0 +1,202 @@
+Brian Westby
+Final Report
+6/10/12
+
+################################################################################
+Bug Report 1:
+A student sent out an email with a few bugs they found, so I went about implementing these bug fixes. There was a bug within discardCard where it doesn't discard the card correctly. A few lines of code had to be added to fix this:
+
+state->discard[currentPlayer][state->discardCount[currentPlayer]] =
+state->hand[currentPlayer][handPos];
+state->discardCount[currentPlayer]++;
+
+Once these are added, the function runs properly.
+################################################################################
+Bug Report 2:
+Another bug reported by the other student was that feast was not trashed correctly after it was used. The fix was implemented as such, within feast where the hand is reset:
+
+if(state->hand[currentPlayer][i] == feast){
+	x = i;
+}
+
+discardCard(x,currentPlayer, state, 1);
+
+################################################################################
+Bug Report 3:
+The third bug reported by the student was that baron was not being discarded correctly as well. This was fixed by adding the following line before the return statement:
+
+discardCard(handPos, currentPlayer, state, 0);
+
+################################################################################
+testdom Testing:
+After reading the second report from the other members of my group, the consensus is that my buyCard wasn't working correctly. So while I'll be testing my buyCard and adventurer, I'll be placing special emphasis on buyCard testing, as it seems I've failed with flying colors in that respect.
+
+My buyCard decreases the increments incorrectly. So I need to look into that firstly. My previous tests with buyCard.c never threw any huge fits, so the code doesn't break everything, it just runs incorrectly. I didn't have anything to identify that identified if there were enough numBuys, and my coins were being decreased by the cost of the card. Changed my code to the following to catch those things:
+
+	if(state->numBuys > 0){
+    	if(state->coins > getCost(supplyPos)){
+      		state->coins = state->coins - getCost(supplyPos);
+      		state->numBuys--;
+    	}
+    	else{
+      		state->numBuys--;
+      		return -1;
+    	}
+  	}
+
+I also had to adjust (and check) my adventurer. I implemented a testAdventurer, and it initially ran into a seg. fault. I had the right idea, I just needed to clean up my code and add some additional checks. I moved some code around and added those checks, and like magic, no more seg. fault!
+
+make testdom; ./testdom runs a test for drawCard, buyCard, and adventurer.
+While my testdom runs, it appears I still have bugs within adventurer that could be covered, but that appears to be a neverending issue, so for now, it shall be left as is. All reports dump into 'test.out'.
+
+Coverage: The three tests mentioned earlier had a coverage of 13.08% of 543
+
+Team Member Testing & Coverage:
+Group members:
+dunhame
+wolfej
+randb
+wandlins
+olsojeff
+westbyb //me
+parkan
+milleand
+
+All tests simply running 'make testdom; ./testdom; gcov dominion'
+
+dunhame:
+Coverage: 10.0% of 500
+drawCard and buyCard go over fine, but adventurer seems to hit some snags:
+	'handCount Not incremented correctly'
+
+wolfej:
+Coverage:7.61% of 565
+drawCard and buyCard implement well, but under my test, their adventurer seg. faults, which is why I imagine their coverage is so low.
+
+randb:
+Coverage: 5.54% of 560
+Both drawCard and buyCard seg. faulted, but their adventurer spit out all 'OK's from my testAdventurer
+
+wandlins:
+Coverage:5.54% of 560
+Once again, both drawCard and buyCard failed at the 'r == 0' assertion, but the adventurer test runs just fine. Odd that the coverage is the same as the person above them.
+
+oslojeff:
+Coverage: 13.18% of 531
+drawCard and buyCard are fine, but adventurer throws a fit. Lots of things being revealed, and problems left and right.
+
+parkan:
+Coverage: 7.99% of 538
+adventurer seg. faults, but drawCard and buyCard test just fine.
+
+milleand:
+Coverage: 8.04% of 535
+adventurer seg faults, but drawCard and buyCard run their random tests.
+
+################################################################################
+CBMC:
+
+Running cbmc on the tests I'm implementing sent back the following (with --unwind, of course, otherwise it would take forever):
+
+testBuyCard: 
+file dominion.c: Parsing
+file testBuyCard.c: Parsing
+Converting
+Type-checking dominion
+Type-checking testBuyCard
+Generating GOTO Program
+Adding CPROVER library
+Function Pointer Removal
+Partial Inlining
+Generic Property Instrumentation
+Starting Bounded Model Checking
+**** WARNING: no body for function c::SelectStream
+**** WARNING: no body for function c::PutSeed
+**** WARNING: no body for function c::Random
+**** WARNING: no body for function c::floor
+Unwinding loop c::main.0 iteration 1 file testBuyCard.c line 62 function main
+size of program expression: 68 assignments
+simple slicing removed 27 assignments
+Generated 1 VCC(s), 1 remaining after simplification
+Passing problem to propositional reduction
+Running propositional reduction
+Solving with MiniSAT2 with simplifier
+16575 variables, 26783 clauses
+SAT checker: negated claim is SATISFIABLE, i.e., does not hold
+Runtime decision procedure: 0.076s
+Building error trace
+...
+VERIFICATION FAILED. 
+
+testDrawCard: 
+file dominion.c: Parsing
+file testDrawCard.c: Parsing
+Converting
+Type-checking dominion
+Type-checking testDrawCard
+Generating GOTO Program
+Adding CPROVER library
+Function Pointer Removal
+Partial Inlining
+Generic Property Instrumentation
+Starting Bounded Model Checking
+**** WARNING: no body for function c::SelectStream
+**** WARNING: no body for function c::PutSeed
+**** WARNING: no body for function c::Random
+**** WARNING: no body for function c::floor
+Unwinding loop c::main.0 iteration 1 file testDrawCard.c line 61 function main
+size of program expression: 68 assignments
+simple slicing removed 27 assignments
+Generated 1 VCC(s), 1 remaining after simplification
+Passing problem to propositional reduction
+Running propositional reduction
+Solving with MiniSAT2 with simplifier
+16575 variables, 26783 clauses
+SAT checker: negated claim is SATISFIABLE, i.e., does not hold
+Runtime decision procedure: 0.077s
+Building error trace
+...
+VERIFICATION FAILED.
+
+testAdventurer: 
+file dominion.c: Parsing
+file testAdventurer.c: Parsing
+Converting
+Type-checking dominion
+Type-checking testAdventurer
+Generating GOTO Program
+Adding CPROVER library
+Function Pointer Removal
+Partial Inlining
+Generic Property Instrumentation
+Starting Bounded Model Checking
+**** WARNING: no body for function c::SelectStream
+**** WARNING: no body for function c::PutSeed
+**** WARNING: no body for function c::Random
+**** WARNING: no body for function c::floor
+Unwinding loop c::main.0 iteration 1 file testAdventurer.c line 59 function main
+size of program expression: 39 assignments
+simple slicing removed 3 assignments
+Generated 1 VCC(s), 1 remaining after simplification
+Passing problem to propositional reduction
+Running propositional reduction
+Solving with MiniSAT2 with simplifier
+15739 variables, 25531 clauses
+SAT checker: negated claim is SATISFIABLE, i.e., does not hold
+Runtime decision procedure: 0.081s
+Building error trace
+...
+VERIFICATION FAILED.
+
+The counterexamples for all three tests were filled with a whole bunch of 0s. If I had more time, perhaps I would explore these more, but I didn't feel they were relevant to include in this report, as I'm not 100% what they mean, or how to interpret them. But if you'd like, their output is in buyCardOut, drawCardOut, and adventurerOut, respectively.
+
+################################################################################
+DeltaDebugging:
+
+As with the last report, I'm going to see whether or not my code passes a delta debugging test.
+
+After running the MyDD.py from report2, I still don't have any seg faults! Fantastic! The minimal.c file that results from it is the same as well, which isn't ideal, but isn't BAD, per say.
+
+################################################################################
+Future Tests:
+While this is the final report, my tests in the future would be designed to narrow down what it was about my adventurer that my tests didn't like, and change my adventurer to pass these tests. I would also throw some new tests in for drawCard and buyCard, as it appears they may not be very difficult to pass, as it seems everyone else is passing them as well.

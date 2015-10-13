@@ -1,0 +1,62 @@
+Jonah Brooks
+CS362 Report 1
+5/02/2012
+
+1. Test Code:
+    For this first round of testing, I chose to use the testDrawCard.c file as a template
+in implementing a unit test for buyCard. This allowed me to test a large variety of use
+cases involving the buyCard function by randomizing the gameState each time. At first I 
+overlooked a few of the game state variables that were required for buyCard to function 
+correctly, such as discardCount and numBuys, which resulted in segmentation faults 
+whenever I ran the tests. After finding and setting the proper values for these variables 
+using a random number generator, I was able to create a fairly thorough randomized unit 
+test for the buyCard function.
+    I also added a few lines of code to the tests that inform me of which step of the 
+testing process is currently under way, as well as what the current game state is. 
+While a little excessive, I found it very useful in determining when and where segfaults
+were occurring. Now that I have prevented those segmentation faults (by properly 
+initializing the required game state values) I would be able to remove most of these 
+printfs if they end up generating too many lines of output. However, I find that tracing 
+the current game state is very useful, and that the fprintfs to stderr before each 
+assertion are extremely useful for determining the exact state of the game that generated 
+a failed assertion. With the added information outputted to stderr, it becomes much less
+necessary to run the tests in a debugger, as the pertinent information is presented upon
+failure of an assertion.
+    I am fairly satisfied with how thoroughly I am testing buyCard at this point, as it
+has already found two errors in my own implementation of the function (see section 2).
+I have not implemented the use of any external testing software to track code coverage,
+but I believe this test is testing every possible path through the buyCard function.
+However, even if I am testing that function thoroughly, I have not yet implemented any
+tests for other functions (besides the drawCard tests that were presented in class, which
+I will be modifying later). I hope to do this in the future.
+
+2. Testing Process:
+    I have not yet conducted extensive testing on my group members' code, and as such
+have not submitted any bug reports or modified any code. I have found that my code was
+lacking two specific lines, one for decrementing the supplyCount of the purchased card,
+and one for subtracting the price of the card from the player's coins. Both of these
+errors were caught by my test code immediately, and a fairly useful error status is 
+presented upon detection. I will be running these tests on my group members' 
+implementations in the coming days, and subsequently begin submitting bug reports as I
+detect any issues.
+
+3. Future Plans:
+    Although my initial foray into testing dominion may have been meager at best, it has
+provided me a solid start in building a test suite. I would have liked to have added
+tests for the adventurer card before this test report was due, as well as modified
+the drawCard tests to implement my revised assertion methodology, but I was unable to
+complete these tasks in time. I hope to not only include those features before my next
+report, but to include tests on many other functions and cards as well. Perhaps even
+create a function that generates a randomized game state with certain specified 
+parameters, or perhaps simply one all-inclusive game state generator. With that in place
+I would be able to fairly quickly implement tests for other functions by using buyCard
+as a template.
+    I also hope to begin using a few of the testing tools to help me gather data on how
+thorough my tests are, and perhaps help me make my tests even better. I am actually 
+quite looking forward to using these tools, as I'm sure they will be extremely helpful
+in making solid test suites for many types of programs.
+    Also, I am very happy with how my automated, randomized testing works. It is really
+nice to be able to generate so many different test cases in so few lines of code. While
+I still find that manually inspecting the code is the strongest first-line-of-defense in
+preventing and fixing errors, automated testing is a fantastic way to put one's code 
+through its paces. 

@@ -1,0 +1,8 @@
+tangke:
+
+redefinitions of certain constants in their code which was 
+preventing compilation. It shouldn’t take much to fix. The main problems 
+are on line 661, 682 and 684 of their code, dominion.c, inside their 
+implementation of Adventurer
+
+-Seg Fault on Smithy Card Implementation

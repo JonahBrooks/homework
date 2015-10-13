@@ -1,0 +1,241 @@
+Jonah Brooks
+CS362 Report 2 
+5/16/2012
+
+1. Test Approach:
+    For this test report, I have, primarily, expanded the extensibility of my test suite. 
+It now contains a single test file, called testdom.c, that contains supporting functions
+and structures. I collect all testing statistics for each test I run in its own struct
+of type errorState, which I pass into a tallying function that checks for any errors
+of which I could think at the time of development. The error struct is then passed
+into another function which prints the test statistics to the test.out file.
+
+    Each errorState struct is declared as follows:
+
+    struct errorState {
+      int tests;
+      int success;
+      int fail;
+      int player_err;
+      int coin_err;
+      int buys_err;
+      int actions_err;
+      int hand_err;
+      int deck_err;
+      int discard_err;
+      int supply_err;
+      int unknown_err; 
+    } buyCard_errs, drawCard_errs;
+
+Where the top three values hold general testing information, and the others each
+represent one specific error type. For instance, a simplified version of errorTally
+might look like the following (if I removed all but four representative error checks):
+
+void errorTally(struct errorState *errs, int acting_player, struct gameState *pre, struct gameState *post) {
+  int new_err = 0;
+  int pos;
+  int p = pre->whoseTurn;
+  
+  errs->tests++;
+
+  if (!(pre->coins == post->coins)) {
+    fprintf(test_log, "Coin Count Error: pre.coins(%d) != post->coins(%d)\n", pre->coins, post->coins);
+    new_err++;
+    errs->coin_err++;
+  }
+  for (pos = 0; pos < MAX_POS; pos++) {  
+    if (!(pre->supplyCount[pos] == post->supplyCount[pos])){
+      fprintf(test_log, "Supply Count Error: pre->supplyCount[%d](%d) != post->supplyCount[%d](%d)\n", pos, pre->supplyCount[pos], pos, post->supplyCount[pos]);
+      new_err++;
+      errs->supply_err++;
+    }
+  }
+  if (!(memcmp(pre, post, sizeof(struct gameState)) == 0)) {
+    if (!(acting_player == post->whoseTurn)) {
+      fprintf(test_log, "Player Turn Error: player(%d) != whoseTurn(%d)\n", acting_player, post->whoseTurn);
+      new_err++;
+      errs->player_err++;
+    } 
+    if (!(new_err > 0)){
+      fprintf(test_log, "Unknown Error: pre != post");
+      new_err++;
+      errs->unknown_err++;
+    }
+  }
+
+  if (new_err == 0) {
+    errs->success++;
+  } else {
+    errs->fail++;
+  }
+}
+
+In the case of the first check, if the predicted coins value is not equal to the observed
+coin value, then we log that error and tally it up. The second check is an example of a
+slightly deeper check, where I observe the values of all supply piles, rather than only
+the ones that were (supposed) to be affected by the function under question. Finally,
+the last two work together to determine what went wrong if none of the other tests 
+failed, yet the game states do not perfectly match up. In the first case, I check to see
+if the player calling the function we're testing is, in fact, the one who has the right
+to take an action at that time. If that is not the case, I flag whatever went wrong as
+a Player Turn Error. The latter of those two checks simply says that if something went
+wrong, yet we weren't able to catagorize it, we flag it as an Unknown Error.
+
+Finally, if no errors were detected, we increment the successful tests counter,
+otherwise we increment the failed tests counter.
+
+In order to use a uniform error checker like this, however, I needed to make sure that
+the game state was initialized to a valid state to begin with. In order to do this, I
+assigned each variable in the gameState struct to a random, valid value. I pulled this
+code out into its own function, called seedState, and call it from inside the testing
+loop. A brief snippet of this function is included below:
+
+    // Seed discard
+    state->discardCount[p] = floor(Random() * MAX_DECK);
+    for(j = 0; j < state->discardCount[p]; j++) {
+      state->discard[p][j] = floor(Random() * treasure_map + curse); 
+    }
+
+In which I randomly select the number and contents of the players deck. This snippet
+is wrapped in an outer for loop that steps through each of the randomly select number
+of players.
+
+From here, the rest of the code becomes very extensible; in order to add a new test to
+my suite, I need only to write a single function and a few lines for using a new
+errorState struct. However, I currently only have a function to test buyCard, since
+I do not yet have a way of handling segfaults, which renders drawCard futile. I hope
+to add this functionality in the future, as well as additional test functions to increase
+my statement coverage.
+
+
+2. Testing Statistics
+  Since I use a randomized tester for each function in my test suite, I am able to
+easily run any number of tests on each one. Currently I have it set to run 2000 tests
+on each function. This also allows me to more easily expand my code coverage, since I
+am able to test virtually any valid (or invalid) call to the function I'm testing.
+However, it also means that I need more time upfront when adding a function to my
+test suite, and thus I do not have very good over all statement coverage.
+
+  The following is a table showing test results and statement coverage for my code,
+as well as that of a few other students: (line width of 130 characters needed to prevent
+line wrapping)
+
+                                                                                                                                                                           
+~~~~brookjon~~~~                  ~~~~kropfb~~~~                    ~~~~murrown~~~                    ~~~~vanbeeks~~~~
+Tests Run: 2000                   Tests Run: 2000                   Tests Run: 2000                   Tests Run: 2000 
+Successful: 915                   Successful: 350                   Successful: 0                     Successful: 2000 
+Failed: 1085                      Failed: 1650                      Failed: 2000                      Failed: 0
+                                                                                                      
+Buy Errors: 0                     Buy Errors: 502                   Buy Errors: 907                   Buy Errors: 0
+Coin Errors: 1085                 Coin Errors: 1148                 Coin Errors: 907                  Coin Errors: 0
+Action Errors: 0                  Action Errors: 0                  Action Errors: 0                  Action Errors: 0
+Hand Errors: 0                    Hand Errors: 0                    Hand Errors: 0                    Hand Errors: 0
+Deck Errors: 0                    Deck Errors: 0                    Deck Errors: 0                    Deck Errors: 0
+Discard Errors: 0                 Discard Errors: 502               Discard Errors: 907               Discard Errors: 0
+Supply Errors: 1085               Supply Errors: 502                Supply Errors: 907                Supply Errors: 0
+Player Errors: 0                  Player Errors: 0                  Player Errors: 0                  Player Errors: 0
+Unknown Errors: 0                 Unknown Errors: 0                 Unknown Errors: 1093              Unknown Errors: 0
+                                                                                                      
+Function 'compare'                Function 'compare'                Function 'compare'                Function 'compare'
+Lines executed:0.00% of 6         Lines executed:0.00% of 6         Lines executed:0.00% of 6         Lines executed:0.00% of 6
+                                                                                                      
+Function 'shuffle'                Function 'shuffle'                Function 'shuffle'                Function 'shuffle'
+Lines executed:0.00% of 16        Lines executed:0.00% of 16        Lines executed:0.00% of 16        Lines executed:0.00% of 16
+                                                                                                      
+Function 'supplyCount'            Function 'supplyCount'            Function 'supplyCount'            Function 'supplyCount'
+Lines executed:0.00% of 2         Lines executed:100.00% of 2       Lines executed:0.00% of 2         Lines executed:100.00% of 2
+                                                                                                      
+Function 'fullDeckCount'          Function 'fullDeckCount'          Function 'fullDeckCount'          Function 'fullDeckCount'
+Lines executed:0.00% of 9         Lines executed:0.00% of 9         Lines executed:0.00% of 9         Lines executed:0.00% of 9
+                                                                                                      
+Function 'whoseTurn'              Function 'whoseTurn'              Function 'whoseTurn'              Function 'whoseTurn'
+Lines executed:0.00% of 2         Lines executed:0.00% of 2         Lines executed:0.00% of 2         Lines executed:0.00% of 2
+                                                                                                      
+Function 'handCard'               Function 'handCard'               Function 'handCard'               Function 'handCard'
+Lines executed:0.00% of 3         Lines executed:0.00% of 3         Lines executed:0.00% of 3         Lines executed:0.00% of 3
+                                                                                                      
+Function 'numHandCards'           Function 'numHandCards'           Function 'numHandCards'           Function 'numHandCards'
+Lines executed:0.00% of 2         Lines executed:0.00% of 2         Lines executed:0.00% of 2         Lines executed:0.00% of 2
+                                                                                                      
+Function 'isGameOver'             Function 'isGameOver'             Function 'isGameOver'             Function 'isGameOver'
+Lines executed:0.00% of 10        Lines executed:0.00% of 10        Lines executed:0.00% of 10        Lines executed:0.00% of 10
+                                                                                                      
+Function 'scoreFor'               Function 'scoreFor'               Function 'scoreFor'               Function 'scoreFor'
+Lines executed:0.00% of 24        Lines executed:0.00% of 24        Lines executed:0.00% of 24        Lines executed:0.00% of 24
+                                                                                                      
+Function 'getWinners'             Function 'getWinners'             Function 'getWinners'             Function 'getWinners'
+Lines executed:0.00% of 24        Lines executed:0.00% of 24        Lines executed:0.00% of 24        Lines executed:0.00% of 24
+                                                                                                      
+Function 'drawCard'               Function 'drawCard'               Function 'drawCard'               Function 'drawCard'
+Lines executed:0.00% of 22        Lines executed:0.00% of 22        Lines executed:0.00% of 23        Lines executed:0.00% of 23
+                                                                                                      
+Function 'getCost'                Function 'getCost'                Function 'getCost'                Function 'getCost'
+Lines executed:10.00% of 30       Lines executed:10.00% of 30       Lines executed:10.00% of 30       Lines executed:10.00% of 30
+                                                                                                      
+Function 'buyCard'                Function 'buyCard'                Function 'buyCard'                Function 'buyCard'
+Lines executed:100.00% of 12      Lines executed:100.00% of 18      Lines executed:100.00% of 12      Lines executed:100.00% of 8
+                                                                                                      
+Function 'discardCard'            Function 'discardCard'            Function 'discardCard'            Function 'discardCard'
+Lines executed:0.00% of 13        Lines executed:0.00% of 13        Lines executed:0.00% of 13        Lines executed:0.00% of 13
+                                                                                                      
+Function 'gainCard'               Function 'gainCard'               Function 'gainCard'               Function 'gainCard'
+Lines executed:0.00% of 13        Lines executed:69.23% of 13       Lines executed:0.00% of 13        Lines executed:61.54% of 13
+                                                                                                      
+Function 'updateCoins'            Function 'updateCoins'            Function 'updateCoins'            Function 'updateCoins'
+Lines executed:0.00% of 11        Lines executed:0.00% of 12        Lines executed:0.00% of 11        Lines executed:0.00% of 11
+                                                                                                      
+Function 'cardEffect'             Function 'cardEffect'             Function 'cardEffect'             Function 'cardEffect'
+Lines executed:0.00% of 237       Lines executed:0.00% of 250       Lines executed:0.00% of 246       Lines executed:0.00% of 245
+                                                                                                      
+Function 'endTurn'                Function 'endTurn'                Function 'endTurn'                Function 'endTurn'
+Lines executed:0.00% of 20        Lines executed:0.00% of 20        Lines executed:0.00% of 20        Lines executed:0.00% of 20
+                                                                                                      
+Function 'playCard'               Function 'playCard'               Function 'playCard'               Function 'playCard'
+Lines executed:0.00% of 14        Lines executed:0.00% of 14        Lines executed:0.00% of 14        Lines executed:0.00% of 14
+                                                                                                      
+Function 'initializeGame'         Function 'initializeGame'         Function 'initializeGame'         Function 'initializeGame'
+Lines executed:0.00% of 62        Lines executed:0.00% of 62        Lines executed:0.00% of 61        Lines executed:0.00% of 61
+                                                                                                      
+File 'dominion.c'                 File 'dominion.c'                 File 'dominion.c'                 File 'dominion.c'
+Lines executed:2.82% of 532       Lines executed:5.80% of 552       Lines executed:2.77% of 541       Lines executed:3.92% of 536
+                                                                                                       
+
+
+As is shown in the statement coverage statistics above, I was only running the buyCard
+tests. As such, I got 100% statement coverage on buyCard, and decent coverage on any 
+functions that my peers called from within buyCard. This results in a very thurough 
+test of buyCard, but a very lacking test of the game as a whole. I hope to get at least
+a few more tests implemented for my next report, and will, therefor, hopefully have much
+better overall statement coverage.
+
+
+3. Testing Process:
+  I still have not had a chance to submit any bug reports to my peers, as I have only
+recently grown confident in the accuracy of my test suite. I was able to catch multiple
+errors in their code as well as my own. I hope to write up formal reports for each bug
+I've found in the coming weeks, and include them in my final report. My initial findings,
+however, seem to indicate that many of us (myself included) forgot to decrement one or 
+more of the resources used when buying a card, such as supply or coins.
+
+  I plan to implement a few more functions to my test suite, enable segfault handling,
+then compile and send out my findings on each of my group members' code. With this, I
+plan to write specific test cases that generate these bugs as an example for them to
+use while debugging. I may even try to write a randomized test case generator that
+will log the conditions and steps needed to reproduce a bug.
+
+4. Future Plans:
+  The most important thing I would like to implement is a segfault handler. Currently
+I am unable to test any code which generates a segfault, such as the stock drawCard that
+most of us are using. I would like to find a way to tally the number of observed 
+segfaults just like I'm tallying other types of errors. This seems a little dangerous,
+however, unless I can find a way to tally the segfault and then gracefully move to the
+next test case. Baring this feature, however, I would at least like to make my test
+suite generate a more useful error than simply "Segmentation Fault." Perhaps I could
+keep track of the current function being tested, and the statistics on the test case,
+then dump those to the screen before allowing the segfault to go through.
+
+  The next major plan I have is simply to increase my statement coverage by adding new
+functions to my test suite. I have a partial implementation of an adventurerCard test
+written already, and my drawCard test will function as soon as I can handle segfaults.
+I hope that, at the very least, I can have these two functions in my tester-code before
+my final report.

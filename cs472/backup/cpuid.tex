@@ -1,0 +1,89 @@
+\documentclass[letterpaper,10pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Jonah Brooks}
+
+%pull in the necessary preamble matter for pygments output
+\input{pygments.tex}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' cpuid},
+  pdftitle = {CS 472 Homework 1: CPUID},
+  pdfsubject = {CS 472 Homework 1},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+
+\section{Questions}
+
+\subsection{ Describe the difference between architecture and organization. }
+% 2: Describe the difference between architecture and organization.
+Architecture comprises the methodology, software, and logical structure of a CPU.
+It includes things like the methodological decision between RISC vs CISC,
+the specific assembly language used for that CPU,
+and the specific (and generally secret) microarchitecture beneath the assembly language.
+
+Organization has more to do with the hardware.
+It encompasses the physical layout of the transistors, memory, etc. 
+
+\subsection{Describe the concept of endianness. What common platforms use what endianness?}
+% 3: Describe the concept of endianness. What common platforms use what endianness?
+Endianness has to do with how sequential bytes of a single value are stored in memory.
+Big-endian, as used in SPARC, PowerPC, and others, stores the most significant byte first 
+(that is, in the lowest memory address).  
+Little-endian, as used in x86, ARM, and others, stores the most significant byte last 
+(that is, in the highest memory address).
+
+\subsection{Give the IEEE 754 floating point format for both single and double precision.}
+% 4: Give the IEEE 754 floating point format for both single and double precision.
+Both single and double precision IEEE 754 floating point formats have 1 sign bit at the beginning.
+From there, single has 8 exponent bits, and double has 11 exponent bits.
+Finally, single has 23 bits for the fractional portion, while double has 52 bits.
+
+
+\subsection{Describe the concept of the memory hierarchy. What levels of the hierarchy are present on flip.engr.oregonstate.edu?}
+% 5: Describe the concept of the memory hierarchy. What levels of the hierarchy are present on flip.engr.oregonstate.edu?
+Memory hierarchy is the structural layout of memory accessible by the CPU.
+This typically contains one or more levels of cache, main memory, and physical drives attached to the computer.
+Flip has two level 1 caches, one for instructions and one for data,
+a level 2 unified cache, RAM, and hard drive space.
+
+\subsection{What streaming SIMD instruction levels are present on flip.engr.oregonstate.edu?}
+% 6: What streaming SIMD instruction levels are present on flip.engr.oregonstate.edu?
+SSE, SSE2, SSE3, SSSE3, and SSE4.1. 
+
+\section{Source Code}
+%input the pygmentized output of foo.c, using a (hopefully) unique name
+%this file only exists at compile time. Feel free to change that.
+\input{__cpuid.c.tex}
+\end{document}

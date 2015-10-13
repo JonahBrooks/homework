@@ -1,0 +1,1 @@
+testdom had an error with the drawCard. The assert r==0 failed. The programmer changed the code in dominion.c to return -1 or 1 unless it the deckCounter==0. So it would fail every time unless the deck was empty. The drawCard runs, but the numBuys does not decrement like it is supposed to.

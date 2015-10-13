@@ -1,0 +1,8 @@
+find:
+	gainCard(supplyPos, state, 0, whoseTurn(state));
+	state->coins -= getCost(supplyPos);
+	state->numBuys -= 1;
+	return 0;
+
+add before:
+	state->phase = 1;

@@ -1,0 +1,16 @@
+TEAM MEMBERS:
+	This project was completed by Jonah Brooks and Savannah Van Beek.
+
+
+
+To run this program, use the following format:
+
+program_name start_text_file goal_text_file mode output_text_file
+
+Where start_text_file and goal_text_file are formatted such that exactly one character separates each number (the example input files on the class website work for this).
+
+The results will be printed to the specified output_text_file.
+
+Mode is as listed on the class website: dfs, bfs, iddfs, astar (note, any word such that the first character is d, b, i, or a will also work)
+
+ 

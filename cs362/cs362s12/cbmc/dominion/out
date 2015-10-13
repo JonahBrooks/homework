@@ -1,0 +1,1489 @@
+file testAdventurer.c: Parsing
+file dominion.c: Parsing
+Converting
+Type-checking dominion
+file dominion.c line 246 function buyCard: function `c::printf' is not declared
+Type-checking testAdventurer
+Generating GOTO Program
+Adding CPROVER library
+Function Pointer Removal
+Partial Inlining
+Generic Property Instrumentation
+Starting Bounded Model Checking
+Unwinding loop c::main.0 iteration 1 file testAdventurer.c line 39 function main
+Unwinding loop c::main.0 iteration 2 file testAdventurer.c line 39 function main
+Unwinding loop c::main.0 iteration 3 file testAdventurer.c line 39 function main
+Unwinding loop c::main.0 iteration 4 file testAdventurer.c line 39 function main
+Unwinding loop c::main.0 iteration 5 file testAdventurer.c line 39 function main
+Unwinding loop c::main.0 iteration 6 file testAdventurer.c line 39 function main
+Unwinding loop c::main.0 iteration 7 file testAdventurer.c line 39 function main
+Unwinding loop c::main.0 iteration 8 file testAdventurer.c line 39 function main
+Unwinding loop c::main.1 iteration 1 file testAdventurer.c line 43 function main
+Unwinding loop c::main.1 iteration 2 file testAdventurer.c line 43 function main
+Unwinding loop c::main.1 iteration 3 file testAdventurer.c line 43 function main
+Unwinding loop c::main.1 iteration 4 file testAdventurer.c line 43 function main
+Unwinding loop c::main.1 iteration 5 file testAdventurer.c line 43 function main
+Unwinding loop c::main.1 iteration 6 file testAdventurer.c line 43 function main
+Unwinding loop c::main.1 iteration 7 file testAdventurer.c line 43 function main
+Unwinding loop c::main.1 iteration 8 file testAdventurer.c line 43 function main
+Unwinding loop c::main.2 iteration 1 file testAdventurer.c line 49 function main
+Unwinding loop c::main.2 iteration 2 file testAdventurer.c line 49 function main
+Unwinding loop c::main.2 iteration 3 file testAdventurer.c line 49 function main
+Unwinding loop c::main.2 iteration 4 file testAdventurer.c line 49 function main
+Unwinding loop c::main.2 iteration 5 file testAdventurer.c line 49 function main
+Unwinding loop c::main.2 iteration 6 file testAdventurer.c line 49 function main
+Unwinding loop c::main.2 iteration 7 file testAdventurer.c line 49 function main
+Unwinding loop c::main.2 iteration 8 file testAdventurer.c line 49 function main
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 1 file dominion.c line 613 function cardEffect
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 2 file dominion.c line 613 function cardEffect
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 3 file dominion.c line 613 function cardEffect
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 4 file dominion.c line 613 function cardEffect
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 5 file dominion.c line 613 function cardEffect
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 6 file dominion.c line 613 function cardEffect
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 7 file dominion.c line 613 function cardEffect
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 1 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 2 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 3 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 4 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 5 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 6 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 7 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.0 iteration 1 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 2 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 3 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 4 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 5 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 6 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 7 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.0 iteration 8 file dominion.c line 191 function shuffle
+Unwinding loop c::shuffle.1 iteration 8 file dominion.c line 187 function shuffle
+Unwinding loop c::shuffle.2 iteration 1 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 2 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 3 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 4 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 5 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 6 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 7 file dominion.c line 196 function shuffle
+Unwinding loop c::shuffle.2 iteration 8 file dominion.c line 196 function shuffle
+Unwinding loop c::cardEffect.0 iteration 8 file dominion.c line 613 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 1 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 2 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 3 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 4 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 5 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 6 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 7 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.1 iteration 8 file dominion.c line 1143 function cardEffect
+Unwinding loop c::cardEffect.2 iteration 1 file dominion.c line 1158 function cardEffect
+Unwinding loop c::cardEffect.2 iteration 2 file dominion.c line 1158 function cardEffect
+Unwinding loop c::cardEffect.2 iteration 3 file dominion.c line 1158 function cardEffect
+Unwinding loop c::cardEffect.2 iteration 4 file dominion.c line 1158 function cardEffect
+Unwinding loop c::updateCoins.0 iteration 1 file dominion.c line 1257 function updateCoins
+Unwinding loop c::updateCoins.0 iteration 2 file dominion.c line 1257 function updateCoins
+Unwinding loop c::updateCoins.0 iteration 3 file dominion.c line 1257 function updateCoins
+Unwinding loop c::updateCoins.0 iteration 4 file dominion.c line 1257 function updateCoins
+Unwinding loop c::updateCoins.0 iteration 5 file dominion.c line 1257 function updateCoins
+Unwinding loop c::updateCoins.0 iteration 6 file dominion.c line 1257 function updateCoins
+Unwinding loop c::updateCoins.0 iteration 7 file dominion.c line 1257 function updateCoins
+Unwinding loop c::updateCoins.0 iteration 8 file dominion.c line 1257 function updateCoins
+Unwinding loop c::main.3 iteration 1 file testAdventurer.c line 59 function main
+Unwinding loop c::main.3 iteration 2 file testAdventurer.c line 59 function main
+Unwinding loop c::main.3 iteration 3 file testAdventurer.c line 59 function main
+Unwinding loop c::main.3 iteration 4 file testAdventurer.c line 59 function main
+Unwinding loop c::main.3 iteration 5 file testAdventurer.c line 59 function main
+Unwinding loop c::main.3 iteration 6 file testAdventurer.c line 59 function main
+Unwinding loop c::main.3 iteration 7 file testAdventurer.c line 59 function main
+Unwinding loop c::main.3 iteration 8 file testAdventurer.c line 59 function main
+Unwinding loop c::main.4 iteration 1 file testAdventurer.c line 63 function main
+Unwinding loop c::main.4 iteration 2 file testAdventurer.c line 63 function main
+Unwinding loop c::main.4 iteration 3 file testAdventurer.c line 63 function main
+Unwinding loop c::main.4 iteration 4 file testAdventurer.c line 63 function main
+Unwinding loop c::main.4 iteration 5 file testAdventurer.c line 63 function main
+Unwinding loop c::main.4 iteration 6 file testAdventurer.c line 63 function main
+Unwinding loop c::main.4 iteration 7 file testAdventurer.c line 63 function main
+Unwinding loop c::main.4 iteration 8 file testAdventurer.c line 63 function main
+Unwinding loop c::main.5 iteration 1 file testAdventurer.c line 69 function main
+Unwinding loop c::main.5 iteration 2 file testAdventurer.c line 69 function main
+Unwinding loop c::main.5 iteration 3 file testAdventurer.c line 69 function main
+Unwinding loop c::main.5 iteration 4 file testAdventurer.c line 69 function main
+Unwinding loop c::main.5 iteration 5 file testAdventurer.c line 69 function main
+Unwinding loop c::main.5 iteration 6 file testAdventurer.c line 69 function main
+Unwinding loop c::main.5 iteration 7 file testAdventurer.c line 69 function main
+Unwinding loop c::main.5 iteration 8 file testAdventurer.c line 69 function main
+size of program expression: 7136 assignments
+simple slicing removed 1 assignments
+Generated 91 VCC(s), 91 remaining after simplification
+Passing problem to propositional reduction
+Running propositional reduction
+Solving with MiniSAT2 with simplifier
+3980134 variables, 12635824 clauses
+SAT checker: negated claim is SATISFIABLE, i.e., does not hold
+Runtime decision procedure: 56.359s
+Building error trace
+
+Counterexample:
+
+State 2 file <built-in> line 26 thread 0
+----------------------------------------------------
+  __CPROVER_deallocated=NULL (0000000000000000000000000000000000000000000000000000000000000000)
+
+State 3 file <built-in> line 27 thread 0
+----------------------------------------------------
+  __CPROVER_malloc_object=NULL (0000000000000000000000000000000000000000000000000000000000000000)
+
+State 4 file <built-in> line 28 thread 0
+----------------------------------------------------
+  __CPROVER_malloc_size=0 (0000000000000000000000000000000000000000000000000000000000000000)
+
+State 5 file <built-in> line 29 thread 0
+----------------------------------------------------
+  __CPROVER_malloc_is_new_array=FALSE (0)
+
+State 6 file <built-in> line 38 thread 0
+----------------------------------------------------
+  __CPROVER_rounding_mode=0 (00000000000000000000000000000000)
+
+State 8 file testAdventurer.c line 7 function main thread 0
+----------------------------------------------------
+  res=0 (00000000000000000000000000000000)
+
+State 9 file testAdventurer.c line 10 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$1=0 (00000000000000000000000000000000)
+
+State 10 file testAdventurer.c line 10 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$1=1 (00000000000000000000000000000001)
+
+State 11 file testAdventurer.c line 10 function main thread 0
+----------------------------------------------------
+  p=0 (00000000000000000000000000000000)
+
+State 12 file testAdventurer.c line 10 function main thread 0
+----------------------------------------------------
+  p=1 (00000000000000000000000000000001)
+
+State 14 file testAdventurer.c line 12 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$2=0 (00000000000000000000000000000000)
+
+State 15 file testAdventurer.c line 12 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$2=0 (00000000000000000000000000000000)
+
+State 16 file testAdventurer.c line 12 function main thread 0
+----------------------------------------------------
+  input1=0 (00000000000000000000000000000000)
+
+State 17 file testAdventurer.c line 12 function main thread 0
+----------------------------------------------------
+  input1=0 (00000000000000000000000000000000)
+
+State 18 file testAdventurer.c line 13 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$3=0 (00000000000000000000000000000000)
+
+State 19 file testAdventurer.c line 13 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$3=0 (00000000000000000000000000000000)
+
+State 20 file testAdventurer.c line 13 function main thread 0
+----------------------------------------------------
+  input2=0 (00000000000000000000000000000000)
+
+State 21 file testAdventurer.c line 13 function main thread 0
+----------------------------------------------------
+  input2=0 (00000000000000000000000000000000)
+
+State 22 file testAdventurer.c line 14 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$4=0 (00000000000000000000000000000000)
+
+State 23 file testAdventurer.c line 14 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$4=0 (00000000000000000000000000000000)
+
+State 24 file testAdventurer.c line 14 function main thread 0
+----------------------------------------------------
+  input3=0 (00000000000000000000000000000000)
+
+State 25 file testAdventurer.c line 14 function main thread 0
+----------------------------------------------------
+  input3=0 (00000000000000000000000000000000)
+
+State 26 file testAdventurer.c line 15 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$5=0 (00000000000000000000000000000000)
+
+State 27 file testAdventurer.c line 15 function main thread 0
+----------------------------------------------------
+  return_value_nondet_int$5=1 (00000000000000000000000000000001)
+
+State 28 file testAdventurer.c line 15 function main thread 0
+----------------------------------------------------
+  advPos=0 (00000000000000000000000000000000)
+
+State 29 file testAdventurer.c line 15 function main thread 0
+----------------------------------------------------
+  advPos=1 (00000000000000000000000000000001)
+
+State 30 file testAdventurer.c line 17 function main thread 0
+----------------------------------------------------
+  G0={ .numPlayers=7, .supplyCount={ 0, 0, 0, 0, 0, 0, -2147483646, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, .embargoTokens={ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+    .outpostPlayed=0,
+    .outpostTurn=0, .whoseTurn=1, .phase=0,
+    .numActions=4096, .coins=0, .numBuys=0,
+    .hand={ { 0, 0, 0, 0, 0 }, { 154, 7, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } }, .handCount={ 0, 2, 0, 0 },
+    .deck={ { 0, 0, 0, 0, 0, 0 }, { 4, 524294, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 } }, .deckCount={ 0, 2, 0, 0 },
+    .discard={ { 1048581, 13, 4, 0, 0, 0 }, { 1048581, 13, 4, 0, 0, 0 }, { 1048581, 13, 4, 0, 0, 0 }, { 1048581, 13, 4, 0, 0, 0 } }, .discardCount={ 3, 3, 3, 3 },
+    .playedCards={ 0, 0, 0, 0, 0, 0 }, .playedCardCount=0 } ({ 00000000000000000000000000000111, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 10000000000000000000000000000010, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000001, 00000000000000000000000000000000, 00000000000000000001000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, { { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000010011010, 00000000000000000000000000000111, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 } }, { 00000000000000000000000000000000, 00000000000000000000000000000010, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000100, 00000000000010000000000000000110, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 } }, { 00000000000000000000000000000000, 00000000000000000000000000000010, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 } }, { 00000000000000000000000000000011, 00000000000000000000000000000011, 00000000000000000000000000000011, 00000000000000000000000000000011 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, 00000000000000000000000000000000 })
+
+State 31 file testAdventurer.c line 18 function main thread 0
+----------------------------------------------------
+  G1={ .numPlayers=7, .supplyCount={ 0, 0, 0, 0, 0, 0, -2147483646, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, .embargoTokens={ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+    .outpostPlayed=0,
+    .outpostTurn=0, .whoseTurn=1, .phase=0,
+    .numActions=4096, .coins=0, .numBuys=0,
+    .hand={ { 0, 0, 0, 0, 0 }, { 154, 7, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } }, .handCount={ 0, 2, 0, 0 },
+    .deck={ { 0, 0, 0, 0, 0, 0 }, { 4, 524294, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 } }, .deckCount={ 0, 2, 0, 0 },
+    .discard={ { 1048581, 13, 4, 0, 0, 0 }, { 1048581, 13, 4, 0, 0, 0 }, { 1048581, 13, 4, 0, 0, 0 }, { 1048581, 13, 4, 0, 0, 0 } }, .discardCount={ 3, 3, 3, 3 },
+    .playedCards={ 0, 0, 0, 0, 0, 0 }, .playedCardCount=0 } ({ 00000000000000000000000000000111, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 10000000000000000000000000000010, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000001, 00000000000000000000000000000000, 00000000000000000001000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, { { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000010011010, 00000000000000000000000000000111, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 } }, { 00000000000000000000000000000000, 00000000000000000000000000000010, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000100, 00000000000010000000000000000110, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 } }, { 00000000000000000000000000000000, 00000000000000000000000000000010, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, { 00000000000100000000000000000101, 00000000000000000000000000001101, 00000000000000000000000000000100, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 } }, { 00000000000000000000000000000011, 00000000000000000000000000000011, 00000000000000000000000000000011, 00000000000000000000000000000011 }, { 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 }, 00000000000000000000000000000000 })
+
+State 44 file testAdventurer.c line 36 function main thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 45 file testAdventurer.c line 37 function main thread 0
+----------------------------------------------------
+  c=0 (00000000000000000000000000000000)
+
+State 46 file testAdventurer.c line 38 function main thread 0
+----------------------------------------------------
+  tc=0 (00000000000000000000000000000000)
+
+State 47 file testAdventurer.c line 38 function main thread 0
+----------------------------------------------------
+  tc=0 (00000000000000000000000000000000)
+
+State 48 file testAdventurer.c line 39 function main thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 50 file testAdventurer.c line 40 function main thread 0
+----------------------------------------------------
+  c=4 (00000000000000000000000000000100)
+
+State 51 file testAdventurer.c line 41 function main thread 0
+----------------------------------------------------
+  tc=1 (00000000000000000000000000000001)
+
+State 52 file testAdventurer.c line 39 function main thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 55 file testAdventurer.c line 40 function main thread 0
+----------------------------------------------------
+  c=524294 (00000000000010000000000000000110)
+
+State 56 file testAdventurer.c line 41 function main thread 0
+----------------------------------------------------
+  tc=1 (00000000000000000000000000000001)
+
+State 57 file testAdventurer.c line 39 function main thread 0
+----------------------------------------------------
+  i=2 (00000000000000000000000000000010)
+
+State 60 file testAdventurer.c line 43 function main thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 62 file testAdventurer.c line 44 function main thread 0
+----------------------------------------------------
+  c=1048581 (00000000000100000000000000000101)
+
+State 63 file testAdventurer.c line 45 function main thread 0
+----------------------------------------------------
+  tc=1 (00000000000000000000000000000001)
+
+State 64 file testAdventurer.c line 43 function main thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 67 file testAdventurer.c line 44 function main thread 0
+----------------------------------------------------
+  c=13 (00000000000000000000000000001101)
+
+State 68 file testAdventurer.c line 45 function main thread 0
+----------------------------------------------------
+  tc=1 (00000000000000000000000000000001)
+
+State 69 file testAdventurer.c line 43 function main thread 0
+----------------------------------------------------
+  i=2 (00000000000000000000000000000010)
+
+State 72 file testAdventurer.c line 44 function main thread 0
+----------------------------------------------------
+  c=4 (00000000000000000000000000000100)
+
+State 73 file testAdventurer.c line 45 function main thread 0
+----------------------------------------------------
+  tc=2 (00000000000000000000000000000010)
+
+State 74 file testAdventurer.c line 43 function main thread 0
+----------------------------------------------------
+  i=3 (00000000000000000000000000000011)
+
+State 77 file testAdventurer.c line 48 function main thread 0
+----------------------------------------------------
+  tch=0 (00000000000000000000000000000000)
+
+State 78 file testAdventurer.c line 48 function main thread 0
+----------------------------------------------------
+  tch=0 (00000000000000000000000000000000)
+
+State 79 file testAdventurer.c line 49 function main thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 81 file testAdventurer.c line 50 function main thread 0
+----------------------------------------------------
+  c=154 (00000000000000000000000010011010)
+
+State 82 file testAdventurer.c line 51 function main thread 0
+----------------------------------------------------
+  tch=0 (00000000000000000000000000000000)
+
+State 83 file testAdventurer.c line 49 function main thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 86 file testAdventurer.c line 50 function main thread 0
+----------------------------------------------------
+  c=7 (00000000000000000000000000000111)
+
+State 87 file testAdventurer.c line 51 function main thread 0
+----------------------------------------------------
+  tch=0 (00000000000000000000000000000000)
+
+State 88 file testAdventurer.c line 49 function main thread 0
+----------------------------------------------------
+  i=2 (00000000000000000000000000000010)
+
+State 93 file testAdventurer.c line 56 function main thread 0
+----------------------------------------------------
+  handPos=1 (00000000000000000000000000000001)
+
+State 94 file testAdventurer.c line 56 function main thread 0
+----------------------------------------------------
+  choice1=0 (00000000000000000000000000000000)
+
+State 95 file testAdventurer.c line 56 function main thread 0
+----------------------------------------------------
+  choice2=0 (00000000000000000000000000000000)
+
+State 96 file testAdventurer.c line 56 function main thread 0
+----------------------------------------------------
+  choice3=0 (00000000000000000000000000000000)
+
+State 97 file testAdventurer.c line 56 function main thread 0
+----------------------------------------------------
+  state=&G1!0@2.numPlayers (0000001000000000000000000000000000000000000000000000000000000000)
+
+State 98 file dominion.c line 206 function playCard thread 0
+----------------------------------------------------
+  coin_bonus=0 (00000000000000000000000000000000)
+
+State 99 file dominion.c line 206 function playCard thread 0
+----------------------------------------------------
+  coin_bonus=0 (00000000000000000000000000000000)
+
+State 102 file dominion.c line 221 function playCard thread 0
+----------------------------------------------------
+  return_value_handCard$1=0 (00000000000000000000000000000000)
+
+State 104 file dominion.c line 221 function playCard thread 0
+----------------------------------------------------
+  handPos=1 (00000000000000000000000000000001)
+
+State 105 file dominion.c line 221 function playCard thread 0
+----------------------------------------------------
+  state=&G1!0@2.numPlayers (0000001000000000000000000000000000000000000000000000000000000000)
+
+State 106 file dominion.c line 273 function handCard thread 0
+----------------------------------------------------
+  return_value_whoseTurn$1=0 (00000000000000000000000000000000)
+
+State 108 file dominion.c line 273 function handCard thread 0
+----------------------------------------------------
+  state=&G1!0@2.numPlayers (0000001000000000000000000000000000000000000000000000000000000000)
+
+State 110 file dominion.c line 304 function whoseTurn thread 0
+----------------------------------------------------
+  return_value_whoseTurn$1=1 (00000000000000000000000000000001)
+
+State 111 file dominion.c line 273 function handCard thread 0
+----------------------------------------------------
+  currentPlayer=0 (00000000000000000000000000000000)
+
+State 112 file dominion.c line 273 function handCard thread 0
+----------------------------------------------------
+  currentPlayer=1 (00000000000000000000000000000001)
+
+State 114 file dominion.c line 274 function handCard thread 0
+----------------------------------------------------
+  return_value_handCard$1=7 (00000000000000000000000000000111)
+
+State 115 file dominion.c line 221 function playCard thread 0
+----------------------------------------------------
+  card=0 (00000000000000000000000000000000)
+
+State 116 file dominion.c line 221 function playCard thread 0
+----------------------------------------------------
+  card=7 (00000000000000000000000000000111)
+
+State 120 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  return_value_cardEffect$2=0 (00000000000000000000000000000000)
+
+State 122 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  card=7 (00000000000000000000000000000111)
+
+State 123 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  choice1=0 (00000000000000000000000000000000)
+
+State 124 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  choice2=0 (00000000000000000000000000000000)
+
+State 125 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  choice3=0 (00000000000000000000000000000000)
+
+State 126 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  state=&G1!0@2.numPlayers (0000001000000000000000000000000000000000000000000000000000000000)
+
+State 127 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  handPos=1 (00000000000000000000000000000001)
+
+State 128 file dominion.c line 230 function playCard thread 0
+----------------------------------------------------
+  bonus=&coin_bonus!0@2 (0000001100000000000000000000000000000000000000000000000000000000)
+
+State 129 file dominion.c line 595 function cardEffect thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 130 file dominion.c line 596 function cardEffect thread 0
+----------------------------------------------------
+  j=0 (00000000000000000000000000000000)
+
+State 131 file dominion.c line 597 function cardEffect thread 0
+----------------------------------------------------
+  k=0 (00000000000000000000000000000000)
+
+State 132 file dominion.c line 598 function cardEffect thread 0
+----------------------------------------------------
+  index=0 (00000000000000000000000000000000)
+
+State 133 file dominion.c line 599 function cardEffect thread 0
+----------------------------------------------------
+  return_value_whoseTurn$1=0 (00000000000000000000000000000000)
+
+State 135 file dominion.c line 599 function cardEffect thread 0
+----------------------------------------------------
+  state=&G1!0@2.numPlayers (0000001000000000000000000000000000000000000000000000000000000000)
+
+State 137 file dominion.c line 304 function whoseTurn thread 0
+----------------------------------------------------
+  return_value_whoseTurn$1=1 (00000000000000000000000000000001)
+
+State 138 file dominion.c line 599 function cardEffect thread 0
+----------------------------------------------------
+  currentPlayer=0 (00000000000000000000000000000000)
+
+State 139 file dominion.c line 599 function cardEffect thread 0
+----------------------------------------------------
+  currentPlayer=1 (00000000000000000000000000000001)
+
+State 140 file dominion.c line 600 function cardEffect thread 0
+----------------------------------------------------
+  nextPlayer=0 (00000000000000000000000000000000)
+
+State 141 file dominion.c line 600 function cardEffect thread 0
+----------------------------------------------------
+  nextPlayer=2 (00000000000000000000000000000010)
+
+State 143 file dominion.c line 604 function cardEffect thread 0
+----------------------------------------------------
+  tributeRevealedCards={ 0, 0 } ({ 00000000000000000000000000000000, 00000000000000000000000000000000 })
+
+State 144 file dominion.c line 604 function cardEffect thread 0
+----------------------------------------------------
+  tributeRevealedCards={ -1, -1 } ({ 11111111111111111111111111111111, 11111111111111111111111111111111 })
+
+State 145 file dominion.c line 605 function cardEffect thread 0
+----------------------------------------------------
+  temphand={ 0, 0, 0, 0, 0 } ({ 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 })
+
+State 146 file dominion.c line 606 function cardEffect thread 0
+----------------------------------------------------
+  treasureCount=0 (00000000000000000000000000000000)
+
+State 147 file dominion.c line 606 function cardEffect thread 0
+----------------------------------------------------
+  treasureCount=0 (00000000000000000000000000000000)
+
+State 148 file dominion.c line 607 function cardEffect thread 0
+----------------------------------------------------
+  revealed=1879048190 (01101111111111111111111111111110)
+
+State 149 file dominion.c line 608 function cardEffect thread 0
+----------------------------------------------------
+  revealedCards={ 0, 0, 0, 0, 0 } ({ 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000, 00000000000000000000000000000000 })
+
+State 153 file dominion.c line 615 function cardEffect thread 0
+----------------------------------------------------
+  i=2 (00000000000000000000000000000010)
+
+State 154 file dominion.c line 616 function cardEffect thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 157 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$2=FALSE (0)
+
+State 158 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$3=FALSE (0)
+
+State 159 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$3=FALSE (0)
+
+State 161 file dominion.c line 622 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$4=FALSE (0)
+
+State 162 file dominion.c line 622 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$4=FALSE (0)
+
+State 163 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$2=FALSE (0)
+
+State 165 file dominion.c line 623 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$5=FALSE (0)
+
+State 166 file dominion.c line 623 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$5=FALSE (0)
+
+State 168 file dominion.c line 631 function cardEffect thread 0
+----------------------------------------------------
+  revealedCards[(long int)revealed!0@2]={ 0, 0, 0, 0, 0 }[1879048190] (?)
+
+State 169 file dominion.c line 632 function cardEffect thread 0
+----------------------------------------------------
+  G1.deck[(long int)currentPlayer!0@2][(long int)i!0@2]=0 (00000000000000000000000000000000)
+
+State 170 file dominion.c line 633 function cardEffect thread 0
+----------------------------------------------------
+  G1.deckCount[(long int)currentPlayer!0@2]=1 (00000000000000000000000000000001)
+
+State 171 file dominion.c line 634 function cardEffect thread 0
+----------------------------------------------------
+  revealed=1879048191 (01101111111111111111111111111111)
+
+State 175 file dominion.c line 615 function cardEffect thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 176 file dominion.c line 616 function cardEffect thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 179 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$2=FALSE (0)
+
+State 180 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$3=FALSE (0)
+
+State 181 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$3=TRUE (1)
+
+State 183 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$2=TRUE (1)
+
+State 186 file dominion.c line 626 function cardEffect thread 0
+----------------------------------------------------
+  G1.hand[(long int)currentPlayer!0@2][(long int)(G1!0@2.handCount[(long int)currentPlayer!0@2])]=4 (00000000000000000000000000000100)
+
+State 187 file dominion.c line 627 function cardEffect thread 0
+----------------------------------------------------
+  G1.handCount[(long int)currentPlayer!0@2]=3 (00000000000000000000000000000011)
+
+State 188 file dominion.c line 628 function cardEffect thread 0
+----------------------------------------------------
+  G1.deckCount[(long int)currentPlayer!0@2]=0 (00000000000000000000000000000000)
+
+State 189 file dominion.c line 629 function cardEffect thread 0
+----------------------------------------------------
+  treasureCount=1 (00000000000000000000000000000001)
+
+State 194 file dominion.c line 615 function cardEffect thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 195 file dominion.c line 616 function cardEffect thread 0
+----------------------------------------------------
+  i=-1 (11111111111111111111111111111111)
+
+State 198 file dominion.c line 618 function cardEffect thread 0
+----------------------------------------------------
+  player=1 (00000000000000000000000000000001)
+
+State 199 file dominion.c line 618 function cardEffect thread 0
+----------------------------------------------------
+  state=&G1!0@2.numPlayers (0000001000000000000000000000000000000000000000000000000000000000)
+
+State 203 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$2=FALSE (0)
+
+State 204 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$3=FALSE (0)
+
+State 205 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$3=TRUE (1)
+
+State 207 file dominion.c line 621 function cardEffect thread 0
+----------------------------------------------------
+  tmp_condition$2=TRUE (1)
+
+State 210 file dominion.c line 626 function cardEffect thread 0
+----------------------------------------------------
+  G1.hand[(long int)currentPlayer!0@2][(long int)(G1!0@2.handCount[(long int)currentPlayer!0@2])]=4 (00000000000000000000000000000100)
+
+State 211 file dominion.c line 627 function cardEffect thread 0
+----------------------------------------------------
+  G1.handCount[(long int)currentPlayer!0@2]=4 (00000000000000000000000000000100)
+
+State 212 file dominion.c line 628 function cardEffect thread 0
+----------------------------------------------------
+  G1.deckCount[(long int)currentPlayer!0@2]=-1 (11111111111111111111111111111111)
+
+State 213 file dominion.c line 629 function cardEffect thread 0
+----------------------------------------------------
+  treasureCount=2 (00000000000000000000000000000010)
+
+State 218 file dominion.c line 641 function cardEffect thread 0
+----------------------------------------------------
+  return_value_cardEffect$2=0 (00000000000000000000000000000000)
+
+State 220 file dominion.c line 236 function playCard thread 0
+----------------------------------------------------
+  G1.numActions=4095 (00000000000000000000111111111111)
+
+State 222 file dominion.c line 239 function playCard thread 0
+----------------------------------------------------
+  player=1 (00000000000000000000000000000001)
+
+State 223 file dominion.c line 239 function playCard thread 0
+----------------------------------------------------
+  state=&G1!0@2.numPlayers (0000001000000000000000000000000000000000000000000000000000000000)
+
+State 224 file dominion.c line 239 function playCard thread 0
+----------------------------------------------------
+  bonus=0 (00000000000000000000000000000000)
+
+State 225 file dominion.c line 1251 function updateCoins thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 226 file dominion.c line 1254 function updateCoins thread 0
+----------------------------------------------------
+  G1.coins=0 (00000000000000000000000000000000)
+
+State 227 file dominion.c line 1257 function updateCoins thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 232 file dominion.c line 1257 function updateCoins thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 238 file dominion.c line 1257 function updateCoins thread 0
+----------------------------------------------------
+  i=2 (00000000000000000000000000000010)
+
+State 242 file dominion.c line 1261 function updateCoins thread 0
+----------------------------------------------------
+  G1.coins=1 (00000000000000000000000000000001)
+
+State 244 file dominion.c line 1257 function updateCoins thread 0
+----------------------------------------------------
+  i=3 (00000000000000000000000000000011)
+
+State 248 file dominion.c line 1261 function updateCoins thread 0
+----------------------------------------------------
+  G1.coins=2 (00000000000000000000000000000010)
+
+State 250 file dominion.c line 1257 function updateCoins thread 0
+----------------------------------------------------
+  i=4 (00000000000000000000000000000100)
+
+State 253 file dominion.c line 1274 function updateCoins thread 0
+----------------------------------------------------
+  G1.coins=2 (00000000000000000000000000000010)
+
+State 256 file dominion.c line 241 function playCard thread 0
+----------------------------------------------------
+  res=0 (00000000000000000000000000000000)
+
+State 257 file testAdventurer.c line 58 function main thread 0
+----------------------------------------------------
+  tc2=0 (00000000000000000000000000000000)
+
+State 258 file testAdventurer.c line 58 function main thread 0
+----------------------------------------------------
+  tc2=0 (00000000000000000000000000000000)
+
+State 259 file testAdventurer.c line 59 function main thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 261 file testAdventurer.c line 63 function main thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 263 file testAdventurer.c line 64 function main thread 0
+----------------------------------------------------
+  c=1048581 (00000000000100000000000000000101)
+
+State 264 file testAdventurer.c line 65 function main thread 0
+----------------------------------------------------
+  tc2=0 (00000000000000000000000000000000)
+
+State 265 file testAdventurer.c line 63 function main thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 268 file testAdventurer.c line 64 function main thread 0
+----------------------------------------------------
+  c=13 (00000000000000000000000000001101)
+
+State 269 file testAdventurer.c line 65 function main thread 0
+----------------------------------------------------
+  tc2=0 (00000000000000000000000000000000)
+
+State 270 file testAdventurer.c line 63 function main thread 0
+----------------------------------------------------
+  i=2 (00000000000000000000000000000010)
+
+State 273 file testAdventurer.c line 64 function main thread 0
+----------------------------------------------------
+  c=4 (00000000000000000000000000000100)
+
+State 274 file testAdventurer.c line 65 function main thread 0
+----------------------------------------------------
+  tc2=1 (00000000000000000000000000000001)
+
+State 275 file testAdventurer.c line 63 function main thread 0
+----------------------------------------------------
+  i=3 (00000000000000000000000000000011)
+
+State 278 file testAdventurer.c line 68 function main thread 0
+----------------------------------------------------
+  tch2=0 (00000000000000000000000000000000)
+
+State 279 file testAdventurer.c line 68 function main thread 0
+----------------------------------------------------
+  tch2=0 (00000000000000000000000000000000)
+
+State 280 file testAdventurer.c line 69 function main thread 0
+----------------------------------------------------
+  i=0 (00000000000000000000000000000000)
+
+State 282 file testAdventurer.c line 70 function main thread 0
+----------------------------------------------------
+  c=154 (00000000000000000000000010011010)
+
+State 283 file testAdventurer.c line 71 function main thread 0
+----------------------------------------------------
+  tch2=0 (00000000000000000000000000000000)
+
+State 284 file testAdventurer.c line 69 function main thread 0
+----------------------------------------------------
+  i=1 (00000000000000000000000000000001)
+
+State 287 file testAdventurer.c line 70 function main thread 0
+----------------------------------------------------
+  c=7 (00000000000000000000000000000111)
+
+State 288 file testAdventurer.c line 71 function main thread 0
+----------------------------------------------------
+  tch2=0 (00000000000000000000000000000000)
+
+State 289 file testAdventurer.c line 69 function main thread 0
+----------------------------------------------------
+  i=2 (00000000000000000000000000000010)
+
+State 292 file testAdventurer.c line 70 function main thread 0
+----------------------------------------------------
+  c=4 (00000000000000000000000000000100)
+
+State 293 file testAdventurer.c line 71 function main thread 0
+----------------------------------------------------
+  tch2=1 (00000000000000000000000000000001)
+
+State 294 file testAdventurer.c line 69 function main thread 0
+----------------------------------------------------
+  i=3 (00000000000000000000000000000011)
+
+State 297 file testAdventurer.c line 70 function main thread 0
+----------------------------------------------------
+  c=4 (00000000000000000000000000000100)
+
+State 298 file testAdventurer.c line 71 function main thread 0
+----------------------------------------------------
+  tch2=2 (00000000000000000000000000000010)
+
+State 299 file testAdventurer.c line 69 function main thread 0
+----------------------------------------------------
+  i=4 (00000000000000000000000000000100)
+
+Violated property:
+  file testAdventurer.c line 75 function main
+  assertion
+  tc2 == tc - 2
+
+VERIFICATION FAILED

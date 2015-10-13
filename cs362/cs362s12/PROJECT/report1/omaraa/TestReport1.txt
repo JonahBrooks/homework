@@ -1,0 +1,38 @@
+My tests for this first phase were extremely basic.
+
+My testBuyCard.c file contains three functions: The main function, testBuyCardSuccess,
+and testBuyCardFail. The latter two simply test whether buyCard succeeds or fails
+depending on what the expected outcome is.
+
+The three test cases I came up with for this first phase were:
+* Can you buy cards successfully with enough money to do so?
+* If you do not have the money to do so, will buy card fail?
+* Does buy card properly decrement your coin count?
+
+The format I used was basically this:
+
+for (n = 0; n < 17; n++) {
+    G.coins=8;
+    checkBuyCardSuccess(n, &G);
+}
+
+Where the loop cycles through every buyable card, so the test checks whether every card can
+be bought successfully. The second test case is this:
+
+for (n = 1; n < 17; n++) {
+    G.coins=-1;
+    checkBuyCardFail(n, &G);
+}
+
+Where it sets the coins to a number that cannot possibly successfully buy anything.
+
+Immediately when I ran these tests, I got segmentation faults. This is because I implemented buyCard incorrectly; I was messing about with the game state directly in order to access certain variables,
+when there are already helper functions that implement those features properly.
+
+The third test did not involve a loop, and it was very simple:
+
+G.coins=5;
+checkBuyCardSuccess(2, &G);
+checkBuyCardFail(2, &G);
+
+Basically, it sets the game state's coin value to a number, and then buys a card worth over half of that value. Buying the same thing immediately after should cause buyCard to fail. When I first ran this test, it failed because I neglected to decrement the player's coin count in my original implementation of buyCard.

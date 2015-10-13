@@ -1,0 +1,210 @@
+CS 362
+Dr. Alex Groce
+
+    KEC 3067
+
+    Office hours Wed 11-12:30 or as you/I like it by appointment
+
+TA: Amin Alipour
+
+    Office hours (in the KEC atrium) 11-noon
+
+Applied SE
+
+(the Testing & Debugging Class)
+
+Class covers testing, debugging, a little model checking, and a lot of
+(I hope) practical ideas for real life coding.
+
+============================================================================
+
+Grading:
+(standard OSU grading scale, +/-, etc.)
+
+*** PROJECT IS 75% of GRADE ***
+
+Grade is based on:
+
+- Test report 1
+
+- Test report 2
+
+- Final test report
+
+- Test code
+
+- Bugs submitted against other students
+
+I will decide how much each weighs into the 75%, in a way _favorable_
+to you, with the guiding rule that the final report is VERY VERY
+IMPORTANT, however.
+
+**************************
+
+Keep your submitted tester-code working, make sure 
+
+make testdom
+./testdom
+
+puts output in test.out
+
+**************************
+
+For more project info, see the class repository, the admin directory
+slides -- esp. project-info!
+
+Late "MIDTERM" is 15% of grade
+
+Class participation/random pop quizzes if everyone looks asleep or is
+ditching, etc. are up to 10% of grade, otherwise I make that part an
+automatic 100% (may also give a pop quiz as bonus points)
+
+============================================================================
+
+Schedule:
+
+April 24:  Code checkin, must have working "complete" Dominion
+
+May 1:  Test report 1 due, some test code in tester-code due
+
+May 17:    Test report 2 due, update tester-code to latest working version
+           (if not done already!)
+
+June 5:    "Late Midterm" (in class) -- essay style, open-notebook, open
+           book, open laptop, mostly use your BRAIN!
+
+June 11:   Final report, all code due
+
+SEE admin/admin.pptx for MORE DETAILS, such as where to check in.
+
+============================================================================
+
+Class Topics:
+
+QUESTIONS ARE STRONGLY ENCOURAGED.
+I GET CARRIED AWAY, IF I DON'T MAKE SENSE, TELL ME TO BACK IT UP
+
+- Also, if something is cool and you want to know more, ASK!
+
+- I like this stuff, and am happy to tell you all I know about it
+
+First, we'll do some things in class.  What things?
+
+- Simple unit tests
+
+- Simple random testing
+
+- gcov
+
+- gdb (a very brief intro!)
+
+- Delta debugging
+
+- CBMC (proving code correct, up to a limit)
+
+- SPIN (running C programs with time travel)
+
+We'll also play some Dominion
+
+All would be good in your PROJECT
+
+Lecture Topics: A note about the slides -- some contain more than you
+may want to know; I will be very clear before the midterm about what
+is Required vs. what is Optional.  The ".5" lectures are "research"
+that has practical applications; I don't expect you to know everything
+on them, just the general concept (in fact I'll skip some slides in
+class, but if you want to know more, it's here).
+
+:l1 discusses:
+
+- What is Testing?
+
+  - Why not Prove Programs Correct?
+
+  - Basic Terms
+
+- Finite State Machine Testing
+
+  - Exhaustive Testing:  IMPOSSIBLE
+
+:l2 discusses:
+
+- RIP (Faults, Errors, Failures)
+
+- COVERAGE
+
+   - Graph
+
+   - Logic
+
+   - Input Domain Partitions
+
+   - Syntax
+
+- (why coverage?  what good is it?)
+
+:l2.5improve-testsuite-...
+
+- Operational Abstractions for Coverage
+
+:l3:
+
+- RANDOM TESTING
+
+   - A LOT OF STUPID CAN BE BETTER THAN A LITTLE SMART
+
+:l3.5:
+
+- Feedback & Why It Is Good
+
+:l4:
+
+- More Random Testing
+
+  - Some Problems With Random Testing
+
+:l4.5fse05cute:
+
+- Concolic Testing
+
+:l5:
+
+- More Concolic Testing
+
+- Debugging as Science
+
+:l6:
+
+- Causality
+
+- Fault Localization
+
+- CBMC
+
+:l7:
+
+- Executions, Paths, and States
+
+- Testing Via Model Checking
+
+  - SPIN
+
+:l8:
+
+- More on Model Checking and Testing
+
+:l8.5:
+
+- Even More (We'll Likely Skip Part)
+
+:l9:
+
+- Exhaustive Testing
+
+- CHESS
+
+- Bit of Review
+
+:GrandUnified1,2:
+
+- contains a hyper-review for the ""midterm""

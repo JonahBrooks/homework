@@ -1,0 +1,7 @@
+Thu Feb 23 22:36:45 2012 -0800 & Today I finished my timings, optimized my code by adding more mutexes, and I am currently working on the write up. Then I will be good to turn it it! :) \\ \hline 
+
+Wed Feb 22 22:40:54 2012 -0800 & As far as I know my code now works. I have to impliement the timings and do the write up then I will be done. Today I fixed a few segmentation faults, finished the callback, and fixed some errors. \\ \hline 
+
+Tue Feb 21 22:55:40 2012 -0800 & Created threads, finished bitmap, started callback, implemented malloc (for the first time!), and vague sudo code for the rest of the program. \\ \hline 
+
+Mon Feb 20 20:54:01 2012 -0800 & Made a psuedocode outline of how the code should vaguely look like. Started the program file added in the include statements, created global variables, made function headers, and main header. \\ \hline 

@@ -1,0 +1,184 @@
+My final test program tests three things:
+1) buyCard
+2) cardEffect (adventurer)
+3) drawCard
+
+It goes through the following tests:
+
+--------------------------------------------------------
+
+Test #1: Can every card be bough successfully, given
+	sufficient Buys and coins?
+
+Test #2: Given insufficient coins, will every card FAIL
+	to buy correctly?
+
+Test #3: Given 5 coins, and when attempting to buy a card
+	worth 3, will buyCard fail on the second call?
+	That is, does it decrement your coin count
+	properly?
+
+Test #4: Given two buys, will buyCard only succeed twice?
+	That is, does it check your numBuys?
+
+Test #5: Given a limited supply count, will buyCard
+	decrement the supply of the card you are buying,
+	and fail if the count has reached 0?
+
+Test #6: Given a deck with at least two treasure cards,
+	does the Adventurer have the right effect?
+
+Test #7: Random testing of buyCard.
+
+---------------------------------------------------------
+
+
+Nearly all of my tests were very basic. Here is the code
+for the first test:
+
+
+////////////////////////////////////////////////////////////////////////
+G.numBuys=300;
+printf("Testing whether all cards can be bought successfully...\n");
+                   
+for (n = 0; n < 17; n++) {
+  G.coins=8; //G is the game state
+  checkBuyCardSuccess(n, &G);
+}     
+
+printf ("Test #1 passed\n");
+////////////////////////////////////////////////////////////////////////
+
+
+The checkBuyCardSuccess function simply calls buyCard and asserts that
+its return value was 0 (indicating a successful buy). So, literally all
+this code does make sure the buyCard function doesn't break the program.
+Even the initial checkin of dominion.c passes this test.
+
+A test that might actually fail is this one, for test #4:
+
+
+////////////////////////////////////////////////////////////////////////
+printf("Testing whether buyCard decrements your Buy count...\n");
+G.numBuys=2; //G is the game state
+G.coins=3000;
+checkBuyCardSuccess(2, &G);
+checkBuyCardSuccess(2, &G); 
+checkBuyCardFail(2, &G);
+printf ("Test #4 passed\n");
+////////////////////////////////////////////////////////////////////////
+
+
+The checkBuyCardFail function is simply the opposite of checkBuyCardSuccess;
+I invoke it when I expect the buy to fail. If you attempt to buy three times
+when you only have two buys, the third buy should fail.
+Once again, this is simply a basic functionality test that makes sure buyCard is
+implemented correctly.
+
+
+
+
+
+
+
+
+--gcov--
+
+When I used gcov on my own dominion.c, the result was 32.58%.
+This sounds pretty bad at first, but consider that I didn't actually
+test all that much of dominion.c; I tested three functions, which
+themselves call a few of the other functions. So, I am expecting
+about 30% coverage in a given dominion.c, assuming it has
+buyCard, drawCard and the adventurer card implemented.
+If gcov gave an output of 0.00%, that means an assertion failed
+in my tests. This probably means that my gcov output has limited
+usefulness. See the test results section for more thorough analysis
+of each person's implementation.
+
+
+
+--gcov output--
+
+ellingsn: 0.00% of 520
+
+omaraa: 32.58% of 534
+
+taylodav: 0.00% of 546
+
+lesliew: 0.00% of 539
+
+nicolgl: 0.00% of 597
+
+tangke: 34.05% of 555
+
+nguyenta: 0.00% of 520
+
+shearini: 0.00% of 554
+
+mcconnjo: 31.57% of 548
+
+
+
+--TEST RESULTS--
+
+------------------------------------------------------------------------------------
+|        |
+|	 | Failed at test #2.
+|ellingsn| Looking at the code, this is because buyCard is
+|	 | completely unimplemented.
+|	 |
+------------------------------------------------------------------------------------
+|        |
+|	 | 
+|omaraa  | All tests passed
+|	 |
+|	 |
+------------------------------------------------------------------------------------
+|        |
+|	 | Failed at test #2.
+|taylodav| This is an interesting case. Looking at the code, it works correctly 
+|	 | if you have the means to buy the card (enough coins, the card is in stock,
+|	 | and at least one buy left) but if one of these conditions is not met,
+|	 | the function instead uses the code we had in the original checkin.
+|	 | So it is correctly checking your coin count, but it's not handling that
+|	 | case correctly.
+|	 |
+------------------------------------------------------------------------------------
+|        |
+|	 | Failed at test #2.
+|lesliew | This code is not implemented properly; buyCard should not return 0 on
+|	 | a failed buy. I'm not even sure what his code here is doing.
+|	 |
+------------------------------------------------------------------------------------
+|        |
+|	 | Code does not compile.
+|nicolgl | Looking at the code, it seems that he defined a function outside
+|	 | of dominion.c and tried to use it in dominion.c.
+|	 |
+------------------------------------------------------------------------------------
+|        |
+|	 | All but one test passed.
+|tangke  | Basically, everything was functioning as intended except for one thing:
+|	 | the adventurer card doesn't discard itself after being played.
+|	 | I fixed this myself and afterward all tests passed, allowing me to get
+|	 | gcov output for tangke's code.
+|	 |
+------------------------------------------------------------------------------------
+|        |
+|	 | Failed at test #2.
+|nguyenta| This is because buyCard was unimplemented.
+|	 | 
+|	 | 
+------------------------------------------------------------------------------------
+|        |
+|	 | Failed at test #4.
+|shearini| This is because this buyCard implementation does not decrement your
+|	 | buy count.
+|	 | 
+------------------------------------------------------------------------------------
+|        |
+|	 | 
+|mcconnjo| See above section on "tangke", this case was identical.
+|	 | 
+|	 | 
+------------------------------------------------------------------------------------

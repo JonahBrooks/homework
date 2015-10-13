@@ -1,0 +1,178 @@
+
+------------------------------------------------------------
+ADVENTURER TESTING
+------------------------------------------------------------
+
+INITIAL     : nP1 wT0 nA3 $1 pC148 ddC13 dkC9 hC7 hP2 d$0
+RESULTS
+Majority (5): Failure
+westb       : nP1 wT0 nA2 $0 pC148 ddC13 dkC9 hC7 hP2
+adamsmic    : nP1 wT0 nA2 $0 pC149 ddC22 dkC9 hC6 hP2
+brookjon    : nP1 wT0 nA2 $0 pC148 ddC0 dkC12 hC17 hP2
+Occurrences : 155/500
+
+INITIAL     : nP3 wT2 nA4 $1 pC384 ddC14 dkC18 hC19 hP1 d$5
+RESULTS
+Majority (2): Failure
+westb       : nP3 wT2 nA3 $0 pC384 ddC14 dkC18 hC19 hP1
+adamsmic    : nP3 wT2 nA3 $1 pC385 ddC23 dkC16 hC20 hP1
+murrown     : nP3 wT2 nA3 $4 pC393 ddC14 dkC7 hC21 hP1
+brookjon    : nP3 wT2 nA3 $4 pC384 ddC0 dkC13 hC38 hP1
+kropfb      : nP3 wT2 nA3 $3 pC385 ddC14 dkC7 hC20 hP1
+vanbeeks    : nP3 wT2 nA3 $4 pC384 ddC23 dkC7 hC21 hP1
+Occurrences : 158/500
+
+INITIAL     : nP1 wT0 nA4 $8 pC334 ddC6 dkC10 hC19 hP12 d$1
+RESULTS
+Majority (4): Failure
+westb       : nP1 wT0 nA3 $0 pC334 ddC6 dkC10 hC19 hP12
+adamsmic    : nP1 wT0 nA3 $0 pC335 ddC15 dkC9 hC19 hP12
+brookjon    : nP1 wT0 nA3 $2 pC334 ddC0 dkC5 hC30 hP12
+vanbeeks    : nP1 wT0 nA3 $4 pC334 ddC1999 dkC-1985 hC21 hP12
+Occurrences : 18/500
+
+INITIAL     : nP1 wT0 nA0 $3 pC210 ddC17 dkC9 hC19 hP9 d$1
+RESULTS
+Majority (8): nP1 wT0 nA0 $3 pC210 ddC17 dkC9 hC19 hP9
+Occurrences : 50/500
+
+INITIAL     : nP1 wT0 nA2 $0 pC177 ddC9 dkC19 hC13 hP1 d$3
+RESULTS
+Majority (3): Failure
+westb       : nP1 wT0 nA1 $0 pC177 ddC9 dkC19 hC13 hP1
+adamsmic    : nP1 wT0 nA1 $0 pC178 ddC27 dkC18 hC13 hP1
+murrown     : nP1 wT0 nA1 $5 pC196 ddC0 dkC7 hC15 hP1
+brookjon    : nP1 wT0 nA1 $2 pC177 ddC0 dkC8 hC33 hP1
+kropfb      : nP1 wT0 nA1 $3 pC178 ddC0 dkC7 hC14 hP1
+Occurrences : 113/500
+
+INITIAL     : nP1 wT0 nA7 $7 pC359 ddC17 dkC10 hC6 hP0 d$6
+RESULTS
+Majority (2): nP1 wT0 nA6 $3 pC359 ddC17 dkC8 hC8 hP0
+westb       : nP1 wT0 nA6 $0 pC359 ddC17 dkC10 hC6 hP0
+adamsmic    : nP1 wT0 nA6 $3 pC360 ddC17 dkC8 hC7 hP0
+wheeleri    : Failure
+mcelfrec    : Failure
+brookjon    : nP1 wT0 nA6 $5 pC359 ddC0 dkC16 hC17 hP0
+kropfb      : nP1 wT0 nA6 $0 pC360 ddC17 dkC8 hC7 hP0
+Occurrences : 6/500
+
+Successes out of 500 tests:
+murrown     : 56
+adamsmic    : 50
+brookjon    : 50
+kropfb      : 50
+westb       : 50
+vanbeeks    : 56
+wheeleri    : 50
+mcelfrec    : 50
+
+------------------------------------------------------------
+BUYCARD TESTING
+------------------------------------------------------------
+
+INITIAL     : c15 nP2 wT1 sC4 nB2 $6 dC61
+RESULTS
+Majority (4): c15 nP2 wT1 sC3 nB1 $2 dC62
+westb       : c15 nP2 wT1 sC3 nB2 $6 dC62
+wheeleri    : c15 nP2 wT1 sC4 nB1 $2 dC62
+mcelfrec    : c15 nP2 wT1 sC2 nB1 $2 dC63
+brookjon    : c15 nP2 wT1 sC4 nB1 $6 dC62
+Occurrences : 237/500
+
+INITIAL     : c15 nP1 wT0 sC8 nB0 $3 dC234
+RESULTS
+Majority (6): c15 nP1 wT0 sC8 nB0 $3 dC234
+wheeleri    : c15 nP1 wT0 sC8 nB-1 $-1 dC235
+murrown     : c15 nP1 wT0 sC7 nB-1 $-1 dC235
+Occurrences : 203/500
+
+INITIAL     : c7 nP3 wT0 sC2 nB1 $8 dC280
+RESULTS
+Majority (3): c7 nP3 wT0 sC1 nB0 $2 dC281
+westb       : c7 nP3 wT0 sC1 nB1 $8 dC281
+wheeleri    : c7 nP3 wT0 sC2 nB0 $2 dC281
+mcelfrec    : c7 nP3 wT0 sC0 nB0 $2 dC282
+brookjon    : c7 nP3 wT0 sC2 nB0 $8 dC281
+kropfb      : Failure
+Occurrences : 33/500
+
+INITIAL     : c16 nP3 wT2 sC8 nB0 $4 dC28
+RESULTS
+Majority (4): c16 nP3 wT2 sC8 nB0 $4 dC28
+westb       : c16 nP3 wT2 sC7 nB0 $4 dC29
+wheeleri    : c16 nP3 wT2 sC8 nB-1 $1 dC29
+murrown     : c16 nP3 wT2 sC7 nB-1 $1 dC29
+kropfb      : c16 nP3 wT2 sC7 nB-1 $1 dC29
+Occurrences : 27/500
+
+Successes out of 500 tests:
+murrown     : 270
+adamsmic    : 500
+brookjon    : 230
+kropfb      : 440
+westb       : 203
+vanbeeks    : 500
+wheeleri    : 0
+mcelfrec    : 230
+
+------------------------------------------------------------
+GCOV INFO
+------------------------------------------------------------
+
+File 'murrown.c'
+Lines executed:26.23% of 530
+Branches executed:25.18% of 409
+Taken at least once:18.34% of 409
+Calls executed:11.96% of 92
+murrown.c:creating 'murrown.c.gcov'
+
+File 'adamsmic.c'
+Lines executed:21.19% of 538
+Branches executed:22.52% of 413
+Taken at least once:15.74% of 413
+Calls executed:11.58% of 95
+adamsmic.c:creating 'adamsmic.c.gcov'
+
+File 'brookjon.c'
+Lines executed:23.78% of 534
+Branches executed:24.11% of 419
+Taken at least once:17.66% of 419
+Calls executed:13.68% of 95
+brookjon.c:creating 'brookjon.c.gcov'
+
+File 'kropfb.c'
+Lines executed:34.18% of 550
+Branches executed:29.50% of 417
+Taken at least once:22.06% of 417
+Calls executed:21.43% of 98
+kropfb.c:creating 'kropfb.c.gcov'
+
+File 'westb.c'
+Lines executed:15.72% of 528
+Branches executed:19.80% of 409
+Taken at least once:11.98% of 409
+Calls executed:12.37% of 97
+westb.c:creating 'westb.c.gcov'
+
+File 'vanbeeks.c'
+Lines executed:17.96% of 529
+Branches executed:21.65% of 411
+Taken at least once:14.84% of 411
+Calls executed:9.78% of 92
+vanbeeks.c:creating 'vanbeeks.c.gcov'
+
+File 'wheeleri.c'
+Lines executed:7.77% of 528
+Branches executed:7.82% of 409
+Taken at least once:7.09% of 409
+Calls executed:1.10% of 91
+wheeleri.c:creating 'wheeleri.c.gcov'
+
+File 'mcelfrec.c'
+Lines executed:11.20% of 527
+Branches executed:10.86% of 405
+Taken at least once:9.38% of 405
+Calls executed:5.26% of 95
+mcelfrec.c:creating 'mcelfrec.c.gcov'
+

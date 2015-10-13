@@ -1,0 +1,68 @@
+
+commit 97c7e551acdfb921012939fa4178ac7d0c3fe5dd
+Author: Jonah Brooks <brookjon@kec1130-32.engr.oregonstate.edu>
+Date:   Mon Jan 23 19:01:42 2012 -0800
+
+    One final commit. I changed the initial blocksize to 4, since it takes around a minute for 1 and 2; those data points are, however, represented in my graph.
+
+\vspace{20pt}
+
+commit 853322e78b74d88a12e647d7d3bc60a589832682
+Author: Jonah Brooks <brookjon@kec1130-32.engr.oregonstate.edu>
+Date:   Mon Jan 23 18:55:26 2012 -0800
+
+    Finished all my code (mostly just formatting today) and graphs; making write-up now!
+
+
+\vspace{20pt}
+
+commit eb85fd8542e4b5e8aea0a814a9a551c35fdf20e1
+Author: Jonah Brooks <brookjon@os-class.engr.oregonstate.edu>
+Date:   Sat Jan 21 16:57:15 2012 -0800
+
+    Finished the program and compiled the data. I just need to save the plot, create a makefile, and make a tex write-up.
+
+
+\vfill\break
+
+commit 4976431c4b998dfeacfea79be7b9d3f1ebd8d48e
+Author: Jonah Brooks <brookjon@os-class.engr.oregonstate.edu>
+Date:   Fri Jan 20 18:18:17 2012 -0800
+
+    Almost done. I added timing, loops for different block sizes, and ironed out a few bugs. Still need to store and graph the data, make makefile, and write up.
+
+
+\vspace{20pt}
+
+commit f1da1409d7b47f75c6ae832797a0a1c5b5004e95
+Author: Jonah Brooks <brookjon@os-class.engr.oregonstate.edu>
+Date:   Thu Jan 19 21:58:32 2012 -0800
+
+    Almost done! Added timing and started modifying it to create a graph (data). Finishing tomorrow!
+
+
+\vspace{20pt}
+
+commit 9f17d559b422f3866e33691d4187238eea8a03c2
+Author: Jonah Brooks <brookjon@os-class.engr.oregonstate.edu>
+Date:   Thu Jan 19 19:55:50 2012 -0800
+
+    Finished most of the basic code, started working on time tracking; next up is formatting to the style guide
+
+
+\vspace{20pt}
+
+commit 7012df63d548a3153ddcc588c79b08c2d03c434d
+Author: Jonah Brooks <brookjon@os-class.engr.oregonstate.edu>
+Date:   Wed Jan 18 14:30:18 2012 -0800
+
+    Added arguments to specify input and output files; needs error checking
+
+
+\vspace{20pt}
+
+commit e3a401c4e7f973ae4a1f4df8ce8b43656dcc541b
+Author: Jonah Brooks <brookjon@os-class.engr.oregonstate.edu>
+Date:   Wed Jan 18 14:04:58 2012 -0800
+
+    Initial commit of code and templates; code is mostly functional, but not complete or styled

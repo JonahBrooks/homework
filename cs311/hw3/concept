@@ -1,0 +1,21 @@
+Written on February 11th 2012, well prior of first commit.
+Editted slightly just after my first commit to make it a plain text document
+so I can later import it into a tex document without changing the timestamp.
+
+I'm planning on calculating all the primes less than 2 to the 16th in serial, then 
+starting x threads, each one checking 8 numbers at a time, interleaved.
+I will create an array of chars that will be used as a bitmap for prime status:
+A zero bit will signify non-prime, a one will signify prime.
+Numbers will be checked by calculating for even divisibility on all primes
+up to the square root of the number being checked. If all primes up to that
+point are not divisors of the number being checked, it is flagged as a prime
+and the thread continues on. Once all 8 are checked, it skips forward x number
+of bytes and starts over again. 
+
+Since 2 to the 16th is the square root of the largest number I need to check, 
+all of the primes that will be needed in checking the vast bulk of numbers 
+will have been calculated in serial, so no thread will need to wait on the results
+of any other thread. Since they are working on one byte at a time, they will never
+be accessing the same data sections either. This should greatly lessen any conflicts
+or race conditions between my threads while still performing virtually all the work
+in parallel rather than serial.

@@ -1,0 +1,158 @@
+﻿Emily Dunham
+CS362 Spring 2012
+Final Test Report
+Introduction:
+	The purpose of this project has been to demonstrate familiarity with various testing and debugging frameworks and techniques. For this reason, I have applied diverse testing techniques based on the themes which we discussed in class. I have generally utilized the frameworks recommended in the project-info powerpoint, because they are the most well-tested and mature tools available for applying each testing technique. 
+	Through the course of this project, I have attempted to be as realistic as possible in my approach. In real software engineering, manual testing is avoided in favor of automation. Not only is an automated test suite quicker and easier to run, but it also minimizes the possibility of human error. One example of my automation is that I created a shell script to run gcov on all of my group members and generate a file of the output, rather than the manual “copy their file to your folder, run gcov, copy the next group member's file...” which was suggested in class. 
+	I chose to automate most of my testing using shell scripts rather than a C program because I am more familiar with scripting. Another benefit is that tools such as cbmc are designed to be invoked from the command line, and a shell script uses the exact same command that one would type at the shell. Running a program or script from within a C program is definitely possible, but it's less straightforward and provides another opportunity for the introduction of errors. 
+
+1) The Tests
+1.1) Structure of a test case
+
+Manually written test cases actually constitute a minority of my testing code. The structure of a unit test is: 
+Set up a game state (known good or random, depending on test)
+Copy that state
+Perform a Dominion function on the original state
+Modify the copy of the state in a way that mimics the function's correct behavior
+Verify that the game state and the copy are sufficiently similar
+
+My test scripts for applying various tools to my group's code are even simpler: 
+Get a copy of each group member's dominion.c
+Apply the relevant test(s) and record the results
+Process the results into a more useful or human-readable form
+Clean up any extra files generated during testing
+
+While developing my tests, I mocked the more time-consuming functions such as shuffle. This is because model-checking portions of the test suite don't really know what they're doing with it, and it slows them down a lot. Although testing the complete code base might catch some errors that don't show up anywhere else, it's much too resource-intensive to be worth doing for routine tests. 
+
+1.2) Length of test cases
+
+Manually written test cases are kept as concise as possible, because complicated testing increases the likelihood of errors in the tests themselves. The unit tests are designed to check the bare minimum: they verify that the code touches the cards it should (adding or removing them from the various regions of play) and most importantly doesn't touch cards that it shouldn't (player 1's action should generally not affect player 2's cards, unless the card being played is special). 
+
+1.3) Method for choosing inputs
+
+In some unit tests, inputs were chosen randomly. Inputs to external programs such as cbmc were chosen to balance “give me lots of useful data” with “don't crash my computer with your slowness”. An example of this is when I discovered that testing shuffle with cbmc and unwind=8 is a really really bad idea. It works better to not test shuffle, and to set unwind=2 to catch a most bugs while keeping the test suite running fast.
+
+1.4) Specification method used
+
+Specifications were the most challenging part of this project for me. I developed (and documented in the comments) specifications for each function in the game based on the code that interacted with it, and the rules of Dominion. If more comprehensive specs had been provided for the game, I would have been able to write a larger suite of reliable unit tests. I was not very confident in the accuracy of my “guess from the surrounding code and game rules” specification method, however, so I placed more weight on non-unit-testing approaches than I would have if better specs were provided. 
+
+1.5) How to handle segfaults/crashes
+
+I found that crashes and segfaults were very common during the implementation of new code, and could generally be eliminated by either stepping through the code in gdb or simply printing debug messages frequently then examining the section of code between the final debug message and the one that should have followed it. Newly introduced segfault-causing bugs were generally quite easy to spot and clean up, and generally never made it into my committed code. 
+
+During the more rigorous testing of established code, segfaults are rare and generally only occur when a testing program puts the game into a state which it would ordinarily be almost impossible to reach. These segfaults can often be located using the output of the program that caused them. 
+
+1.5.1) Tools I Used: Valgrind/Memcheck
+	In order to find crashes related to memory errors, I applied Valgrind's Memcheck tool to my playdom program. It accurately detected places where the program interacted with memory invalidly, as this sample output shows: 
+==14127== Invalid read of size 1
+==14127==    at 0x409402F: ____strtol_l_internal (strtol_l.c:298)
+==14127==    by 0x4093DE6: strtol (strtol.c:110)
+==14127==    by 0x4091160: atoi (atoi.c:28)
+==14127==    by 0x8048B32: main (playdom.c:13)
+==14127==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+	It's telling me that on line 13, I attempted to interact with an address that might not be valid memory. However, the heap summary verifies that my program does not have code which could cause a memory leak: 
+==14127== HEAP SUMMARY:
+==14127==     in use at exit: 0 bytes in 0 blocks
+==14127==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==14127== 
+==14127== All heap blocks were freed -- no leaks are possible
+	This is especially important for the Dominion program because if it's being used for strategy testing as the project-info powerpoint says, the code may be run for far longer than it would in a normal game. Memory leak problems that wouldn't show up in a human-played game would be likelier to cause problems when the code is run intensively for a much longer time, as it would be during strategy testing. 
+
+1.6) Development history of the test system
+
+I began by implementing BuyCard and performing some manual testing of the game. This testing revealed a lot of problems with the user interface, but wasn't able to provide much insight into the underlying mechanics of the game. 
+
+I started the test suite with a handful of unit tests that implemented some aspects of random testing. These isolated some basic bugs, but wasn't very good for realistic integration testing or proving the code correct. 
+
+1.7)Areas particularly well tested, areas that have not been thoroughly tested
+      – remaining risks of failure
+The ability of the core files such as dominion.c to work as expected when called by other programs has been tested very thoroughly, because it's a basic premise of my entire test suite. Interaction between different functions has been verified somewhat by random testing and to a greater extent by model checking. 
+
+The least thoroughly tested sections of my project are the user interface and its integration with the core code. Although my initial testing and bug collection focused mainly on the interface, I re-evaluated the project requirements when it seemed like I was trying to fix more about the game's playability than its core mechanics. 
+
+2) The Testing Process
+
+
+2.1) Communications with partners
+
+I'll admit right now, I'm not the best at getting things done early. Since I've been improving my test suite's reliability up until the last minute, I didn't focus a lot on applying it to my partners' code at an early enough time that bug reports would have been useful to them. 
+
+There wasn't as formal a system for bug tracking as one usually encounters in a software project, so I checked 3 separate locations for possible bugs as well as my email: 
+The ticket tracker in Beaversource 
+result: nobody used it at all
+The directory with my onid username in the bug-reports directory
+result: One bug report was filed to me, by Jennifer
+Grepped through the entire bug-reports directory for my username, in case someone mentioned me in a ticket that was saved in their own directory
+result: Only a duplicate copy of the bug report that had also been filed in my own directory
+
+
+2.2) Give some representative examples, show me what a bug report and response looked like
+
+Jennifer's bug report said:
+ “The code compiles without any problems. When testing the buyCard, the numBuys doesn't usually decrease. Also, the coins are not being decreased after a card is bought.”
+
+My response is to split the ticket into the 3 issues it addresses: 
+Prevent regressions to make sure it continues to compile well
+Determine under what circumstances numBuys fails to decrease
+Verify failure to decrement coins, and adjust my own tests to catch it
+
+There are a couple of improvements that would have made the bug report even more useful: 
+Include a date of filing or what revision the code was at during testing
+More detail on how the errors were found, so I can manually cause or duplicate them
+
+Although the revision containing my bug report was committed on 5/18 at 1:41pm, I do not know which version of my code was being tested to find the bug. This isn't a major problem because I didn't have any revisions close to that time, but if I had been making several changes in the previous few days, it would be unclear whether the bug had been fixed in more recent versions. 
+
+If I knew more about how the errors were found, I could confirm that the “numBuys fails to decrease” report is actually a bug. It's possible that my buyCard fails to decrement numBuys when it ought to, but it is also possible that it only fails to decrement when the purchase was unsuccessful. If my buyCard refuses to decrement numBuys when it's asked to purchase an invalid card, then my code could be right and the tester's code might be what's causing the problem. 
+
+2.3) Revisions to tested code (and to tester)
+
+I revised my own tested code frequently when developing it. Some of my more recent revisions to tester have been adding a check to confirm that the number of coins and number of buys get decreased when the buyCard function succeeds. 
+
+2.4) Regression strategy, regression failures discovered
+
+My regression strategy has been to maintain as quick-running a test suite as possible, and re-test after every major change. I discovered several regressions when refactoring buyCard earlier in the term, but fixed them before committing. 
+
+2.5) Quality of code on first testing
+
+It sucked. It compiled with a whole lot of warnings, and completely failed to run at all. As discussed in a previous test report, the failure to run was mainly due to user error and poor documentation, which I subsequently fixed by adding a README. Several critical methods were not implemented at all, such as buyCard. 
+
+2.6) Quality of code when finished
+
+According to the project-info powerpoint, our customer plans to use this software for simulation rather than interactive game play. For these purposes, my tests have verified that the game's core machinery is reliable. 
+
+However, I find that the code base is somewhat misleading because it attempts to have a player interface. I would only put this code into production if I was absolutely certain that it will not be used to play Dominion manually (through the interface), because that portion of the code is untested, might crash or be buggy, and even if it magically manages to run it's a usability engineer's worst nightmare.  
+
+2.7) Lines of code at beginning, when finished
+
+Although I have the cbmc executable in my testing directory which may alter the counts slightly, my fully working dominion with all tests and test outputs contains 18747 lines when finished. The Dominion skeleton with which we were initially provided contains 2124 lines. Without all my output text, my tests and dominion code come to about 2500 lines. 
+
+2.8) Final status of all bugs reported so far (FIXED, WONTFIX, BOGUS…)
+
+The final status of my bugs is that I have FIXED the two pointed out by Jennifer, FIXED myriad smaller bugs that came up during testing through the term, and given up on all of the user interface's myriad issues as WONTFIX because they're irrelevant to the purpose of the project. 
+3) Future Plans
+
+3.1) What would you have done differently, given time
+
+I think it would have been fun to build a testing framework to generate comparative tests for two different implementations of the same code by using their shared header file. It would be useless in the real world, which is why such a framework isn't popularly available, but it would be cool for testing group partners in this class. For example, using nothing but the dominion.h file, one could automatically generate a set of random tests 
+
+3.2) How well did any tools you used work?
+
+I mainly focused my attention on cbmc and memcheck (Valgrind). CBMC is a very cool tool and works much more throughly than the random testing which I also implemented, but Dominion's code is too convoluted and loopy (and with too many random assignments and calls to shuffle, which always chokes cbmc on my laptop) to be able to test efficiently with model checking. 
+
+Memcheck is extremely helpful for finding fundamental memory usage errors that might not propagate up to being visible to the user. It helped me find places where a pointer pointed somewhere it shouldn't, or a piece of memory was malloc'd and then never freed. I found that its output was very easy to read and understand compared to CBMC's, which in turn made the bugs it discovered easier to fix. Although Memcheck is not appropriate for verifying Dominion's higher-level behavior (when I ask to buy an Estate, am I sure I bought an Estate and not a Duchy?) but it allowed me to prove the absence of the type of memory issues which often lead to segfaults and crashes. 
+
+
+3.3) What infrastructure did you develop or did you need
+
+I got really bored with copying group members' projects back and forth and testing them manually, so I built a series of shell scripts to automate the process of testing others' code. They also completely eliminated my problems with typographical errors when entering commands! 
+
+3.4) How useful was automated testing vs. hand unit tests vs. code inspection, in your case?
+
+Hand unit testing for Dominion's more complex cards and advanced behaviors was not feasible for me for most of the term, due to my unfamiliarity with the game. 
+
+I found that testing frameworks such as gcov and cbmc were most useful when I first played with them by hand on my own code to determine the best parameters to use with Dominion, then generalized the parameters that I liked best into a script which would run the same tests on my entire group's code. 
+
+Automated testing allowed me to prove certain claims about my code, such as “it will never have a memory leak”, which would not be possible to verify otherwise. Code inspection was extremely useful during the initial debugging phase, but practically useless for finding new and interesting bugs. 
+
+
+

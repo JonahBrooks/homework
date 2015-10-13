@@ -1,0 +1,6 @@
+Andy Miller
+CS 362
+5/1/2012
+Test Report 1
+
+So far my dominion code seg faults and I have not been able to figure out why.

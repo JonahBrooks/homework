@@ -1,0 +1,85 @@
+TEST REPORT 1
+Nathan Murrow
+May 2, 2012
+
+What follows are the results of my first test report. I tested each person's implementation of buyCard() with random testing. In order to provide useful data to the client, it provides the expected state and the received state in the log. The range of beginning states is relatively limited to what one might expect from a normal, bug-free game. Of course, the random number seed was the same for each person's test. Programs that failed right away have a low percentage of
+coverage and those that persisted but eventually failed have a high coverage. Programs that passed all tests are clearly marked, but the rest of them (7 of 9) show the relevant data.
+
+The algorithm used to generate tests is very similar to the one shown in class for drawCard, except the initial and expected states are prepared with appropriate parameters for the buyCard test.
+
+The expected and received states should be read as follows:
+card numPlayers whoseTurn supplyCount numBuys coins discardCount
+This information should be enough to almost certainly reproduce the conditions that lead to an error and determine what went wrong. I have not reported these bugs to my groupmates but they are free to view in the repository.
+
+adamsmic
+Testing buyCard.
+RANDOM TESTS.
+ALL TESTS OK
+File 'testBuyCard.c'
+Lines executed:82.50% of 40
+
+brookjon
+Testing buyCard.
+RANDOM TESTS.
+No more buys remaining
+Supply exhausted
+Expected: c7 nP2 wT0 sC8 nB6 $1 dC402
+Received: c7 nP2 wT0 sC9 nB6 $7 dC402
+File 'testBuyCard.c'
+Lines executed:95.00% of 40
+
+kropfb
+Testing buyCard.
+RANDOM TESTS.
+You can't afford that card.
+Expected: c3 nP2 wT0 sC1 nB0 $4 dC140
+Received: c3 nP2 wT0 sC1 nB0 $0 dC141
+File 'testBuyCard.c'
+Lines executed:77.50% of 40
+
+westb
+Testing buyCard.
+RANDOM TESTS.
+Can't buy cardAll out of that cardExpected: c7 nP2 wT0 sC8 nB6 $1 dC402
+Received: c7 nP2 wT0 sC8 nB7 $7 dC402
+File 'testBuyCard.c'
+Lines executed:95.00% of 40
+
+vanbeeks
+Testing buyCard.
+RANDOM TESTS.
+Expected: c7 nP2 wT0 sC8 nB6 $1 dC402
+Received: c7 nP2 wT0 sC9 nB6 $1 dC402
+File 'testBuyCard.c'
+Lines executed:95.00% of 40
+
+wheeleri
+Testing buyCard.
+RANDOM TESTS.
+Expected: c3 nP2 wT0 sC1 nB0 $4 dC140
+Received: c3 nP2 wT0 sC1 nB-1 $-4 dC141
+File 'testBuyCard.c'
+Lines executed:77.50% of 40
+
+ericksoi
+bash: ./testdom: No such file or directory
+(did not compile)
+
+mcelfrec
+Testing buyCard.
+RANDOM TESTS.
+Expected: c7 nP2 wT0 sC8 nB6 $1 dC402
+Received: c7 nP2 wT0 sC7 nB6 $1 dC403
+File 'testBuyCard.c'
+Lines executed:95.00% of 40
+
+All OK case:
+Testing buyCard.
+RANDOM TESTS.
+ALL TESTS OK
+File 'testBuyCard.c'
+Lines executed:82.50% of 40
+
+FUTURE PLANS
+I think in addition to "expected" and "received" states, the test reports should also include the initial state. It's easy to infer but it would help regardless. Also, I created very little infrastructure for these reports. In the future I would like to have a robot testing system that will compare the results of each different version to each other. I am very satisfied with the automated testing approach though. I didn't do very much testing by hand because the random tests
+worked out very well. I did inspect my own code thoroughly to verify that the testing algorithm was correct, though, and I made some modifications to the testing algorithm based on the other users (it seems like our interpretations of the specs might differ).

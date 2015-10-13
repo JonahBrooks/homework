@@ -1,0 +1,15 @@
+\documentclass{article}
+
+\title{Dominion Report 1}
+\author{Jeff Olson}
+\begin{document}
+
+
+\centerline{\sc \large Test Report 1 for Dominion Code}
+\vspace{1pc}
+Most of this initial test report was simply setup and preparation for future testing. I wrote a handy shell script to let me run tests quicker and simpler.
+\vspace{1pc}
+As for the actual testing, I made a unit test for buyCard. It covers the bare minimum of what the function should be expected to do. It is difficult though, given the lack of defined behaviour in terms of return values etc.
+
+The first unit test, test\_buycard, checks that you can't buy a card without enough coins, and can with enough coins. The simple act of creating this has sold me on the idea of random testing. Though it seems far more complicated, the idea of creating non-random tests for any considerable amount of situations in a game like Dominion is absurd. My code currently only checks one card, which should be a province. I tested my test code on randb's code. I found at least one error, as well as several errors in my test code. His buyCard implementation is not decrementing the number of buys available upon buying, which I believe is intended behaviour for the function.
+\end{document}
