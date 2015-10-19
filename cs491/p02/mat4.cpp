@@ -4,7 +4,7 @@
 
   // Jonah Brooks
   // CS491
-  // Project 2A
+  // Project 2B
 
 Mat4::Mat4( )
 {
@@ -125,7 +125,6 @@ Mat4::SetRotateX( float deg )
 
   //this->m ???
   this->SetIdentity();
-  printf("deg: %f, D2R: %f, D2R*deg: %f, cos(): %f, sin(): %f\n",deg,D2R,D2R*deg,cos(D2R*deg),sin(D2R*deg));
   this->m[1][1] = cos(D2R*(deg));  this->m[1][2] = -sin(D2R*(deg)); 
   this->m[2][1] = sin(D2R*(deg));  this->m[2][2] = cos(D2R*(deg));  
 }
