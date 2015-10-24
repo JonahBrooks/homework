@@ -6,7 +6,7 @@
 #define SIGN_SHIFT 63
 #define EXP_MASK  0x7ff0000000000000
 #define EXP_SHIFT  52
-#define EXP_BIAS 1022
+#define EXP_BIAS 1023
 #define FRAC_MASK 0x000fffffffffffff
 #define FRAC_SHIFT 0
 
@@ -55,17 +55,20 @@ double myfrexp(double x, int *exp)
 
   double fraction;
   //fraction = (dandi.i & FRAC_MASK) >> FRAC_SHIFT;
-  fraction = (((dandi.c[1] & 0x0f) * 256*7 ) +
+  fraction =  (( 0x10 * 256*7) +
+              ((dandi.c[1] & 0x0f) * 256*7) +
               ((dandi.c[2] & 0xff) * 256*6) +
               ((dandi.c[3] & 0xff) * 256*5) + 
               ((dandi.c[4] & 0xff) * 256*4) + 
               ((dandi.c[5] & 0xff) * 256*3) + 
               ((dandi.c[6] & 0xff) * 256*2) + 
               ((dandi.c[7] & 0xff) * 256*1) );
+  fraction = fraction / 0xfffffffffffff;
   int exponent;
   //exponent = (dandi.i & EXP_MASK) >> EXP_SHIFT;
   exponent = (((dandi.c[0] & 0x7f) << 8) + (dandi.c[1] & 0xf0)) >> 4;
   exponent -= EXP_BIAS;
+  exponent += 1; // Adjust for including the implicit 1 in the fraction
   int sign;
   sign = (dandi.c[0] & 0x80) >> 7;
   //sign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
