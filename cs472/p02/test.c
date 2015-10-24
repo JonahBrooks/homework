@@ -36,12 +36,22 @@ int main(int argc, char *argv)
   f = myfrexp(x,&exp);
   printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);
 
+  x = -M_PI;
+  fr = frexp(x,&expr);
+  f = myfrexp(x,&exp);
+  printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);
+
   x = 1;
   fr = frexp(x,&expr);
   f = myfrexp(x,&exp);
   printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);
 
   x = 1024;
+  fr = frexp(x,&expr);
+  f = myfrexp(x,&exp);
+  printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);
+
+  x = 69105.4022;
   fr = frexp(x,&expr);
   f = myfrexp(x,&exp);
   printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);

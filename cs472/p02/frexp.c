@@ -47,28 +47,27 @@ double myfrexp(double x, int *exp)
     dandi.c[i] = dandi2.c[7-i];
    // dandi.c[i] = dandi2.c[i];
   }
-  for(i = 0; i < 8; i++)
-  {
-    printf("1: %02x\t2: %02x\n",dandi.c[i],dandi2.c[i]);
-  }
+  //for(i = 0; i < 8; i++)
+  //{
+  //  printf("1: %02x\t2: %02x\n",dandi.c[i],dandi2.c[i]);
+  //}
   // Now dandi2 is in system endianness and dandi is reverse of that
 
-  double fraction;
-  //fraction = (dandi.i & FRAC_MASK) >> FRAC_SHIFT;
-  fraction =  (( 0x10 * 256*7) +
-              ((dandi.c[1] & 0x0f) * 256*7) +
-              ((dandi.c[2] & 0xff) * 256*6) +
-              ((dandi.c[3] & 0xff) * 256*5) + 
-              ((dandi.c[4] & 0xff) * 256*4) + 
-              ((dandi.c[5] & 0xff) * 256*3) + 
-              ((dandi.c[6] & 0xff) * 256*2) + 
-              ((dandi.c[7] & 0xff) * 256*1) );
-  fraction = fraction / 0xfffffffffffff;
   int exponent;
   //exponent = (dandi.i & EXP_MASK) >> EXP_SHIFT;
   exponent = (((dandi.c[0] & 0x7f) << 8) + (dandi.c[1] & 0xf0)) >> 4;
   exponent -= EXP_BIAS;
   exponent += 1; // Adjust for including the implicit 1 in the fraction
+  double fraction;
+  //fraction = (dandi.i & FRAC_MASK) >> FRAC_SHIFT;
+  fraction =  (( 0x10 / (double)(2<<4)) +
+              ((dandi.c[1] & 0x0f) / (double)(2<<4)) +
+              ((dandi.c[2] & 0xff) / (double)(2<<12)) +
+              ((dandi.c[3] & 0xff) / (double)(2<<20)) + 
+              ((dandi.c[4] & 0xff) / (double)(2<<28)) + 
+              ((dandi.c[5] & 0xff) / pow(2.0,36.0)) + 
+              ((dandi.c[6] & 0xff) / pow(2.0,44.0)) + 
+              ((dandi.c[7] & 0xff) / pow(2.0,52.0)) );
   int sign;
   sign = (dandi.c[0] & 0x80) >> 7;
   //sign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
