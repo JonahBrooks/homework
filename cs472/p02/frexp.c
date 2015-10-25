@@ -2,6 +2,8 @@
 #include <math.h>
 #include <stdio.h>
 
+// TODO: I'd like to switch things around to use these again...
+
 #define SIGN_MASK 0x8000000000000000
 #define SIGN_SHIFT 63
 #define EXP_MASK  0x7ff0000000000000
@@ -60,6 +62,8 @@ double myfrexp(double x, int *exp)
   exponent += 1; // Adjust for including the implicit 1 in the fraction
   double fraction;
   //fraction = (dandi.i & FRAC_MASK) >> FRAC_SHIFT;
+  //fraction = fraction / pow(2.0,54.0);
+  //fraction += 0.5;
   fraction =  (( 0x10 / (double)(2<<4)) +
               ((dandi.c[1] & 0x0f) / (double)(2<<4)) +
               ((dandi.c[2] & 0xff) / (double)(2<<12)) +
