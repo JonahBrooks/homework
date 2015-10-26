@@ -51,10 +51,16 @@ double fadd(double x, double y)
 
   //rexp += EXP_BIAS-1;
   // TODO: Adjust for situations in which the exponent increased
-  flip(&xfrac);
-  flip(&yfrac);
+  //flip(&xfrac);
+  //flip(&yfrac);
   rfrac = (xfrac + yfrac);
-  flip(&rfrac);
+  if ((rfrac & ((unsigned long int)1 << 53)) == 1) // There was a carry
+  {
+    rexp += 1; 
+    rfrac >> 1;
+  }
+  rfrac = rfrac & FRAC_MASK;
+  //flip(&rfrac);
   // TODO: Figure out rsign
   rsign = xsign;  
 
