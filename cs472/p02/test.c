@@ -75,5 +75,12 @@ int main(int argc, char *argv)
   printf("myfrexp vs frexp:\n  ");
   printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);
 
+  x = 3;
+  fr = frexp(x,&expr);
+  f = myfrexp(x,&exp);
+  extraction(x);
+  printf("myfrexp vs frexp:\n  ");
+  printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);
+
   return 0;
 }
