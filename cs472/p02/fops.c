@@ -115,104 +115,96 @@ double fadd(double x, double y)
 
 double fsub(double x, double y)
 {
+  double toReturn;
+  
   unsigned long int xexp;
   unsigned long int xfrac;
   unsigned long int xsign;
   unsigned long int yexp;
   unsigned long int yfrac;
   unsigned long int ysign;
+  unsigned long int rexp;
+  unsigned long int rfrac;
+  unsigned long int rsign;
 
   dandi.d = x;
   dandi2.d = y;
 
-  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
-  xexp -= EXP_BIAS-1;
-  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
-  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
-  xsign = (xsign) ? -1 : 1;
+  xexp = (dandi.u & EXP_MASK) >> EXP_SHIFT;
+  xfrac = ((dandi.u & FRAC_MASK) >> FRAC_SHIFT);
+  xsign = (dandi.u & SIGN_MASK) >> SIGN_SHIFT;
   
-  yexp = (dandi2.i & EXP_MASK) >> EXP_SHIFT;
-  yexp -= EXP_BIAS-1;
-  yfrac = ((dandi2.i & FRAC_MASK) >> FRAC_SHIFT);
-  ysign = (dandi2.i & SIGN_MASK) >> SIGN_SHIFT;
-  ysign = (ysign) ? -1 : 1;
+  yexp = (dandi2.u & EXP_MASK) >> EXP_SHIFT;
+  yfrac = ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT);
+  ysign = (dandi2.u & SIGN_MASK) >> SIGN_SHIFT;
 
-  return 0.0;
+  // Swap the sign of y
+  dandi2.u = dandi2.u ^ SIGN_MASK;
+  
+  // Then just use fadd() instead of rewriting it all here.
+  return fadd(x,dandi2.d);
 }
 
 double fmul(double x, double y)
 {
+  double toReturn;
+  
   unsigned long int xexp;
   unsigned long int xfrac;
   unsigned long int xsign;
   unsigned long int yexp;
   unsigned long int yfrac;
   unsigned long int ysign;
+  unsigned long int rexp;
+  unsigned long int rfrac;
+  unsigned long int rsign;
 
   dandi.d = x;
   dandi2.d = y;
 
-  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
-  xexp -= EXP_BIAS-1;
-  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
-  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
-  xsign = (xsign) ? -1 : 1;
+  xexp = (dandi.u & EXP_MASK) >> EXP_SHIFT;
+  xfrac = ((dandi.u & FRAC_MASK) >> FRAC_SHIFT);
+  xsign = (dandi.u & SIGN_MASK) >> SIGN_SHIFT;
   
-  yexp = (dandi2.i & EXP_MASK) >> EXP_SHIFT;
-  yexp -= EXP_BIAS-1;
-  yfrac = ((dandi2.i & FRAC_MASK) >> FRAC_SHIFT);
-  ysign = (dandi2.i & SIGN_MASK) >> SIGN_SHIFT;
-  ysign = (ysign) ? -1 : 1;
+  yexp = (dandi2.u & EXP_MASK) >> EXP_SHIFT;
+  yfrac = ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT);
+  ysign = (dandi2.u & SIGN_MASK) >> SIGN_SHIFT;
 
   return 0.0;
 }
 
 double fdiv(double x, double y)
 {
+  double toReturn;
+  
   unsigned long int xexp;
   unsigned long int xfrac;
   unsigned long int xsign;
   unsigned long int yexp;
   unsigned long int yfrac;
   unsigned long int ysign;
+  unsigned long int rexp;
+  unsigned long int rfrac;
+  unsigned long int rsign;
 
   dandi.d = x;
   dandi2.d = y;
 
-  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
-  xexp -= EXP_BIAS-1;
-  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
-  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
-  xsign = (xsign) ? -1 : 1;
+  xexp = (dandi.u & EXP_MASK) >> EXP_SHIFT;
+  xfrac = ((dandi.u & FRAC_MASK) >> FRAC_SHIFT);
+  xsign = (dandi.u & SIGN_MASK) >> SIGN_SHIFT;
   
-  yexp = (dandi2.i & EXP_MASK) >> EXP_SHIFT;
-  yexp -= EXP_BIAS-1;
-  yfrac = ((dandi2.i & FRAC_MASK) >> FRAC_SHIFT);
-  ysign = (dandi2.i & SIGN_MASK) >> SIGN_SHIFT;
-  ysign = (ysign) ? -1 : 1;
+  yexp = (dandi2.u & EXP_MASK) >> EXP_SHIFT;
+  yfrac = ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT);
+  ysign = (dandi2.u & SIGN_MASK) >> SIGN_SHIFT;
 
   return 0.0;
 }
 
 double fsqr(double x)
 {
-  unsigned long int xexp;
-  unsigned long int xfrac;
-  unsigned long int xsign;
-  unsigned long int yexp;
-  unsigned long int yfrac;
-  unsigned long int ysign;
-
-  dandi.d = x;
-
-  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
-  xexp -= EXP_BIAS-1;
-  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
-  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
-  xsign = (xsign) ? -1 : 1;
-  
-
-  return 0.0;
+  // ???
+  return 0.0; // Always guess 0.
 }
 
 void fops()
@@ -246,4 +238,10 @@ void fops()
   x = 3.0;
   y = -7.0;
   printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+  x = 3.0;
+  y = -7.0;
+  printf("fsub(%f,%f) = %f\n\n",x,y,fsub(x,y));
+  x = 3.0;
+  y = 7.0;
+  printf("fsub(%f,%f) = %f\n\n",x,y,fsub(x,y));
 }
