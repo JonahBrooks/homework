@@ -1,5 +1,7 @@
 #include "frexp.h"
 #include "extraction.h"
+#include "fops.h"
+#include "hw2.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -81,6 +83,8 @@ int main(int argc, char *argv)
   extraction(x);
   printf("myfrexp vs frexp:\n  ");
   printf("x:%f\tMyFraction:%f\tMyExp:%d\tTrueFraction:%f\tTrueExp:%d\n",x,f,exp,fr,expr);
+
+  fops();
 
   return 0;
 }

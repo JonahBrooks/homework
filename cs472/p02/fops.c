@@ -1,63 +1,196 @@
-#include "extraction.h"
+#include "fops.h"
+#include "hw2.h"
 #include <math.h>
 #include <stdio.h>
 
-// TODO: I'd like to switch things around to use these again...
-
-#define SIGN_MASK 0x8000000000000000
-#define SIGN_SHIFT 63
-#define EXP_MASK  0x7ff0000000000000
-#define EXP_SHIFT  52
-#define EXP_BIAS 1023
-#define FRAC_MASK 0x000fffffffffffff
-#define FRAC_SHIFT 0
-
-void fops()
+double fadd(double x, double y)
 {
-  int endiflip;
-  // TODO: Set this by some sort of endinness check
-  // Determine whether a conversion between little and big endian needs to happen
-  endiflip = 0; // false
-
-  union dandi_union
-  {
-    double d;
-    long unsigned int u;
-    long int i;
-    unsigned char c[8];
-  } dandi, dandi2;
+  double toReturn;
+  
+  unsigned long int xexp;
+  unsigned long int xfrac;
+  unsigned long int xsign;
+  unsigned long int yexp;
+  unsigned long int yfrac;
+  unsigned long int ysign;
+  unsigned long int rexp;
+  unsigned long int rfrac;
+  unsigned long int rsign;
 
   dandi.d = x;
-  dandi2.d = x;
-  int i;
-  i = 0;
-  if(endiflip)
+  dandi2.d = y;
+
+  xexp = (dandi.u & EXP_MASK) >> EXP_SHIFT;
+  //xexp -= EXP_BIAS-1; // Account for the implicit 1 in the mantissa
+  xfrac = ((dandi.u & FRAC_MASK) >> FRAC_SHIFT);
+  xfrac = xfrac | MANT_MASK; // Add back in the implicit 1 of the mantissa
+  xsign = (dandi.u & SIGN_MASK) >> SIGN_SHIFT;
+  xsign = (xsign) ? -1 : 1;
+  
+  yexp = (dandi2.u & EXP_MASK) >> EXP_SHIFT;
+  //yexp -= EXP_BIAS-1;
+  yfrac = ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT);
+  yfrac = yfrac | MANT_MASK; // Add back in the implicit 1 of the mantissa
+  ysign = (dandi2.u & SIGN_MASK) >> SIGN_SHIFT;
+  ysign = (ysign) ? -1 : 1;
+
+  int expdiff;
+  expdiff = xexp - yexp;
+  if(expdiff < 0)
   {
-    for(i = 0; i < 8; i++)
-    {
-      dandi.c[i] = dandi2.c[7-i];
-      // Now dandi2 is in system endianness and dandi is reverse of that
-    }
+    xfrac = xfrac >> abs(expdiff);
+    xexp = yexp;
+    rexp = yexp;
+  }
+  else
+  {
+    yfrac = yfrac >> abs(expdiff);
+    yexp = xexp;
+    rexp = xexp;
   }
 
-  int exponent;
-  exponent = (dandi.i & EXP_MASK) >> EXP_SHIFT;
-  exponent -= EXP_BIAS;
-  double mantissa;
-  mantissa = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT) / pow(2.0,52);
-  int sign;
-  sign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
-  sign = (sign) ? -1 : 1;
+  //rexp += EXP_BIAS-1;
+  // TODO: Adjust for situations in which the exponent increased
+  flip(&xfrac);
+  flip(&yfrac);
+  rfrac = (xfrac + yfrac);
+  flip(&rfrac);
+  // TODO: Figure out rsign
+  rsign = xsign;  
 
+  toReturn = 0.0;
+  toReturn = ((rsign & SIGN_MASK) << SIGN_SHIFT) | 
+             ((rexp & EXP_MASK) << EXP_SHIFT) | 
+             ((rfrac & FRAC_MASK) << FRAC_SHIFT);
+  flip(&toReturn);
+  dandi2.d = toReturn;
+  printf("x:%lu (0x%016lx)\ny:%lu (0x%016lx)\n",xfrac,xfrac,yfrac,yfrac);
   printf("\nThe double value %f (bit pattern 0x%02x%02x%02x%02x%02x%02x%02x%02x) represents the following:\n",
           dandi2.d, dandi2.c[0], dandi2.c[1], dandi2.c[2], dandi2.c[3], 
           dandi2.c[4], dandi2.c[5], dandi2.c[6], dandi2.c[7]); 
-  printf("sign: %d (0x%lx)\texponent: %d (0x%lx) \tmantissa: %f (0x%lx)\n", 
-          sign, ((dandi2.u & SIGN_MASK) >> SIGN_SHIFT), 
-          exponent, ((dandi2.u & EXP_MASK) >> EXP_SHIFT), 
-          mantissa, ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT));
-  printf("As a long: %ld\n", dandi2.i);
-  printf("As characters: \"%c%c%c%c%c%c%c%c\"\n",
-          dandi2.c[0], dandi2.c[1], dandi2.c[2], dandi2.c[3], 
-          dandi2.c[4], dandi2.c[5], dandi2.c[6], dandi2.c[7]); 
+  printf("sign: %d (0x%lx)\texponent: %lu (0x%lx) \tmantissa: %f (0x%lx)\n", 
+          rsign, ((dandi2.u & SIGN_MASK) >> SIGN_SHIFT), 
+          (rexp-EXP_BIAS+1), ((dandi2.u & EXP_MASK) >> EXP_SHIFT), 
+          ((double)rfrac/pow(2.0,54.0)), ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT));
+
+ // printf("x:%lu (0x%016lx)\ny:%lu (0x%016lx)\n",xfrac,xfrac,yfrac,yfrac);
+
+  return toReturn;
+}
+
+double fsub(double x, double y)
+{
+  unsigned long int xexp;
+  unsigned long int xfrac;
+  unsigned long int xsign;
+  unsigned long int yexp;
+  unsigned long int yfrac;
+  unsigned long int ysign;
+
+  dandi.d = x;
+  dandi2.d = y;
+
+  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
+  xexp -= EXP_BIAS-1;
+  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
+  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
+  xsign = (xsign) ? -1 : 1;
+  
+  yexp = (dandi2.i & EXP_MASK) >> EXP_SHIFT;
+  yexp -= EXP_BIAS-1;
+  yfrac = ((dandi2.i & FRAC_MASK) >> FRAC_SHIFT);
+  ysign = (dandi2.i & SIGN_MASK) >> SIGN_SHIFT;
+  ysign = (ysign) ? -1 : 1;
+
+  return 0.0;
+}
+
+double fmul(double x, double y)
+{
+  unsigned long int xexp;
+  unsigned long int xfrac;
+  unsigned long int xsign;
+  unsigned long int yexp;
+  unsigned long int yfrac;
+  unsigned long int ysign;
+
+  dandi.d = x;
+  dandi2.d = y;
+
+  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
+  xexp -= EXP_BIAS-1;
+  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
+  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
+  xsign = (xsign) ? -1 : 1;
+  
+  yexp = (dandi2.i & EXP_MASK) >> EXP_SHIFT;
+  yexp -= EXP_BIAS-1;
+  yfrac = ((dandi2.i & FRAC_MASK) >> FRAC_SHIFT);
+  ysign = (dandi2.i & SIGN_MASK) >> SIGN_SHIFT;
+  ysign = (ysign) ? -1 : 1;
+
+  return 0.0;
+}
+
+double fdiv(double x, double y)
+{
+  unsigned long int xexp;
+  unsigned long int xfrac;
+  unsigned long int xsign;
+  unsigned long int yexp;
+  unsigned long int yfrac;
+  unsigned long int ysign;
+
+  dandi.d = x;
+  dandi2.d = y;
+
+  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
+  xexp -= EXP_BIAS-1;
+  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
+  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
+  xsign = (xsign) ? -1 : 1;
+  
+  yexp = (dandi2.i & EXP_MASK) >> EXP_SHIFT;
+  yexp -= EXP_BIAS-1;
+  yfrac = ((dandi2.i & FRAC_MASK) >> FRAC_SHIFT);
+  ysign = (dandi2.i & SIGN_MASK) >> SIGN_SHIFT;
+  ysign = (ysign) ? -1 : 1;
+
+  return 0.0;
+}
+
+double fsqr(double x)
+{
+  unsigned long int xexp;
+  unsigned long int xfrac;
+  unsigned long int xsign;
+  unsigned long int yexp;
+  unsigned long int yfrac;
+  unsigned long int ysign;
+
+  dandi.d = x;
+
+  xexp = (dandi.i & EXP_MASK) >> EXP_SHIFT;
+  xexp -= EXP_BIAS-1;
+  xfrac = ((dandi.i & FRAC_MASK) >> FRAC_SHIFT);
+  xsign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
+  xsign = (xsign) ? -1 : 1;
+  
+
+  return 0.0;
+}
+
+void fops()
+{
+  double x;
+  double y;
+  x = 3.0;
+  y = 1.0;
+
+  printf("fadd(%f,%f) = %f\n",x,y,fadd(x,y));
+  unsigned long int z;
+  z = 1;
+  printf("z:%lu\t",z);
+  flip((void*)(&z));
+  printf("s:%lu\n",z);
 }
