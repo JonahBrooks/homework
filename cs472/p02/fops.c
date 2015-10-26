@@ -23,20 +23,18 @@ double fadd(double x, double y)
   xexp = (dandi.u & EXP_MASK) >> EXP_SHIFT;
   //xexp -= EXP_BIAS-1; // Account for the implicit 1 in the mantissa
   xfrac = ((dandi.u & FRAC_MASK) >> FRAC_SHIFT);
-  xfrac = xfrac | MANT_MASK; // Add back in the implicit 1 of the mantissa
   xsign = (dandi.u & SIGN_MASK) >> SIGN_SHIFT;
   xsign = (xsign) ? -1 : 1;
   
   yexp = (dandi2.u & EXP_MASK) >> EXP_SHIFT;
   //yexp -= EXP_BIAS-1;
   yfrac = ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT);
-  yfrac = yfrac | MANT_MASK; // Add back in the implicit 1 of the mantissa
   ysign = (dandi2.u & SIGN_MASK) >> SIGN_SHIFT;
   ysign = (ysign) ? -1 : 1;
 
   int expdiff;
   expdiff = xexp - yexp;
-  if(expdiff < 0)
+  if(xexp < yexp)
   {
     xfrac = xfrac >> abs(expdiff);
     xexp = yexp;
@@ -48,16 +46,19 @@ double fadd(double x, double y)
     yexp = xexp;
     rexp = xexp;
   }
+  xfrac = (xfrac | MANT_MASK)>>1; // Add back in the implicit 1 of the mantissa
+  yfrac = (yfrac | MANT_MASK)>>1; // Add back in the implicit 1 of the mantissa
 
   //rexp += EXP_BIAS-1;
   // TODO: Adjust for situations in which the exponent increased
   //flip(&xfrac);
   //flip(&yfrac);
   rfrac = (xfrac + yfrac);
-  if ((rfrac & ((unsigned long int)1 << 53)) == 1) // There was a carry
+  if ((rfrac & (MANT_MASK)) > 0) // There was a carry
   {
     rexp += 1; 
     rfrac >> 1;
+    printf("\nRawr\n");
   }
   rfrac = rfrac & FRAC_MASK;
   //flip(&rfrac);
@@ -68,9 +69,9 @@ double fadd(double x, double y)
   toReturn = ((rsign & SIGN_MASK) << SIGN_SHIFT) | 
              ((rexp & EXP_MASK) << EXP_SHIFT) | 
              ((rfrac & FRAC_MASK) << FRAC_SHIFT);
-  flip(&toReturn);
+  //flip(&toReturn);
   dandi2.d = toReturn;
-  printf("x:%lu (0x%016lx)\ny:%lu (0x%016lx)\n",xfrac,xfrac,yfrac,yfrac);
+  printf("\n\nx:%lu (0x%016lx)\ny:%lu (0x%016lx)\nx+y:%lu (0x%016lx)",xfrac,xfrac,yfrac,yfrac,rfrac,rfrac);
   printf("\nThe double value %f (bit pattern 0x%02x%02x%02x%02x%02x%02x%02x%02x) represents the following:\n",
           dandi2.d, dandi2.c[0], dandi2.c[1], dandi2.c[2], dandi2.c[3], 
           dandi2.c[4], dandi2.c[5], dandi2.c[6], dandi2.c[7]); 
@@ -79,8 +80,9 @@ double fadd(double x, double y)
           (rexp-EXP_BIAS+1), ((dandi2.u & EXP_MASK) >> EXP_SHIFT), 
           ((double)rfrac/pow(2.0,54.0)), ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT));
 
+  //flip(&toReturn);
  // printf("x:%lu (0x%016lx)\ny:%lu (0x%016lx)\n",xfrac,xfrac,yfrac,yfrac);
-
+  
   return toReturn;
 }
 
@@ -190,8 +192,8 @@ void fops()
 {
   double x;
   double y;
-  x = 3.0;
-  y = 1.0;
+  x = 7.0;
+  y = 3.0;
 
   printf("fadd(%f,%f) = %f\n",x,y,fadd(x,y));
   unsigned long int z;
