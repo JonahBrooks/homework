@@ -2,6 +2,8 @@
 #include "hw2.h"
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 double fadd(double x, double y)
 {
@@ -321,71 +323,112 @@ void fops()
 {
   double x;
   double y;
-  x = 9.0;
-  y = 3.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 9.0;
-  y = 1.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 9.0;
-  y = 23.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 9.0;
-  y = 0.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = -9.0;
-  y = -3.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 9.0;
-  y = -3.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = -9.0;
-  y = 3.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 9.0;
-  y = -1.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 3.0;
-  y = -9.0;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 3.0;
-  y = -9.0;
-  printf("fsub(%f,%f) = %f\n\n",x,y,fsub(x,y));
-  x = 3.0;
-  y = 9.0;
-  printf("fsub(%f,%f) = %f\n\n",x,y,fsub(x,y));
-  x = 1.0;
-  y = 9.0;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
-  x = 9.0;
-  y = 6.0;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
-  x = 3.0;
-  y = 6.0;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
-  x = 1024*1024;
-  y = -(1024*1024);
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 1024*1024;
-  y = -(1024*1024) + 0.5;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 1024*1024;
-  y = -(1024*1024) - .5;
-  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
-  x = 9.5*1024;
-  y = 6.0;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
-  x = 3.0*128;
-  y = -6.5;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
-  x = 128;
-  y = 127;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
-  x = 9;
-  y = 1;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
-  x = 6;
-  y = 3;
-  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 9.0;
+//  y = 3.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 9.0;
+//  y = 1.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 9.0;
+//  y = 23.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 9.0;
+//  y = 0.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = -9.0;
+//  y = -3.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 9.0;
+//  y = -3.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = -9.0;
+//  y = 3.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 9.0;
+//  y = -1.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 3.0;
+//  y = -9.0;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 3.0;
+//  y = -9.0;
+//  printf("fsub(%f,%f) = %f\n\n",x,y,fsub(x,y));
+//  x = 3.0;
+//  y = 9.0;
+//  printf("fsub(%f,%f) = %f\n\n",x,y,fsub(x,y));
+//  x = 1.0;
+//  y = 9.0;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 9.0;
+//  y = 6.0;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 3.0;
+//  y = 6.0;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 1024*1024;
+//  y = -(1024*1024);
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 1024*1024;
+//  y = -(1024*1024) + 0.5;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 1024*1024;
+//  y = -(1024*1024) - .5;
+//  printf("fadd(%f,%f) = %f\n\n",x,y,fadd(x,y));
+//  x = 9.5*1024;
+//  y = 6.0;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 3.0*128;
+//  y = -6.5;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 128;
+//  y = 127;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 9;
+//  y = 1;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+//  x = 6;
+//  y = 3;
+//  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
+
+  srand48((unsigned)time(NULL));
+  int i = 0;
+
+  printf("Testing fadd() with 10 random additions:\n");
+  for (i = 0; i < 10; i++)
+  {
+    x = (double)drand48()*RAND_MAX;
+    y = (double)drand48()*RAND_MAX;
+    printf("\tfadd(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fadd(x,y),(x+y),abs(fadd(x,y)-(x+y)));
+  }
+  printf("Testing fsub() with 10 random additions:\n");
+  for (i = 0; i < 10; i++)
+  {
+    x = (double)drand48()*RAND_MAX;
+    y = (double)drand48()*RAND_MAX;
+    printf("\tfsub(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fsub(x,y),(x-y),abs(fsub(x,y)-(x-y)));
+  }
+  printf("Testing fmul() with 10 random additions:\n");
+  for (i = 0; i < 10; i++)
+  {
+    x = (double)drand48()*sqrt(RAND_MAX);
+    y = (double)drand48()*sqrt(RAND_MAX);
+    printf("\tfmul(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fmul(x,y),(x*y),abs(fmul(x,y)-(x*y)));
+  }
+
+  struct timespec start;
+  struct timespec stop;
+
+  printf("\nTiming fadd(), fsub(), and fmul():\n");
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+  for (i = 0; i < 1000; i++)
+  {
+    x = (double)drand48()*RAND_MAX;
+    y = (double)drand48()*RAND_MAX;
+  }
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &stop);
+  printf("Time for loop: %d\n",(stop.tv_nsec - start.tv_nsec));
+
+  
+
 
 }
