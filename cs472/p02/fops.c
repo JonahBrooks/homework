@@ -398,21 +398,21 @@ void fops()
   {
     x = (double)drand48()*RAND_MAX;
     y = (double)drand48()*RAND_MAX;
-    printf("\tfadd(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fadd(x,y),(x+y),abs(fadd(x,y)-(x+y)));
+    printf("\tfadd(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fadd(x,y),(x+y),fabs(fadd(x,y)-(x+y)));
   }
-  printf("\nTesting fsub() with 10 random additions:\n");
+  printf("\nTesting fsub() with 10 random subtractions:\n");
   for (i = 0; i < 10; i++)
   {
     x = (double)drand48()*RAND_MAX;
     y = (double)drand48()*RAND_MAX;
-    printf("\tfsub(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fsub(x,y),(x-y),abs(fsub(x,y)-(x-y)));
+    printf("\tfsub(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fsub(x,y),(x-y),fabs(fsub(x,y)-(x-y)));
   }
-  printf("\nTesting fmul() with 10 random additions:\n");
+  printf("\nTesting fmul() (which doesn't work) with 10 random multiplications:\n");
   for (i = 0; i < 10; i++)
   {
     x = (double)drand48()*sqrt(RAND_MAX);
     y = (double)drand48()*sqrt(RAND_MAX);
-    printf("\tfmul(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fmul(x,y),(x*y),abs(fmul(x,y)-(x*y)));
+    printf("\tfmul(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fmul(x,y),(x*y),fabs(fmul(x,y)-(x*y)));
   }
 
   struct timespec start;
@@ -488,5 +488,7 @@ void fops()
   theirs = stop.tv_nsec - start.tv_nsec;
 
   printf("\tfmul: %f (nanoseconds per op)\n",(double)(mine-theirs)/n);  
+  printf("\tfdiv: (incomplete) \n");  
+  printf("\tfsqr: (incomplete) \n");  
 
 }
