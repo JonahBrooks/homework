@@ -391,23 +391,23 @@ void fops()
 //  printf("fmul(%f,%f) = %f\n\n",x,y,fmul(x,y));
 
   srand48((unsigned)time(NULL));
-  int i = 0;
+  long i = 0;
 
-  printf("Testing fadd() with 10 random additions:\n");
+  printf("\nTesting fadd() with 10 random additions:\n");
   for (i = 0; i < 10; i++)
   {
     x = (double)drand48()*RAND_MAX;
     y = (double)drand48()*RAND_MAX;
     printf("\tfadd(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fadd(x,y),(x+y),abs(fadd(x,y)-(x+y)));
   }
-  printf("Testing fsub() with 10 random additions:\n");
+  printf("\nTesting fsub() with 10 random additions:\n");
   for (i = 0; i < 10; i++)
   {
     x = (double)drand48()*RAND_MAX;
     y = (double)drand48()*RAND_MAX;
     printf("\tfsub(%f,%f) = %f\t (true value: %f)\t (difference of: %f)\n",x,y,fsub(x,y),(x-y),abs(fsub(x,y)-(x-y)));
   }
-  printf("Testing fmul() with 10 random additions:\n");
+  printf("\nTesting fmul() with 10 random additions:\n");
   for (i = 0; i < 10; i++)
   {
     x = (double)drand48()*sqrt(RAND_MAX);
@@ -417,18 +417,76 @@ void fops()
 
   struct timespec start;
   struct timespec stop;
+  long mine;
+  long theirs;
+  long n = 1024*1024;
 
-  printf("\nTiming fadd(), fsub(), and fmul():\n");
+  printf("\nTiming fadd(), fsub(), and fmul() (difference between software and hardware):\n");
+
   clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
-  for (i = 0; i < 1000; i++)
+  for (i = 0; i < n; i++)
   {
     x = (double)drand48()*RAND_MAX;
     y = (double)drand48()*RAND_MAX;
+    fadd(x,y);
   }
   clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &stop);
-  printf("Time for loop: %d\n",(stop.tv_nsec - start.tv_nsec));
+  mine = stop.tv_nsec - start.tv_nsec;
 
-  
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+  for (i = 0; i < n; i++)
+  {
+    x = (double)drand48()*RAND_MAX;
+    y = (double)drand48()*RAND_MAX;
+    x + y;
+  }
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &stop);
+  theirs = stop.tv_nsec - start.tv_nsec;
 
+  printf("\tfadd: %f (nanoseconds per op)\n",(double)(mine-theirs)/n);  
+
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+  for (i = 0; i < n; i++)
+  {
+    x = (double)drand48()*RAND_MAX;
+    y = (double)drand48()*RAND_MAX;
+    fsub(x,y);
+  }
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &stop);
+  mine = stop.tv_nsec - start.tv_nsec;
+
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+  for (i = 0; i < n; i++)
+  {
+    x = (double)drand48()*RAND_MAX;
+    y = (double)drand48()*RAND_MAX;
+    x - y;
+  }
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &stop);
+  theirs = stop.tv_nsec - start.tv_nsec;
+
+  printf("\tfsub: %f (nanoseconds per op)\n",(double)(mine-theirs)/n);  
+
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+  for (i = 0; i < n; i++)
+  {
+    x = (double)drand48()*sqrt(RAND_MAX);
+    y = (double)drand48()*sqrt(RAND_MAX);
+    fmul(x,y);
+  }
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &stop);
+  mine = stop.tv_nsec - start.tv_nsec;
+
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+  for (i = 0; i < n; i++)
+  {
+    x = (double)drand48()*sqrt(RAND_MAX);
+    y = (double)drand48()*sqrt(RAND_MAX);
+    x * y;
+  }
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &stop);
+  theirs = stop.tv_nsec - start.tv_nsec;
+
+  printf("\tfmul: %f (nanoseconds per op)\n",(double)(mine-theirs)/n);  
 
 }

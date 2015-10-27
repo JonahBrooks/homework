@@ -42,15 +42,15 @@ void extraction(double x)
   sign = (dandi.i & SIGN_MASK) >> SIGN_SHIFT;
   sign = (sign) ? -1 : 1;
 
-  printf("\nThe double value %f (bit pattern 0x%02x%02x%02x%02x%02x%02x%02x%02x) represents the following:\n",
+  printf("\n    The double value %f (bit pattern 0x%02x%02x%02x%02x%02x%02x%02x%02x) represents the following:\n",
           dandi2.d, dandi2.c[0], dandi2.c[1], dandi2.c[2], dandi2.c[3], 
           dandi2.c[4], dandi2.c[5], dandi2.c[6], dandi2.c[7]); 
-  printf("sign: %d (0x%lx)\texponent: %d (0x%lx) \tmantissa: %f (0x%lx)\n", 
+  printf("      sign: %d (0x%lx)\texponent: %d (0x%lx) \tmantissa: %f (0x%lx)\n", 
           sign, ((dandi2.u & SIGN_MASK) >> SIGN_SHIFT), 
           exponent, ((dandi2.u & EXP_MASK) >> EXP_SHIFT), 
           mantissa, ((dandi2.u & FRAC_MASK) >> FRAC_SHIFT));
-  printf("As a long: %ld\n", dandi2.i);
-  printf("As characters: \"%c%c%c%c%c%c%c%c\"\n",
+  printf("    As a long: %ld\n", dandi2.i);
+  printf("    As characters: \"%c%c%c%c%c%c%c%c\"\n",
           dandi2.c[0], dandi2.c[1], dandi2.c[2], dandi2.c[3], 
           dandi2.c[4], dandi2.c[5], dandi2.c[6], dandi2.c[7]); 
 }

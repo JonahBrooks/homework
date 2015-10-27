@@ -2,4 +2,4 @@ CC=gcc
 CFLAGS=-lm
 
 make: test.c
-	gcc *.c -lm -lrt -o test && ./test
+	gcc *.c -lm -lrt -O0 -o test && ./test
