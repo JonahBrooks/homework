@@ -1,0 +1,82 @@
+\documentclass[letterpaper,10pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Jonah Brooks}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' paging},
+  pdftitle = {CS 472 Homework 3: Paging},
+  pdfsubject = {CS 472 Homework 3},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+
+\section{1}
+32 bit addressing with 4KB pages require 12 bits for page offset, which leaves
+20 bits for the physical page number. Therefore there are 2\textsuperscript{20} entries with 10 bytes
+each. This results in 2\textsuperscript{20} * 10 = 10MB of memory.  
+
+\section{2}
+64 bit addressing with 4KB pages require 12 bits for page offset, which leaves
+52 bits for the physical page number. Therefore there are 2\textsuperscript{52} entries with 10 bytes
+each. This results in 2\textsuperscript{52} * 10 = 40PB of memory.  
+
+\section{3}
+32 bit addressing with 8KB pages require 13 bits for page offset, which leaves
+19 bits for the physical page number. Therefore there are 2\textsuperscript{19} entries with 10 bytes
+each. This results in 2\textsuperscript{19} * 10 = 5120KB (5.12MB) of memory.  
+
+\section{4}
+64 bit addressing with 8KB pages require 13 bits for page offset, which leaves
+51 bits for the physical page number. Therefore there are 2\textsuperscript{51} entries with 10 bytes
+each. This results in 2\textsuperscript{51} * 10 = 20PB of memory.  
+
+\section{5}
+Pipelining is the process of allowing multiple operations to execute (in part) at once by each
+utilizing different sections of the pipeline. For instance, one instruction is decoded in the first
+clock cycle. In the next clock cycle, that instruction begins the next step of execution while a second
+instruction is being fetched and decoded. This is useful because it allows more of the processor to be
+used at once, resulting in more instructions being completed per clock cycle (instead of each one 
+having to wait for the previous instruction to finish). 
+
+\section{6}
+
+\section{7}
+Pipeline hazards are when something complicates the pipelining system. For instance, if one instruction
+requires the output of the one before it, or if two instructions needing to read/write from the same
+register at the same time. These can be dealt with by out of order execution or added delays in certain
+stages to sync up output between instructions. Other hazards, such as branches in the code rendering
+previously partially computer instructions obsolete, can only be partially avoided by branch prediction
+or limiting the pipeline depth. 
+
+\end{document}
