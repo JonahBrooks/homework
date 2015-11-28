@@ -1,0 +1,18 @@
+TODO: Make this a tex file
+
+Summary of paper 1:
+
+This paper focuses on how to optimize code for cache use. 
+It cites the increasing disparity between CPU speeds and memory access speeds as an important reason to optimize one's code for cache use.
+This is especially the case in consoles, where the cache size and performance don't increase between generations, so all increase in speed must come from optimization.
+Numerous methods of optimization were covered for both data and code memory.
+For code cache, the author suggested restructuring code to increase hit rate, as well as avoiding unrolled loops, in-line macros, and object oriented programming.
+For data cache, many more suggestions were made, including ways of organizing structures to optimize for locality, 
+ways of prefetching and preloading to increase hit rate, and ways of arranging data to account for line size in cache.
+Many methods for analyzing cache usage were also given, including using functions to count data access rates, using gcc compiler options, or using commercial products designed for that purpose.
+The remainder of the paper discussed aliasing, how it can complicate the optimization process, and how to avoid those complications.
+
+Summary of paper 2:
+
+117 pages. My GRE is scheduled for 2 days before this assignment is due, and I am not a quick reader. 
+Unfortunately I'm going to have to prioritize my GRE and hope to get back to this.
