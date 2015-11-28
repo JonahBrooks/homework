@@ -1,0 +1,103 @@
+\documentclass[letterpaper,10pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Jonah Brooks}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' cache lines},
+  pdftitle = {CS 472 Homework \item Cache},
+  pdfsubject = {CS 472 Homework 4},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+
+Jonah Brooks
+
+CS472 Homework 4
+
+\section*{Part 1: Paper Summaries}
+
+\subsection*{Paper 1}
+
+This paper focuses on how to optimize code for cache use.
+It cites the increasing disparity between CPU speeds and memory access speeds as an important reason to optimize one's code for cache use.
+This is especially the case in consoles, where the cache size and performance don't increase between generations, so all increase in speed must come from optimization.
+Numerous methods of optimization were covered for both data and code memory.
+For code cache, the author suggested restructuring code to increase hit rate, as well as avoiding unrolled loops, in-line macros, and object oriented programming.
+For data cache, many more suggestions were made, including ways of organizing structures to optimize for locality,
+ways of prefetching and preloading to increase hit rate, and ways of arranging data to account for line size in cache.
+Many methods for analyzing cache usage were also given, including using functions to count data access rates, using gcc compiler options, or using commercial products designed for that purpose.
+The remainder of the paper discussed aliasing, how it can complicate the optimization process, and how to avoid those complications.
+
+\subsection*{Paper 2}
+
+This paper delves into many topics related to computer memory.
+It examines memory hierarchy, structure, and read/write access efficiency of many types of computer memory.
+
+The section I found most relevant to this assignment was 3.3.2, which discussed methods of measuring the effects of caching.
+In this section, the author uses a list of data elements linked together, either randomly or sequentially, using pointers.
+This list is then walked using said pointers and monitors the number of clock cycles it takes it takes to access.
+The author used this method to create graphs depicting the results.
+Areas with large numbers of cycles indicate a cache miss, while small numbers of cycles indicate a cache hit.
+The different levels, and sizes, of cache are determined by observing the number of cycles needed on hits for elements in various sizes of working sets.
+As the size of the total data set goes beyond the size of a smaller level of cache, the cycles to access the data go up due to them being in a slower level of cache.
+The author also notes the effects of automatic prefetching done by the CPU, and how the speed increase can be seen in the graphs.
+This effect is exasperated when the size of each element increases, as prefetching a line ahead retrieves less data and/or fits less data in the current level of cache.
+
+The author also repeats this test after randomizing the order of the pointers to the data.
+This causes a number of interesting effects and differences to the previous test.
+As the data access is randomized, the CPU's ability to prefetch the next line becomes extremely dependent on the size of the data set;
+if the full data set does not fit in a small number of cache lines, the prefetcher will seldom succeed in guessing which line to pull next.
+This actually slows the access down more than if the prefetcher weren't trying at all.
+
+\section*{Part 2: Programming Implementation}
+
+I, unfortunately, will not be able to implement this right now. 
+My GRE is scheduled for just before this assignment is due, and I'm not sure I'll have time to come back to this before then.
+If I were to implement it, however, I would follow the approach outlined in section 3.3.2 of the second paper.
+I would create a linked list of a variable length containing elements of a uniform (but modifiable) size.
+I would then traverse the linked list, accessing the data in each node and noting the number of clock cycles that read took.
+I would store the average (or better yet, mean) number of clock cycles needed to access an element in a list of that size, then increase the size of the list.
+Repeating this process for various data set sizes (lengths of the list) would allow me to plot the mean access time in cycles for each size of data set.
+As in the paper, this should show a number of distinct plateaus.
+The data set size in which each plateau ends is roughly the size of the cache level that plateau represents, and the number of plateaus would be the number of levels of cache (plus one for main memory).
+
+I apologize for not writing the code for this.
+I realize this will (probably heavily) impact my grade for this assignment, but I need to make sure I do my best on the GRE as this is the last chance I have to retake it before application deadlines.
+
+\section*{Part 3 and 4: Endian-Neutral Code}
+
+make all should compile both programs and output the executables as out\_part3 and out\_part4.
+Running them should output 1234 on any system.
+
+\end{document}
