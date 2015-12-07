@@ -1,0 +1,107 @@
+Jonah Brooks
+B
+CS472
+Final Report
+
+Section 1: Introduction and History
+[http://people.cs.pitt.edu/~alanjawi/history.html] 1
+
+The PowerPC architecture was originally designed by Apple, IBM, and Motorola
+(sometimes collectively referred to as AIM) in 1990. The main goal was to
+optimize the existing POWER architecture while reducing its cost. This
+endeavor involved many changes from the original POWER architecture, including
+support for out of order execution, more streamlined compound instructions, as
+well as numerous differences in branch handling. (1)
+
+
+Section 2: Instruction set design (is it RISC/CISC, what addressing modes are offered, how long are addresses, what's the minimum addressable unit in memory, etc.)
+[https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/Assembler/050-PowerPC_Addressing_Modes_and_Assembler_Instructions/ppc_instructions.html]
+2
+[ftp://www.cs.uregina.ca/pub/class/301/ARM-addressing/lecture.html] 3
+[http://physinfo.ulb.ac.be/divers_html/powerpc_programming_info/intro_to_ppc/ppc3_software2.html]
+4
+[http://physinfo.ulb.ac.be/divers_html/powerpc_programming_info/intro_to_ppc/ppc3_software1.html#Single-word
+instructions] 5
+
+The original POWER architecture upon which PowerPC was based was a RISC
+architecture. In order to maintain support for software designed for those
+systems, the PowerPC also adopted a RISC architecture of its own. The
+inclusion of somewhat more complex compound instructions, such as an
+instruction to calculate an effective address during a load and store, added a
+few CISC-like elements, but the architecture as a whole remained RISC based.
+(1)
+
+This is partially shown in the fact that PowerPC systems use only a register
+plus displacement addressing mode for instructions and data (2,4), as well as
+an index based addressing mode for data (4). Even other RISC architectures typically allow for more addressing modes, such as ARM's 10 different modes. (3)
+
+Each PowerPC instruction, including any operands used in the instruction, fits
+into a single word. This allows the fetch and decoding steps to be
+streamlined, as every instruction will occupy the same easily accessible size.
+(5) This is largely the same way ARM does it, with each instruction taking
+exactly one word. (3)
+
+
+Section 3: Datapath design (how many registers, is it single-cycle, multi-cycle, pipelined, is microcode used, etc.)
+[http://aixroot.blogspot.com/2010/11/most-frequently-used-registers.html] 6
+[http://www.liquisearch.com/powerpc_g4/powerpc_7450] 7
+[http://people.cs.pitt.edu/~alanjawi/p620.html] 8
+[http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0338g/I1002919.html]
+9
+
+PowerPC has 32 general purpose registers, 32 floating point registers, as well
+as numerous special purpose registers. (6) This is markedly different from
+ARM, which has only 16 general purpose registers visible to the programmer. (3)
+
+The various PowerPC chips handle pipelining slightly differently, ranging from
+4 to 7 stages. (7) The PowerPC 620, for instance, has 5 primary stages of
+pipelining: Fetch, Dispatch, Execute, Complete, and Writeback, (8) with some
+of those stages having their own smaller pipelines depending on data and
+instruction types. The ARM architecture on the
+other hand has 9 stages (9) (also the slides from class), with Fetch and
+Execute broken up into 3 and 4 stages each, respectively.
+
+Section 4: Memory subsystem (what are the memory limits, are there caches, how is virtual memory supported by the hardware, etc)
+[http://www.freescale.com/files/32bit/doc/white_paper/POWRPCARCPRMRM.pdf] 10
+[http://www.anandtech.com/show/1702/2] 11
+[http://www.design-reuse.com/articles/11580/architecture-and-implementation-of-the-arm-cortex-a8-microprocessor.html] 12
+
+Virtual memory is handled in PowerPC by hashing virtual memory addresses
+created using Process ID and other MMU registers, and
+concatenating the hash with the contents of a special purpose register
+(specifically the SDR1 register). (10) Some implementations use the 8th MMU
+assist register (MAS7) to allow for virtual addresses of greater than 32 bits. 
+
+Cache levels and size vary somewhat by implementation. The IBM PowerPC 970FX,
+for instance, has a 32KB L1 data cache, a 64KB L1 instruction cache, and a
+512KB L2 cache. (11) The cache levels vary between ARM implementations as
+well, but are generally around this level. The ARM based Cortex-8, for
+instance, has 16KB or 32KB for both L1 data and L1 instruction cache, and 64KB
+to 2MB of L2 cache. (12)
+
+Section 5: Other HPC focused characteristics in this system
+[http://www.top500.org/lists/2015/11/] 13
+[http://arstechnica.com/gadgets/2011/08/ibms-new-transactional-memory-make-or-break-time-for-multithreaded-revolution/] 14
+
+PowerPC based systems have been a staple at the top of the worlds most
+powerful supercomputers for many years. (13) The Blue Gene line of
+supercomputing processors, for instance, are based on the PowerPC architecture
+and have hardware support for transactional memory in addition to specialized
+FPUs. (14)
+
+
+Section 6: An explanation of how the features of this system might boost performance.
+
+PowerPC may not have much of a hold in the consumer electronics industry at the moment,
+but there are aspects of its design that can provide a nice boost to performance in some
+use cases. As mentioned earlier, PowerPC has an interesting set of instructions, many of which
+are capable of doing a lot in a single CPU cycle. For projects in which those instructions are of use,
+PowerPC can do more per instruction than similar RISC systems. Unfortunately, PowerPC systems typically
+have a lower instructions per cycle ratio than other similar systems, so the gain is largely lost unless
+those optimized instructions are a large portion of the code.
+
+Another way in which PowerPC can offer a boost that many other architectures cannot is in its extensibility.
+This, as well as how useful it can be, is shown in the Blue Gene systems that extend PowerPC with transactional memory
+support and enhanced floating point processing. This allows PowerPC based chips to cater especially well to certain
+use cases.  
+

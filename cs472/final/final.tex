@@ -1,0 +1,101 @@
+%Jonah Brooks, CS472 Final Paper
+\documentclass{article}
+\usepackage{url}
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{final.bib}
+\begin{document}
+
+\begin{flushright}
+Jonah Brooks
+
+CS472
+
+Final Report
+\end{flushright}
+
+\section*{1: Introduction and History}
+
+The PowerPC architecture was originally designed by Apple, IBM, and Motorola
+(sometimes collectively referred to as AIM) in 1990. The main goal was to
+optimize the existing POWER architecture while reducing its cost. This
+endeavor involved many changes from the original POWER architecture, including
+support for out of order execution, more streamlined compound instructions, as
+well as numerous differences in branch handling. \cite{1}
+
+\section*{2: Instruction set design}
+
+The original POWER architecture upon which PowerPC was based was a RISC
+architecture. In order to maintain support for software designed for those
+systems, the PowerPC also adopted a RISC architecture of its own. The
+inclusion of somewhat more complex compound instructions, such as an
+instruction to calculate an effective address during a load and store, added a
+few CISC-like elements, but the architecture as a whole remained RISC based.
+\cite{1}
+
+This is partially shown in the fact that PowerPC systems use only a register
+plus displacement addressing mode for instructions and data \cite{2}, as well as
+an index based addressing mode for data \cite{4}. 
+Even other RISC architectures typically allow for more addressing modes, such as ARM's 10 different modes. \cite{3}
+
+Each PowerPC instruction, including any operands used in the instruction, fits
+into a single word. This allows the fetch and decoding steps to be
+streamlined, as every instruction will occupy the same easily accessible size.
+\cite{5} This is largely the same way ARM does it, with each instruction taking
+exactly one word. \cite{3}
+
+
+\section*{3: Datapath design}
+
+PowerPC has 32 general purpose registers, 32 floating point registers, as well
+as numerous special purpose registers. \cite{6} This is markedly different from
+ARM, which has only 16 general purpose registers visible to the programmer. \cite{3}
+
+The various PowerPC chips handle pipelining slightly differently, ranging from
+4 to 7 stages. \cite{7} The PowerPC 620, for instance, has 5 primary stages of
+pipelining: Fetch, Dispatch, Execute, Complete, and Writeback, \cite{8} with some
+of those stages having their own smaller pipelines depending on data and
+instruction types. The ARM architecture on the
+other hand has 9 stages \cite{9}, with Fetch and
+Execute broken up into 3 and 4 stages each, respectively.
+
+\section*{4: Memory subsystem}
+
+Virtual memory is handled in PowerPC by hashing virtual memory addresses
+created using Process ID and other MMU registers, and
+concatenating the hash with the contents of a special purpose register
+(specifically the SDR1 register). \cite{10} Some implementations use the 8th MMU
+assist register (MAS7) to allow for virtual addresses of greater than 32 bits. 
+
+Cache levels and size vary somewhat by implementation. The IBM PowerPC 970FX,
+for instance, has a 32KB L1 data cache, a 64KB L1 instruction cache, and a
+512KB L2 cache. \cite{11} The cache levels vary between ARM implementations as
+well, but are generally around this level. The ARM based Cortex-8, for
+instance, has 16KB or 32KB for both L1 data and L1 instruction cache, and 64KB
+to 2MB of L2 cache. \cite{12}
+
+\section*{5: Other HPC focused characteristics in this system}
+
+PowerPC based systems have been a staple at the top of the worlds most
+powerful supercomputers for many years. \cite{13} The Blue Gene line of
+supercomputing processors, for instance, are based on the PowerPC architecture
+and have hardware support for transactional memory in addition to specialized
+FPUs. \cite{14}
+
+\section*{6: An explanation of how the features of this system might boost performance.}
+
+PowerPC may not have much of a hold in the consumer electronics industry at the moment,
+but there are aspects of its design that can provide a nice boost to performance in some
+use cases. As mentioned earlier, PowerPC has an interesting set of instructions, many of which
+are capable of doing a lot in a single CPU cycle. For projects in which those instructions are of use,
+PowerPC can do more per instruction than similar RISC systems. Unfortunately, PowerPC systems typically
+have a lower instructions per cycle ratio than other similar systems, so the gain is largely lost unless
+those optimized instructions are a large portion of the code.
+
+Another way in which PowerPC can offer a boost that many other architectures cannot is in its extensibility.
+This, as well as how useful it can be, is shown in the Blue Gene systems that extend PowerPC with transactional memory
+support and enhanced floating point processing. This allows PowerPC based chips to cater especially well to certain
+use cases.  
+
+\section*{Bibliography}
+\printbibliography
+\end{document}
