@@ -1,0 +1,39 @@
+CS 480 HW1 Report
+Last Name:
+First Name:
+ONID login:
+
+Ex1:
+
+
+
+Ex2: Answer the following questions:
+
+* Which features did you successfully implement?
+
+* Which features did you attempt but not fully succeeded at?
+
+* What did you learn from this HW? (be brief)
+
+
+Ex3:
+
+C code (very short):
+
+
+Assembly code (only the main function) with your comments:
+
+
+Debriefing questions:
+
+1. Approximately how many hours did you spend on this assignment?
+
+2. Would you rate it as easy, moderate, or difficult?
+
+3. Did you work on it mostly alone, or mostly with other people?
+   Note: Only high-level discussions are allowed. 
+         Include the names of the people you discussed with.
+
+4. How deeply do you feel you understand the material it covers (0%–100%)? 
+
+5. Any other comments (on the instruction)?
