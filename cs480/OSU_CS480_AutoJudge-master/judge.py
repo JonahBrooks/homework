@@ -28,7 +28,7 @@ def run(code, inputfile, outputfile, hwname):
     
     if result_run == 0:
         if hwname == "hw1":
-            command_compare = "diff test.out_c "+outputfile
+            command_compare = "diff -Z test.out_c "+outputfile
         else:
             ## TODO: may change command_compare for future homworks
             ## like: ignoring blank lines, etc..
