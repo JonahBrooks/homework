@@ -1,39 +1,89 @@
 CS 480 HW1 Report
-Last Name:
-First Name:
-ONID login:
+Last Name: Brooks
+First Name: Jonah
+ONID login: brookjon
 
 Ex1:
 
+Defining name and decint for the cfg:
 
+name : [A-Za-z_]+[A-Za-z0-9_]* AND NOT {member of set} KEYWORDS
+decint : [0-9]+
 
 Ex2: Answer the following questions:
 
 * Which features did you successfully implement?
+All of the ones listed in the P_1 cfg, I think.
 
 * Which features did you attempt but not fully succeeded at?
+None, although I think my code might break in certain edge cases in for loops.
 
 * What did you learn from this HW? (be brief)
+A great deal about the specific nature of python, especially in how it differs from C.
 
 
 Ex3:
 
 C code (very short):
+int main()
+{
+  int a, b;
+  b = 1;
+  for(a = 0; a < 2; a++)
+  {
+    --b;
+  }
+  return 0;
+}
 
 
 Assembly code (only the main function) with your comments:
-
+00000000004004f0 <main>:
+  4004f0: 55                    push   %rbp
+  4004f1: 48 89 e5              mov    %rsp,%rbp
+  4004f4: c7 45 fc 00 00 00 00  movl   $0x0,-0x4(%rbp)   # set ??? to 0
+  4004fb: c7 45 f4 01 00 00 00  movl   $0x1,-0xc(%rbp)   # set b = 1
+  400502: c7 45 f8 00 00 00 00  movl   $0x0,-0x8(%rbp)   # set a = 0
+  400509: 81 7d f8 02 00 00 00  cmpl   $0x2,-0x8(%rbp)   # compare a to 2
+  400510: 0f 8d 1b 00 00 00     jge    400531 <main+0x41># jump out of for if a >= 2
+  400516: 8b 45 f4              mov    -0xc(%rbp),%eax   # move b into eax
+  400519: 05 ff ff ff ff        add    $0xffffffff,%eax  # --b, by adding -1
+  40051e: 89 45 f4              mov    %eax,-0xc(%rbp)   # store b-1 back where it goes
+  400521: 8b 45 f8              mov    -0x8(%rbp),%eax   # move a to eax
+  400524: 05 01 00 00 00        add    $0x1,%eax         # add 1 to a
+  400529: 89 45 f8              mov    %eax,-0x8(%rbp)   # put a+1 back where it goes
+  40052c: e9 d8 ff ff ff        jmpq   400509 <main+0x19># jump to compare again
+  400531: b8 00 00 00 00        mov    $0x0,%eax         # put return value (0) in eax
+  400536: 5d                    pop    %rbp              # pop rbp to prevent clobbering it 
+  400537: c3                    retq                     # return from function 
+  400538: 0f 1f 84 00 00 00 00  nopl   0x0(%rax,%rax,1)
+  40053f: 00
 
 Debriefing questions:
 
 1. Approximately how many hours did you spend on this assignment?
 
+  I'm not sure. Maybe 10 or so in total.
+
 2. Would you rate it as easy, moderate, or difficult?
+
+  Moderate. The first 10% of understanding how everything works was a bit tough,
+the last 10% of covering edge cases was tough, the middle 80% was easy and fun though.
 
 3. Did you work on it mostly alone, or mostly with other people?
    Note: Only high-level discussions are allowed. 
          Include the names of the people you discussed with.
+  
+  Entirely alone.
 
 4. How deeply do you feel you understand the material it covers (0%–100%)? 
 
+  99% I'm not sure I could rewrite it from scratch without the template provided,
+but I understand how it all works and how to implement new features.
+
 5. Any other comments (on the instruction)?
+
+  I really enjoyed this assignment. It was a lot of fun, I learned a lot, and
+I'm looking forward to the next one. (P.S. Thank you for using Python and C. I
+feel I learned a lot more about the topic material due to understanding the languages
+being used.)
