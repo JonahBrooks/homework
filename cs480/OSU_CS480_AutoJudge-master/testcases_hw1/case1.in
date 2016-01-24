@@ -1,3 +1,0 @@
-for i in range(10): apple = i
-print i
-print apple

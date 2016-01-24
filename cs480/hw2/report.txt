@@ -1,0 +1,69 @@
+CS 480 HW2 Report
+Last Name:
+First Name:
+ONID login:
+
+Ex1: 
+
+Which features (in P_2 \ P_1) did you successfully implemented?
+
+
+
+Which features (in P_2 \ P_1) did you attempt but failed? 
+(remember to comment out those lines so that your program still runs...)
+
+
+
+
+
+
+Ex2: (Extra Credit)
+     How did you implement this checking, if you succeeded at it?
+
+
+Ex3:
+
+(a) What are the command-line commands you used (including C compiling)?
+
+
+
+(b) Include your very short but kinda "pathetic" Python code 
+
+
+
+
+    and the most important lines 
+    from the resulting Cython translation, with your key comments.
+
+
+
+
+
+(c) What are the most striking differences you noticed between 
+    the Cython solution and your solution? 
+	 
+
+
+
+
+(d) [EXTRA CREDIT, 1 pt)
+    List some rather basic Python features that Cython can not handle.
+
+
+
+
+
+
+Debriefing questions:
+
+1. Approximately how many hours did you spend on this assignment?
+
+2. Would you rate it as easy, moderate, or difficult?
+
+3. Did you work on it mostly alone, or mostly with other people?
+   Note: Only high-level discussions are allowed. 
+         Include the names of the people you discussed with.
+
+4. How deeply do you feel you understand the material it covers (0%–100%)? 
+
+5. Any other comments (on the instruction)?

@@ -1,3 +1,0 @@
-limit=10
-for i in range(limit): limit = 1000
-print i
