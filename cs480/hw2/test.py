@@ -1,9 +1,4 @@
-x = 3
-y = 4+x
-x = (2+1)
-print -x+y
-i = 5
-for i in range(x+y): print i+x, i
-s = 0
-for j in range(10): s = s+j; s = 2
-print s, j, y
+False = True
+True = False
+if True: print False
+if False: print False

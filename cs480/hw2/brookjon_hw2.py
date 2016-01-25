@@ -8,7 +8,7 @@ __author__ = "Jonah Brooks"
 '''Implements the P-2 cfg defined as follows:
    program : module
    module : stmt+
-[]   stmt : (simple_stmt | if_stmt | for_stmt) NEWLINE
+**   stmt : (simple_stmt | if_stmt | for_stmt) NEWLINE
 
 **   simple_stmt : "print" expr ("," expr)*
                | int_name "=" int_expr
@@ -16,14 +16,14 @@ __author__ = "Jonah Brooks"
 
 **   expr : int_expr | bool_expr
 
-[]   if_stmt : "if" bool_expr ":" (simple_stmts | suite)
+**   if_stmt : "if" bool_expr ":" (simple_stmts | suite)
 
 **   for_stmt : "for" name "in" "range" "(" int_expr ")" ":" (simple_stmts | suite)
 
 **   simple_stmts : simple_stmt (";" simple_stmt)+
 **   suite : NEWLINE INDENT stmt+ DEDENT
 
-[]   int_expr : int_name
+**   int_expr : int_name
             | decint
             | "-" int_expr
             | int_expr "+" int_expr
@@ -49,7 +49,7 @@ import ast # ast.parse, ast.dump
 from ast import *                
 
 
-prelude = {} # Set of format {'variable' = 'type', etc}
+prelude = {'True': 'bool', 'False': 'bool'} # Set of format {'variable' = 'type', etc}
 first_pass = True
 
 def generate_c(n):
@@ -68,12 +68,12 @@ def generate_c(n):
                      | "False"
                      | "(" bool_expr "if" bool_expr "else" bool_expr ")"   [UPDATE]
       '''
-      # TODO: Include ternary if
       if isinstance(n,BoolOp) or isinstance(n,Compare) \
           or (isinstance(n,UnaryOp) and isinstance(n.op,Not) )\
           or (isinstance(n,Name) and n.id in prelude and prelude[n.id] == 'bool')\
           or (isinstance(n,Name) and n.id == 'True' and not n.id in prelude) \
-          or (isinstance(n,Name) and n.id == 'False' and not n.id in prelude):
+          or (isinstance(n,Name) and n.id == 'False' and not n.id in prelude) \
+          or (isinstance(n,IfExp) and isboolexpr(n.body)):
         return True
       return False
 
@@ -82,7 +82,10 @@ def generate_c(n):
           out_prelude = ''
           if first_pass == False:
             for assignment in prelude:
-              out_prelude = out_prelude + prelude[assignment] + " " + assignment + " = 0;\n"
+              if assignment == "True":
+                out_prelude = out_prelude + "bool True = true;\n"
+              else:
+                out_prelude = out_prelude + prelude[assignment] + " " + assignment + " = " + ('0' if prelude[assignment] == 'int' else 'false') + ";\n"
             return "\n".join(["#include <stdio.h>",
                               "#include <stdbool.h>",
                                "int main()",
@@ -92,7 +95,7 @@ def generate_c(n):
                                "return 0;",
                                "}"])
           else:
-            prelude = {}
+            prelude = {'True': 'bool', 'False': 'bool'}
             [generate_c(node) for node in n.body]
             return prelude
       elif isinstance(n, Print): 
@@ -107,7 +110,7 @@ def generate_c(n):
           out = out + '\\n\"'
           for node in n.values:
             if isboolexpr(node):
-              out = out + ', (%s?"True":"False")' % generate_c(node)
+              out = out + ', ((%s)?"True":"False")' % generate_c(node)
             else:
               out = out + ', %s' % generate_c(node)
           out = out + ');'
@@ -116,8 +119,8 @@ def generate_c(n):
       elif isinstance(n, Num):
           return '%d' % n.n
       elif isinstance(n, Name):
-          out = ''
           name = n.id
+          out = '%s' % n.id
           if name in prelude:
             out = '%s' % n.id 
           elif name == "True":
@@ -126,9 +129,9 @@ def generate_c(n):
             out = "false"
           return out
       elif isinstance(n, UnaryOp) and isinstance(n.op, USub):
-          return '(-%s)' % generate_c(n.operand)
+          return '(-(%s))' % generate_c(n.operand)
       elif isinstance(n, UnaryOp) and isinstance(n.op, Not):
-          return '(!%s)' % generate_c(n.operand)
+          return '(!(%s))' % generate_c(n.operand)
       elif isinstance(n, BinOp) and isinstance(n.op, Add):
           out = ''
           out = out + '%s + ' % generate_c(n.left)
@@ -136,14 +139,30 @@ def generate_c(n):
           return out
       elif isinstance(n, BoolOp) and isinstance(n.op, And):
           out = ''
-          out = out + '%s && ' % generate_c(n.values[0])
-          out = out + '%s' % generate_c(n.values[1])
+          out = out + '((%s) && ' % generate_c(n.values[0])
+          out = out + '(%s))' % generate_c(n.values[1])
           return out
       elif isinstance(n, BoolOp) and isinstance(n.op, Or):
           out = ''
-          out = out + '%s || ' % generate_c(n.values[0])
-          out = out + '%s' % generate_c(n.values[1])
+          out = out + '((%s) || ' % generate_c(n.values[0])
+          out = out + '(%s))' % generate_c(n.values[1])
           return out
+      elif isinstance(n, Compare):
+          # comp_op : '<' | '>' | '==' | '>=' | '<=' | '<>' | '!='
+          compops = {"<class '_ast.Lt'>": ' < ', 
+                     "<class '_ast.Gt'>": ' > ', 
+                     "<class '_ast.Eq'>": ' == ', 
+                     "<class '_ast.GtE'>": ' >= ', 
+                     "<class '_ast.LtE'>": ' <= ', 
+                     "<class '_ast.NotEq'>": ' <> ', 
+                     "<class '_ast.NotEq'>": ' != '}
+          out = '('
+          out = out + generate_c(n.left) + compops[str(type(n.ops[0]))] + generate_c(n.comparators[0])
+          for op, comp, i in zip(n.ops, n.comparators, range(len(n.comparators))):
+            if i > 0:
+              out = out + "&& (" + generate_c(n.comparators[i-1]) + compops[str(type(op))] + generate_c(comp) + ")"
+          out = out + ")"
+          return out;
       elif isinstance(n, Assign):
           name = n.targets[0].id
           out = ''
@@ -187,6 +206,17 @@ def generate_c(n):
           out = out + '\t' + orig_index_var + ' = ' + index_var + ';\n'
           out = out + '\t' + '\n\t'.join([generate_c(stm) for stm in n.body])
           out = out + '\n}'
+          return out
+      elif isinstance(n, If):
+          #  if_stmt : "if" bool_expr ":" (simple_stmts | suite)
+          out = 'if (' + generate_c(n.test) + ")\n{\n"
+          for stm in n.body:
+            out = out + "\t" + generate_c(stm) + "\n"
+          out = out + "}"
+          return out
+      elif isinstance(n, IfExp):
+          # "(" bool_expr "if" bool_expr "else" bool_expr ")"
+          out = "( " + generate_c(n.test) + " ? " + generate_c(n.body) + " : " + generate_c(n.orelse) + " )"
           return out
       else:
           raise sys.exit('Error in generate_c: unrecognized AST node: %s' % n)

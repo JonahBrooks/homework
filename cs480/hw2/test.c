@@ -1,33 +1,19 @@
 #include <stdio.h>
+#include <stdbool.h>
 int main()
 {
-int y = 0;
-int x = 0;
-int s = 0;
-int j = 0;
-int i = 0;
+bool False = false;
+bool True = true;
 
-x = 3;
-y = 4 + x;
-x = 2 + 1;
-printf("%d\n", (-x) + y);
-i = 5;
-int i_ = 0;
-int tmp = x + y;
-for(i_ = 0; i_ < tmp; i_++)
+False = True;
+True = False;
+if (True)
 {
-	i = i_;
-	printf("%d %d\n", i + x, i);
+	printf("%s\n", ((False)?"True":"False"));
 }
-s = 0;
-int j_ = 0;
-int tmp_ = 10;
-for(j_ = 0; j_ < tmp_; j_++)
+if (False)
 {
-	j = j_;
-	s = s + j;
-	s = 2;
+	printf("%s\n", ((False)?"True":"False"));
 }
-printf("%d %d %d\n", s, j, y);
 return 0;
 }
