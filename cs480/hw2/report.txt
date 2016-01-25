@@ -7,7 +7,7 @@ Ex1:
 
 Which features (in P_2 \ P_1) did you successfully implemented?
 
-All of the ones in P_2, I think. Although I haven't done the extra credit type checking.
+All of the ones in P_2, I think. 
 
 
 Which features (in P_2 \ P_1) did you attempt but failed? 
@@ -18,6 +18,16 @@ None, although the Compare section took me a lot of time to get right.
 
 Ex2: (Extra Credit)
      How did you implement this checking, if you succeeded at it?
+
+I made a function for checking if an expression ultimately results in a 
+boolean expression. I then used that function to type check in various places.
+For instance, in the If statement condition I have:
+
+          if not isboolexpr(n.test):
+            raise sys.exit("If test nonboolean expression %s" % generate_c(n.test))
+
+Which raises an exception if the test condition is not a boolean expression.
+I put one of these in each spot where type checking would be needed.
 
 
 Ex3:

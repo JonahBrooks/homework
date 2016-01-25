@@ -129,20 +129,30 @@ def generate_c(n):
             out = "false"
           return out
       elif isinstance(n, UnaryOp) and isinstance(n.op, USub):
+          if isboolexpr(n.operand):
+            raise sys.exit("Unary minus used on boolean expression %s" % generate_c(n.operand))
           return '(-(%s))' % generate_c(n.operand)
       elif isinstance(n, UnaryOp) and isinstance(n.op, Not):
+          if not isboolexpr(n.operand):
+            raise sys.exit("Unary Not used on nonboolean expression %s" % generate_c(n.operand))
           return '(!(%s))' % generate_c(n.operand)
       elif isinstance(n, BinOp) and isinstance(n.op, Add):
+          if isboolexpr(n.left) or isboolexpr(n.right):
+            raise sys.exit("Binary Add used on boolean expression %s or %s" % (generate_c(n.left), generate_c(n.right)))
           out = ''
           out = out + '%s + ' % generate_c(n.left)
           out = out + '%s' % generate_c(n.right)
           return out
       elif isinstance(n, BoolOp) and isinstance(n.op, And):
+          if (not isboolexpr(n.values[0])) or (not isboolexpr(n.values[1])):
+            raise sys.exit("Binary And used on nonboolean expression %s or %s" % (generate_c(n.values[0]), generate_c(n.values[1])))
           out = ''
           out = out + '((%s) && ' % generate_c(n.values[0])
           out = out + '(%s))' % generate_c(n.values[1])
           return out
       elif isinstance(n, BoolOp) and isinstance(n.op, Or):
+          if (not isboolexpr(n.values[0])) or (not isboolexpr(n.values[1])):
+            raise sys.exit("Binary Or used on nonboolean expression %s or %s" % (generate_c(n.values[0]), generate_c(n.values[1])))
           out = ''
           out = out + '((%s) || ' % generate_c(n.values[0])
           out = out + '(%s))' % generate_c(n.values[1])
@@ -156,9 +166,13 @@ def generate_c(n):
                      "<class '_ast.LtE'>": ' <= ', 
                      "<class '_ast.NotEq'>": ' <> ', 
                      "<class '_ast.NotEq'>": ' != '}
+          if isboolexpr(n.left):
+            raise sys.exit("Comparison containing boolean value %s" % (generate_c(n.left)))
           out = '('
           out = out + generate_c(n.left) + compops[str(type(n.ops[0]))] + generate_c(n.comparators[0])
           for op, comp, i in zip(n.ops, n.comparators, range(len(n.comparators))):
+            if isboolexpr(comp):
+              raise sys.exit("Comparison containing boolean value %s" % (generate_c(comp)))
             if i > 0:
               out = out + "&& (" + generate_c(n.comparators[i-1]) + compops[str(type(op))] + generate_c(comp) + ")"
           out = out + ")"
@@ -209,6 +223,8 @@ def generate_c(n):
           return out
       elif isinstance(n, If):
           #  if_stmt : "if" bool_expr ":" (simple_stmts | suite)
+          if not isboolexpr(n.test):
+            raise sys.exit("If test nonboolean expression %s" % generate_c(n.test))
           out = 'if (' + generate_c(n.test) + ")\n{\n"
           for stm in n.body:
             out = out + "\t" + generate_c(stm) + "\n"
@@ -216,6 +232,9 @@ def generate_c(n):
           return out
       elif isinstance(n, IfExp):
           # "(" bool_expr "if" bool_expr "else" bool_expr ")"
+          if (isboolexpr(n.body) and (not isboolexpr(n.orelse))) \
+             or ((not isboolexpr(n.body)) and isboolexpr(n.orelse)):
+            raise sys.exit("IfExp containing mixed types of value %s and %s" % (generate_c(n.body), generate_c(n.orelse)))
           out = "( " + generate_c(n.test) + " ? " + generate_c(n.body) + " : " + generate_c(n.orelse) + " )"
           return out
       else:
