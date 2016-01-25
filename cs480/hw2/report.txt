@@ -1,20 +1,19 @@
 CS 480 HW2 Report
-Last Name:
-First Name:
-ONID login:
+Last Name: Brooks
+First Name: Jonah
+ONID login: brookjon
 
 Ex1: 
 
 Which features (in P_2 \ P_1) did you successfully implemented?
 
+All of the ones in P_2, I think. Although I haven't done the extra credit type checking.
 
 
 Which features (in P_2 \ P_1) did you attempt but failed? 
 (remember to comment out those lines so that your program still runs...)
 
-
-
-
+None, although the Compare section took me a lot of time to get right.
 
 
 Ex2: (Extra Credit)
@@ -25,31 +24,82 @@ Ex3:
 
 (a) What are the command-line commands you used (including C compiling)?
 
+cython cy.py --embed
+gcc -Os -I /usr/include/python2.7 -o cy cy.c -lpython2.7 -lpthread -lm -lutil -ldl
 
 
 (b) Include your very short but kinda "pathetic" Python code 
 
-
-
+a = True
+b = a if a == True else True
+if b: print a
 
     and the most important lines 
     from the resulting Cython translation, with your key comments.
 
+// a = True 
+if (PyDict_SetItem(__pyx_d, __pyx_n_s_a, Py_True) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+This line sets an element of the internal dictionary (representing 'a') to the constant Py_True.
+
+// b = a if a == True else True
+
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_a); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, Py_True, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__pyx_t_4) {
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_a); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_t_3 = 0;
+  } else {
+    __Pyx_INCREF(Py_True);
+    __pyx_t_1 = Py_True;
+  }
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_b, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
 
+This garbled mess is making a bunch of comparisons and jumping around with goto statements to mimic the ternary if statement,
+then finally assigning the result to the dictionary element representing 'b'
+
+// if b: print a
+
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_b); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_4) {
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_a); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_1);
+    if (__Pyx_PrintOne(0, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    goto __pyx_L2;
+  }
+  __pyx_L2:;
+
+This is checking the value of 'b', then jumping to the body if true.
+If so, it calls internal print functions to print the value to stdin.
 
 
 (c) What are the most striking differences you noticed between 
     the Cython solution and your solution? 
 	 
-
+The Cython file is huge and incomprehensible. I suppose it is made to be robust and functional rather than readable.
+My code was made to be readable as well as covering the small subset of Python used in this assignment.
 
 
 
 (d) [EXTRA CREDIT, 1 pt)
     List some rather basic Python features that Cython can not handle.
 
+I found http://docs.cython.org/src/userguide/limitations.html and 
+http://trac.cython.org/query?status=assigned&status=new&status=reopened&component=Python+Semantics&component=Python3+Semantics&order=priority&col=id&col=summary&col=component&col=status&col=type&col=priority&col=milestone
 
+which seem to indicate that it has trouble with tuple arguments and char* comparisons, but I'm not entirely sure.
 
 
 
@@ -58,12 +108,25 @@ Debriefing questions:
 
 1. Approximately how many hours did you spend on this assignment?
 
+I'm not sure exactly. Maybe 10 to 20.
+
 2. Would you rate it as easy, moderate, or difficult?
+
+Moderate. Most of it was fairly straightforward after HW1, but some of it
+(such as Compare) were quite tricky. It was a lot of fun either way though.
 
 3. Did you work on it mostly alone, or mostly with other people?
    Note: Only high-level discussions are allowed. 
          Include the names of the people you discussed with.
 
+Completely alone.
+
 4. How deeply do you feel you understand the material it covers (0%–100%)? 
 
+99% I feel I understand everything a bit better than I did after HW1, but still
+not quite 100% on all of it.
+
 5. Any other comments (on the instruction)?
+
+I really like these homework assignments. They are a lot of fun, and make
+me think a lot more deeply about Python and C than I have before.
