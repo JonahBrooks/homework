@@ -1,0 +1,105 @@
+CS 480 HW3 Report
+Last Name: Brooks
+First Name: Jonah
+ONID login: 931915048
+
+Ex1: P_2 in pure CFG notation:
+
+This is technically P_3 in pure CFG notation, since I'm using P_3 instead:
+''' P_3 grammar in pure CFG:
+   program : module
+   module : stmt_list
+   stmt : simple_stmt NEWLINE
+        | if_stmt NEWLINE 
+        | for_stmt NEWLINE
+   stmt_list : stmt
+             | stmt stmt_listt
+
+   simple_stmt : "print" expr_list
+               | name "=" expr
+
+   expr_list : expr
+             | expr_list "," expr
+
+   if_stmt : "if" expr ":" simple_stmts 
+           | "if" expr ":" NEWLINE INDENT stmt_list DEDENT
+
+   for_stmt : "for" name "in" "range" "(" expr ")" ":" simple_stmts 
+            | "for" name "in" "range" "(" expr ")" ":" NEWLINE INDENT stmt_list DEDENT
+
+   simple_stmts : simple_stmt ";" simple_stmt       // Is this right? Or should P_2 have had * here?
+                | simple_stmts ";" simple_stmt
+
+   comp_list: expr comp_op expr
+            | comp_list comp_op expr
+
+   expr     : name
+            | decint
+            | "-" expr
+            | expr "+" expr
+            | "(" expr ")"
+            | expr "if" expr "else" expr
+            | expr "and" expr
+            | expr "or" expr
+            | "not" expr
+            | comp_list
+            | "True"
+            | "False"
+            | "(" expr "if" expr "else" expr ")"
+
+   comp_op : '<' | '>' | '==' | '>=' | '<=' | '<>' | '!='
+'''
+
+
+
+
+Ex2: What difficulties did you encounter?
+
+I found it really hard to tell what was going wrong when it failed somewhere in the middle.
+I think my lexer works now, but it was tough finding errors in it to begin with.
+
+
+Ex2a: How was INDENT/DEDENT implemented?
+
+I didn't end up getting time to really look into it.
+Presumably either uses some sort of counting stack, or does something recursively?
+
+Ex2b: [EXTRA CREDIT] Any smarter way for the above than what I put on the slides?
+
+
+Ex3: What difficulties did you encounter?
+
+Debugging ended up taking far longer than I had anticipated, which led to me running out of time.
+I'm sure I could get it fixed through enough testing, line by line, but I would need another half
+dozen hours or so to get it all right, it seems.
+
+
+     Any comments on PLY?
+The error messages are really vague, and the documentation I found was rather sparse.
+It was really fun to mess around with though!
+
+
+Debriefing questions:
+
+1. Approximately how many hours did you spend on this assignment?
+
+20 or so, I think.
+
+2. Would you rate it as easy, moderate, or difficult?
+
+Moderate, but much more time consuming than I anticipated.
+
+3. Did you work on it mostly alone, or mostly with other people?
+   Note: Only high-level discussions are allowed. 
+         Include the names of the people you discussed with.
+
+Completely alone.
+
+4. How deeply do you feel you understand the material it covers (0%–100%)? 
+
+80% I still have a hard time telling what will and won't work.
+
+5. Any other comments (on the instruction)?
+
+This was fun, but I wish I had been able to give it the time to finish.
+
