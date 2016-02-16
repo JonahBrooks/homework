@@ -1,0 +1,224 @@
+To help you get started, I've provided full solutions to problem 0 below.
+
+0. For this grammar
+       E -> E + E | int
+   (a) Generate LR(1) DFA and action table;
+   (b) Explain shift-reduce conflicts;
+   (c) How to prefer left-associativity for +?
+   (d) What states will report error on the following ungrammatical inputs?
+       int int
+       int + + int
+       + int
+       int +
+
+   Solutions:
+
+   (a) LR(1) DFA:
+
+   rules:
+      (1) E -> E+E
+      (2) E -> int
+
+   state 0
+    S -> . E        $
+    E -> . E + E    $/+
+    E -> . int      $/+
+
+    int => state 1
+    E   => state 2
+
+   state 1
+    E -> int .      $/+
+
+    + => reduce using rule 2: E -> int
+    $ => reduce using rule 2: E -> int
+
+   state 2
+    S -> E .        $
+    E -> E . + E    $/+
+
+    $  => accept
+    +  => state 3    
+
+   state 3
+    E -> E + . E    $/+
+    E -> . E + E    $/+
+    E -> . int      $/+
+
+    int => state 1
+    E   => state 4
+
+   state 4
+    E -> E + E .    $/+
+    E -> E . + E    $/+
+
+    $/+ => reduce using rule 1: E -> E + E
+    +   => to state 3 
+
+   action table:
+
+   state | int  +     $  | E
+   ------+---------------+---
+     0   | s1            | g2
+     1   |      r2    r2 |
+     2   |      s3    acc|
+     3   | s1            | g4
+     4   |      r1/s3 r1 |
+
+    Here s_x means shift to state x, 
+         r_i means reduce (using rule i), 
+         g_y means go to state y.
+    
+   (b) Shift-Reduce Conflict: 
+       at state 4, on +, you can either shift to state 3, or reduce using r1 (E->E+E)
+
+   (c) to prefer left-associative, simply resolve the shift-reduce conflict to reduce.
+       in other words, remove "s3" from the cell for (state 4, token +),
+       so that that cell would only have "r1".
+
+   (d) state 1 reports error at "int . int", since E->int reduce only happens when the lookahead is either + or $.
+       state 3 reports error at "E + . +", since there is no action on "+" for state 3.
+       state 0 reports error at ". + int",   since there is no action on "+" for state 0.
+       state 3 reports error at "E + . $", since there is no action on "$" for state 3.
+
+
+
+   HINTS ON LR(0), SLR(1), AND LALR(1):
+   (*) LR(0) states are dotted rules *without* lookaheads
+   (*) SLR(1) states are LR(0) states, but it uses the FOLLOW sets to resolve some conflicts
+       Compared to LR(1), it has fewer states but will sometimes create conflicts that are not real
+       because FOLLOW sets are defined on non-terminals, not in context (see problems 3-4).
+   (*) LALR(1) states are LR(1) states modulo lookaheads, i.e., merging states that are identical in LR(0) standards
+       It has fewer states than LR(1) but more states than SLR(1).
+
+   Expressive Power: LR(0) < SLR(1) < LALR(1) < LR(1).
+
+   Note: LALR(1) is _NOT_ required material for CS 480. 
+         But LR(0), LR(1), and SLR(1) are required.
+
+   HINT: problems 3-5 might be easier than 1-2.
+
+
+1. (2 pts) For this grammar: 
+       E -> E - E | E ^ E | int
+   (a) Generate LR(1) DFA and action table;
+
+   rules:
+      (1) E -> E - E
+      (2) E -> E ^ E
+      (3) E -> int
+
+   state 0
+    S -> . E        $
+    E -> . E + E    $/+
+    E -> . int      $/+
+
+    int => state 1
+    E   => state 2
+
+   state 1
+    E -> int .      $/+
+
+    + => reduce using rule 2: E -> int
+    $ => reduce using rule 2: E -> int
+
+   state 2
+    S -> E .        $
+    E -> E . + E    $/+
+
+    $  => accept
+    +  => state 3    
+
+   state 3
+    E -> E + . E    $/+
+    E -> . E + E    $/+
+    E -> . int      $/+
+
+    int => state 1
+    E   => state 4
+
+   state 4
+    E -> E + E .    $/+
+    E -> E . + E    $/+
+
+    $/+ => reduce using rule 1: E -> E + E
+    +   => to state 3 
+
+   action table:
+
+   state | int  +     $  | E
+   ------+---------------+---
+     0   | s1            | g2
+     1   |      r2    r2 |
+     2   |      s3    acc|
+     3   | s1            | g4
+     4   |      r1/s3 r1 |
+
+    Here s_x means shift to state x, 
+         r_i means reduce (using rule i), 
+         g_y means go to state y.
+
+
+   (b) Explain shift-reduce / reduce-reduce conflicts;
+   (c) How to prefer left-associativity for -, right-associativity for ^, and ^ over - in precedence?
+       (e.g., 2-3-4-5^6^7 means ((2-3)-4)-(5^(6^7)), as in mathematics).
+       Hint: selectively remove some entries in the action table, so that 
+             each cell has at most one action. See problem 0(c) above.
+       
+   (d) Show that LR(0) and SLR(1) would have identical DFAs as the LR(1) one.
+       Hint: no need to redo the LR(0) or SLR(1) DFA/tables.
+       You simply need to make observations from the LR(1) DFA, 
+       and you need to show compute FOLLOW sets. Hint: it's easy to see FOLLOW(E) = {-, ^, $}.
+
+       Note: the action table for LR(0) might be different from those for LR(1) or SLR(1), 
+             since a reduce action does _not_ depend on the lookahead in LR(0).
+
+   (e) In terms of error detection, is there any difference between LR(1) and LR(0)?
+       Consider the four ungrammatical inputs used in problem 0 (plus one more: int - int int).
+       Which states in LR(1) will report error? Which states in LR(0)? What about SLR(1)?
+
+2. (1 pt)
+   (a) Write an equivalent but unambiguous grammar (with the same preferences as in (c)).
+   (b) Generate LR(1) DFA and action table for the new grammar.
+   (c) Is there any conflict? Why? How were the preferences in (c) implemented by the new DFA?
+
+   (d) Compute the FOLLOW sets. Would the SLR(1) table here be simpler than the LR(1) one?
+
+3. (1 pt) For this grammar:
+
+       S -> Aa | Bb | ac 
+       A -> a
+       B -> a
+   
+   (a) Generate the LR(0) DFA.
+   (b) Explain the shift-reduce and reduce-reduce conflicts.
+   (c) Compute the FOLLOW sets.
+   (d) Show that SLR(1) has no conflict, and draw the action table.
+
+   This example shows that SLR(1) is more powerful than LR(0).
+
+4. (1 pt) For this grammar:
+
+       S -> Aa | Bb | bAb 
+       A -> a
+       B -> a
+   
+   (a) Generate the LR(0) DFA.
+   (b) Compute the FOLLOW sets, and show that SLR(1) still has conflict.
+   (c) Generate the LR(1) DFA and action table.
+   (d) Explain why LR(1) has no conflict (while SLR(1) does).
+
+   This example shows that LR(1) is more powerful than SLR(1).
+
+5. (Extra Credit, 1.5 pts) 
+
+   (a) Show that LALR(1) is more powerful than SLR(1).
+       Hint: use the grammar in problem 3.
+   (b) Show an example where LALR(1) has fewer states than LR(1).
+       Hint: see LR slides.
+   (c) Show that LR(1) is more powerful than LALR(1).
+       Hint: use this grammar:
+
+       S -> Aa | Bb | bAb | bBa
+       A -> a
+       B -> b
