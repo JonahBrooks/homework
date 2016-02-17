@@ -110,49 +110,76 @@ To help you get started, I've provided full solutions to problem 0 below.
 
    state 0
     S -> . E        $
-    E -> . E + E    $/+
-    E -> . int      $/+
+    E -> . E - E    $/-/^
+    E -> . E ^ E    $/-/^
+    E -> . int      $/-/^
 
     int => state 1
     E   => state 2
 
    state 1
-    E -> int .      $/+
+    E -> int .      $/-/^
 
-    + => reduce using rule 2: E -> int
-    $ => reduce using rule 2: E -> int
+    - => reduce using rule 3: E -> int
+    ^ => reduce using rule 3: E -> int
+    $ => reduce using rule 3: E -> int
 
    state 2
     S -> E .        $
-    E -> E . + E    $/+
+    E -> E . - E    $/-/^
+    E -> E . ^ E    $/-/^
 
     $  => accept
-    +  => state 3    
+    -  => state 3    
+    ^  => state 5
 
    state 3
-    E -> E + . E    $/+
-    E -> . E + E    $/+
-    E -> . int      $/+
+    E -> E - . E    $/-/^
+    E -> . E - E    $/-/^
+    E -> . E ^ E    $/-/^
+    E -> . int      $/-/^
 
     int => state 1
     E   => state 4
 
    state 4
-    E -> E + E .    $/+
-    E -> E . + E    $/+
+    E -> E - E .    $/-/^
+    E -> E . - E    $/-/^
+    E -> E . ^ E    $/-/^
 
-    $/+ => reduce using rule 1: E -> E + E
-    +   => to state 3 
+    $/- => reduce using rule 1: E -> E - E
+    -   => to state 3 
+    ^   => to state 5
+
+   state 5
+    E -> E ^ . E    $/-/^
+    E -> . E - E    $/-/^
+    E -> . E ^ E    $/-/^
+    E -> . int      $/-/^
+
+    int => state 1
+    E   => state 6
+
+   state 6
+    E -> E ^ E .    $/-/^
+    E -> E . - E    $/-/^
+    E -> E . ^ E    $/-/^
+
+    $/^ => reduce using rule 2: E -> E ^ E
+    -   => to state 3 
+    ^   => to state 5
 
    action table:
 
-   state | int  +     $  | E
-   ------+---------------+---
-     0   | s1            | g2
-     1   |      r2    r2 |
-     2   |      s3    acc|
-     3   | s1            | g4
-     4   |      r1/s3 r1 |
+   state | int  -     ^     $  | E
+   ------+---------------------+---
+     0   | s1                  | g2
+     1   |      r2    r2    r2 |
+     2   |      s3    s5    acc|
+     3   | s1                  | g4
+     4   |      r1/s3 s5    r1 |
+     5   | s1                  | g6
+     6   |      s3    r2/s5 r2 |
 
     Here s_x means shift to state x, 
          r_i means reduce (using rule i), 
@@ -160,11 +187,18 @@ To help you get started, I've provided full solutions to problem 0 below.
 
 
    (b) Explain shift-reduce / reduce-reduce conflicts;
+
+      State 4 with - as the next token is a shift reduce conflict,
+      as is state 6 with ^.
+
    (c) How to prefer left-associativity for -, right-associativity for ^, and ^ over - in precedence?
        (e.g., 2-3-4-5^6^7 means ((2-3)-4)-(5^(6^7)), as in mathematics).
        Hint: selectively remove some entries in the action table, so that 
              each cell has at most one action. See problem 0(c) above.
-       
+    
+      Removing the s3 shift from state 4 token - to force left associativity there.
+      Then remove the r2 from state 6 token ^ to force right associativity there.
+   
    (d) Show that LR(0) and SLR(1) would have identical DFAs as the LR(1) one.
        Hint: no need to redo the LR(0) or SLR(1) DFA/tables.
        You simply need to make observations from the LR(1) DFA, 
@@ -173,14 +207,109 @@ To help you get started, I've provided full solutions to problem 0 below.
        Note: the action table for LR(0) might be different from those for LR(1) or SLR(1), 
              since a reduce action does _not_ depend on the lookahead in LR(0).
 
+      I'm not sure how to do this one. I'll try to come back to it if I have time.
+
    (e) In terms of error detection, is there any difference between LR(1) and LR(0)?
        Consider the four ungrammatical inputs used in problem 0 (plus one more: int - int int).
        Which states in LR(1) will report error? Which states in LR(0)? What about SLR(1)?
 
+      I'm not sure how to do this one either.
+
 2. (1 pt)
    (a) Write an equivalent but unambiguous grammar (with the same preferences as in (c)).
+    
+       E -> E - T | int 
+       T -> T ^ E 
+
    (b) Generate LR(1) DFA and action table for the new grammar.
+
+   rules:
+      (1) E -> E - E
+      (2) T -> T ^ T
+      (3) E -> int
+      (4) E -> T
+
+   state 0
+    S -> . E        $
+    E -> . E - E    $/-/^
+    E -> . E ^ E    $/-/^
+    E -> . int      $/-/^
+
+    int => state 1
+    E   => state 2
+
+   state 1
+    E -> int .      $/-/^
+
+    - => reduce using rule 3: E -> int
+    ^ => reduce using rule 3: E -> int
+    $ => reduce using rule 3: E -> int
+
+   state 2
+    S -> E .        $
+    E -> E . - E    $/-/^
+    E -> E . ^ E    $/-/^
+
+    $  => accept
+    -  => state 3    
+    ^  => state 5
+
+   state 3
+    E -> E - . E    $/-/^
+    E -> . E - E    $/-/^
+    E -> . E ^ E    $/-/^
+    E -> . int      $/-/^
+
+    int => state 1
+    E   => state 4
+
+   state 4
+    E -> E - E .    $/-/^
+    E -> E . - E    $/-/^
+    E -> E . ^ E    $/-/^
+
+    $/- => reduce using rule 1: E -> E - E
+    -   => to state 3 
+    ^   => to state 5
+
+   state 5
+    E -> E ^ . E    $/-/^
+    E -> . E - E    $/-/^
+    E -> . E ^ E    $/-/^
+    E -> . int      $/-/^
+
+    int => state 1
+    E   => state 6
+
+   state 6
+    E -> E ^ E .    $/-/^
+    E -> E . - E    $/-/^
+    E -> E . ^ E    $/-/^
+
+    $/^ => reduce using rule 2: E -> E ^ E
+    -   => to state 3 
+    ^   => to state 5
+
+   action table:
+
+   state | int  -     ^     $  | E
+   ------+---------------------+---
+     0   | s1                  | g2
+     1   |      r2    r2    r2 |
+     2   |      s3    s5    acc|
+     3   | s1                  | g4
+     4   |      r1/s3 s5    r1 |
+     5   | s1                  | g6
+     6   |      s3    r2/s5 r2 |
+
+    Here s_x means shift to state x, 
+         r_i means reduce (using rule i), 
+         g_y means go to state y.
+
+
    (c) Is there any conflict? Why? How were the preferences in (c) implemented by the new DFA?
+
+      There are no conflicts, since the look ahead can tell the difference due to the T/E 
 
    (d) Compute the FOLLOW sets. Would the SLR(1) table here be simpler than the LR(1) one?
 
